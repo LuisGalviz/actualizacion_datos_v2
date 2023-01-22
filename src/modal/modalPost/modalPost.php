@@ -1,3 +1,7 @@
+<?php
+require_once '../../util/post/postEmail.php';
+require_once '../../util/post/postTel.php';
+?>
 <div class="inputPostEmailP" style='display: none'>
     <div class="modal-contents">
 
@@ -7,12 +11,14 @@
 
         <?php
         if (array_key_exists('postEmail', $_POST)) {
+            $_SESSION['emailP'] = $_POST['emailP'];
             postEmail('PART', $_POST["emailP"]);
         }
         ?>
         <form action="" id="formulario1" method="post">
             <input type="email" placeholder="Nuevo correo de contacto" name="emailP" value=''>
-            <button type="submit" name="postEmail" class="button" value="postEmail">GUARDAR</button>
+            <button type="submit" name="postEmail" class="button">GUARDAR</button>
+
         </form>
     </div>
 </div>
@@ -25,14 +31,14 @@
         <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
 
         <?php
-        if (array_key_exists('postEmail', $_POST)) {
+        if (array_key_exists('postEmailF', $_POST)) {
             postEmail('FUNC', $_POST["emailF"]);
         }
         ?>
 
         <form action="" id="formulario1" method="post">
             <input type="email" placeholder="Nuevo correo de contacto" name="emailF" value=''>
-            <button type="submit" name="postEmail" class="button" value="postEmail">GUARDAR</button>
+            <button type="submit" name="postEmailF" class="button" value="postEmailF">GUARDAR</button>
         </form>
     </div>
 </div>
@@ -45,14 +51,15 @@
         <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
 
         <?php
-        if (array_key_exists('postTel', $_POST)) {
+        if (array_key_exists('postTelPart', $_POST)) {
+            $_SESSION['telP'] = $_POST['telPart'];
             postTel('CELU', $_POST["telPart"]);
         }
         ?>
 
         <form action="" id="formulario1" method="post">
             <input type="number" placeholder="Nuevo telefono de contacto" name="telPart" value=''>
-            <button type="submit" name="postTel" class="button" value="postTel">GUARDAR</button>
+            <button type="submit" name="postTelPart" class="button" value="postTelPart">GUARDAR</button>
         </form>
     </div>
 </div>
@@ -65,14 +72,15 @@
         <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
 
         <?php
-        if (array_key_exists('postTel', $_POST)) {
+        if (array_key_exists('postTelTepe', $_POST)) {
+            $_SESSION['telF'] = $_POST['telTepe'];
             postTel('TEPE', $_POST["telTepe"]);
         }
         ?>
 
         <form action="" id="formulario1" method="post">
             <input type="number" placeholder="Nuevo telefono de contacto" name="telTepe" value=''>
-            <button type="submit" name="postTel" class="button" value="postTel">GUARDAR</button>
+            <button type="submit" name="postTelTepe" class="button" value="postTelTepe">GUARDAR</button>
         </form>
     </div>
 </div>
@@ -97,4 +105,4 @@
     </div>
 </div>
 
-<!---<script type="text/javascript" src="javascript/evitarReenvio.js"></script>-->
+<script type="text/javascript" src="../../js/evitarReenvio.js"></script>

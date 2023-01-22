@@ -3,6 +3,7 @@ require_once '../../util/get/get.php';
 require_once '../../util/get/getPidm.php';
 require_once '../../util/get/getDpto.php';
 require_once '../../util/get/getPais.php';
+require_once '../../util/put/putEstado.php';
 ?>
 <div class="bg-modal" style='display: none'>
     <div class="modal-contents">
@@ -13,10 +14,14 @@ require_once '../../util/get/getPais.php';
             <label for="correoContacto" class="gotham_p4">Correo de contacto</label><br>
             <?php
             $data = get_info('correo', 'PART', 'emailType'); // correo particular con pidm
-            $_SESSION['emailP'] = $data[0]['emailAddress'];
-            foreach ($data as $key => $value) {
-                $email = $data[$key]['emailAddress'];
-                echo   '<input class="right" type="email" readonly  placeholder="Correo de contacto" name="correoContacto" value=' . $email . '>';
+            if ($data) {
+                $_SESSION['emailP'] = $data[0]['emailAddress'];
+                foreach ($data as $key => $value) {
+                    $email = $data[$key]['emailAddress'];
+                    echo   '<input class="right" type="email" readonly  placeholder="Correo de contacto" name="correoContacto" value=' . $email . '>';
+                }
+            } else {
+                $_SESSION['emailP'] = 'NA';
             }
             ?>
             <button type="button" id="postEmailP" onclick="modal('postEmailP','.inputPostEmailP')">NUEVO CORREO</input>
@@ -32,14 +37,18 @@ require_once '../../util/get/getPais.php';
             <label for="correoContacto2" class="gotham_p4">Correo de contacto</label><br>
             <?php
             $data = get_info('correo', 'FUNC', 'emailType');
-            $_SESSION['emailF'] = $data[0]['emailAddress'];
-            foreach ($data as $key => $value) {
-                $email = $data[$key]['emailAddress'];
-                echo   '<input class="right" type="email" placeholder="Correo de contacto" name="correoContacto2"  value=' . $email . '>';
+            if ($data) {
+                $_SESSION['emailF'] = $data[0]['emailAddress'];
+                foreach ($data as $key => $value) {
+                    $email = $data[$key]['emailAddress'];
+                    echo   '<input class="right" type="email" placeholder="Correo de contacto" name="correoContacto2"  value=' . $email . '>';
+                }
+            } else {
+                $_SESSION['emailF'] = 'NA';
             }
             ?>
             <!---BUTTON DISABLED------------------------------------------->
-            <button class="disabled" type="button" id="postEmailF" onclick="clickMe('postEmailF','.inputPostEmailF')" disabled>NUEVO CORREO</button>
+            <button class="disabled" type="button" id="postEmailF" onclick="modal('postEmailF','.inputPostEmailF')" disabled>NUEVO CORREO</button>
         </form>
 
     </div>
@@ -54,20 +63,24 @@ require_once '../../util/get/getPais.php';
                 <label for="numeroContacto" class="gotham_p4 padding_left_10">Número de contacto</label><br>
                 <?php
                 $data = get_info('telefono', 'CELU', 'phoneType'); // todos los telefonos celulares
-                $_SESSION['telP'] = $data[0]['phoneNumber'];
-                foreach ($data as $key => $value) {
-                    $codePhone = $data[$key]['intlAccess'];
-                    $phone = $data[$key]['phoneNumber'];
-                    echo    '<div class="row">';
-                    echo   '<div class="column-2 left"><select class="custom-select">';
-                    echo          '<option value=' . $codePhone . '>' . $codePhone . '</option>';
-                    echo      '</select></div>';
-                    echo   '<div class="column-2 right"> <input class="right" type="number" placeholder="Número de contacto" name="numeroContacto" value=' . $phone . '></div>';
-                    echo '</div>';
+                if ($data) {
+                    $_SESSION['telP'] = $data[0]['phoneNumber'];
+                    foreach ($data as $key => $value) {
+                        $codePhone = $data[$key]['intlAccess'];
+                        $phone = $data[$key]['phoneNumber'];
+                        echo    '<div class="row">';
+                        echo   '<div class="column-2 left"><select class="custom-select">';
+                        echo          '<option value=' . $codePhone . '>' . $codePhone . '</option>';
+                        echo      '</select></div>';
+                        echo   '<div class="column-2 right"> <input class="right" type="number" placeholder="Número de contacto" name="numeroContacto" value=' . $phone . '></div>';
+                        echo '</div>';
+                    }
+                } else {
+                    $_SESSION['telP'] = 'NA';
                 }
                 ?>
             </div>
-            <button type="button" id="postTelPart" onclick="clickMe('postTelPart','.inputPostTelPart')">Agregar Teléfono Celular</button>
+            <button type="button" id="postTelPart" onclick="modal('postTelPart','.inputPostTelPart')">Agregar Teléfono Celular</button>
         </form>
     </div>
 </div>
@@ -80,20 +93,24 @@ require_once '../../util/get/getPais.php';
             <label for="numeroContacto2" class="gotham_p4 padding_left_10">Número de contacto</label><br>
             <?php
             $data = get_info('telefono', 'TEPE', 'phoneType'); //Todos los telefonos fijos
-            $_SESSION['telF'] = $data[0]['phoneNumber'];
-            foreach ($data as $key => $value) {
-                # code...
-                $codePhone = $data[$key]['phoneArea'];
-                $phone = $data[$key]['phoneNumber'];
-                echo    '<div class="row">';
-                echo   '<div class="column-2 left"><select class="custom-select" name="numeroPais" id="numeroPais">';
-                echo          '<option value=' . $codePhone . '>' . $codePhone . '</option>';
-                echo      '</select></div>';
-                echo   '<div class="column-2 right"> <input class="right" type="number" placeholder="Número de contacto" name="numeroContacto2" value=' . $phone . '></div>';
-                echo '</div>';
+            if ($data) {
+                $_SESSION['telF'] = $data[0]['phoneNumber'];
+                foreach ($data as $key => $value) {
+                    # code...
+                    $codePhone = $data[$key]['phoneArea'];
+                    $phone = $data[$key]['phoneNumber'];
+                    echo    '<div class="row">';
+                    echo   '<div class="column-2 left"><select class="custom-select" name="numeroPais" id="numeroPais">';
+                    echo          '<option value=' . $codePhone . '>' . $codePhone . '</option>';
+                    echo      '</select></div>';
+                    echo   '<div class="column-2 right"> <input class="right" type="number" placeholder="Número de contacto" name="numeroContacto2" value=' . $phone . '></div>';
+                    echo '</div>';
+                }
+            } else {
+                $_SESSION['telF'] = 'NA';
             }
             ?>
-            <button type="button" id="postTelTepe" onclick="clickMe('postTelTepe','.inputPostTelTepe')">Agregar Teléfono Fijo</button>
+            <button type="button" id="postTelTepe" onclick="modal('postTelTepe','.inputPostTelTepe')">Agregar Teléfono Fijo</button>
         </form>
     </div>
 </div>
@@ -102,7 +119,12 @@ require_once '../../util/get/getPais.php';
         <button type="button" onclick="clickClose('.bg-modal-5')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p3"><i class="fa fa-id-card-o"></i> Estado Laboral</p>
-        <form>
+        <?php
+        if (isset($_POST['buttonEstado'])) {
+            putEstado($_POST['choice']);
+        }
+        ?>
+        <form method="POST">
             <?php  //TRAE INFORMACION DEL ESTADO LABORAL DESDE LA API 
             $data = get_info('estadolaboral');
             $_SESSION['estadoLaboral'] = $data;
@@ -130,10 +152,11 @@ require_once '../../util/get/getPais.php';
                     <label class="label-estado-laboral" for="Jubilado">Jubilado</label>
                 </div>
             </div>
-            <script>//COlOCA POR DEFECTO CUAL DE LAS OPCIONES ESTA SELECCIONADA DESDE EL GET
+            <script>
+                //COlOCA POR DEFECTO CUAL DE LAS OPCIONES ESTA SELECCIONADA DESDE EL GET
                 document.getElementById('<?php echo $data ?>').checked = 'true';
-            </script> 
-            <button type="button">CONFIRMAR Y CONTINUAR</button>
+            </script>
+            <button type="submit" name="buttonEstado">CONFIRMAR Y CONTINUAR</button>
         </form>
     </div>
 </div>

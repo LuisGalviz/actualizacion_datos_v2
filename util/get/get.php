@@ -15,6 +15,10 @@ function get_info($typeInfo, $type = '', $atributeType = '')
                 $temp++;
             }
         }
+        if (!$newData) {
+            return false;
+        }
+
         return $newData;
     } else if ($typeInfo == 'estadolaboral') { //DEVUELVE EL ESTADO LABORAL DEL USUARIO
         if ($data) {

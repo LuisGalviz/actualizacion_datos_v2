@@ -16,9 +16,10 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../modal/modalGet/modalGet.css">
     <link rel="stylesheet" type="text/css" href="../modal/modalPost/modalPost.css">
     <script src="../../js/modal.js"></script>
+    <script src="../../js/change.js"></script>
     <?php
     require_once '../modal/modalGet/modalGet.php';
-    require_once '../modal/modalPost/modalPost.php'
+    require_once '../modal/modalPost/modalPost.php';
     ?>
 
 </head>
@@ -91,7 +92,7 @@ session_start();
             <br>
             <div class="row">
                 <div class="column-2 left">
-                    <input type="checkbox" id="conditions" value="1" onchange="change()">
+                    <input type="checkbox" id="conditions" value="1" name="conditions" onchange="change()">
 
                 </div>
                 <div class="column-check rigth"> <label class="gotham_p4" for="conditions">Mis datos están correctos</label></div>
