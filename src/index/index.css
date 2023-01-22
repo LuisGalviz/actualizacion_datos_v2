@@ -1,0 +1,155 @@
+.margin_out {
+    margin: 0px;
+}
+
+.header_black {
+    background-color: #1d1d1b;
+    height: 50px;
+    width: 100%;
+    min-width: 340px;
+}
+
+.header_yellow {
+    background-color: #b78b1e;
+    height: 10px;
+    width: 100%;
+    min-width: 340px;
+}
+
+.container {
+    width: 75%;
+    margin: 10%;
+}
+
+.container_head {
+    width: 100%;
+    margin: 8px;
+    margin: auto;
+    padding: 10px;
+}
+
+.gotham_title {
+    font-family: "Gotham";
+    font-size: 20px;
+    color: #1d1d1b;
+    text-shadow: 1px 0 #1d1d1b;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+
+.gotham_p {
+    font-family: "Gotham";
+    font-size: 18px;
+    color: #1d1d1b;
+}
+
+.gotham_p2 {
+    font-family: "Gotham";
+    font-size: 16px;
+    color: #1d1d1b;
+}
+
+.gotham_p3 {
+    font-family: "Gotham";
+    font-size: 18px;
+    color: #1d1d1b;
+    font-weight: 500;
+    text-align: center;
+}
+
+.gotham_p4 {
+    font-family: "Gotham";
+    font-size: 16px;
+    color: #1d1d1b;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-align: start;
+}
+
+.gotham_p5 {
+    font-family: "Gotham";
+    font-size: 16px;
+    color: #d10a11;
+    margin-top: 0;
+    text-align: start;
+}
+
+.container_form {
+    width: 100%;
+    margin: auto;
+    border: 2px solid;
+    border-color: #b78b1e;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 5px #fff8e7;
+}
+
+.container_button {
+    width: 100%;
+    margin: auto;
+    border: 2px solid;
+    border-color: #b78b1e;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    background-color: #fdf7e9;
+}
+
+.yellow_p {
+    color: #b78b1e;
+}
+
+.angle_up_custom {
+    padding-right: 10px;
+    float: right;
+    font-size: 22px;
+}
+
+.espacio {
+    margin: 5px;
+}
+
+.row {
+    display: flex;
+}
+
+button {
+    background-color: #d10a11;
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 5%;
+    cursor: pointer;
+    border-radius: 50px;
+    width: 90%;
+    max-width: 20rem;
+}
+
+input {
+    margin: 15px auto;
+    display: block;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.column-2 {
+    float: right;
+    padding: 10px 0px 10px 10px;
+}
+
+.column-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    width: 15%;
+}

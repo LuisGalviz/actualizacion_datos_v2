@@ -1,0 +1,213 @@
+.gotham_title {
+    font-family: "Gotham";
+    font-size: 20px;
+    color: #1d1d1b;
+    text-shadow: 1px 0 #1d1d1b;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+
+.gotham_p3 {
+    font-family: "Gotham";
+    font-size: 18px;
+    color: #1d1d1b;
+    font-weight: 500;
+    text-align: center;
+}
+
+.gotham_p4 {
+    font-family: "Gotham";
+    font-size: 16px;
+    color: #1d1d1b;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-align: start;
+} 
+
+.gotham_p5 {
+    font-family: "Gotham";
+    font-size: 16px;
+    color: #d10a11;
+    margin-top: 0;
+    text-align: start;
+}
+
+.yellow_p {
+    color: #b78b1e;
+}
+
+.phone_custom {
+    font-size: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+button {
+    background-color: #d10a11;
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 5%;
+    cursor: pointer;
+    border-radius: 50px;
+    width: 90%;
+    max-width: 20rem;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.bg-modal,
+.bg-modal-2,
+.bg-modal-3,
+.bg-modal-4,
+.bg-modal-5,
+.bg-modal-6,
+.bg-modal-7 {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contents {
+    width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    background-color: white;
+    text-align: start;
+    padding: 20px 25px;
+    position: relative;
+    border-radius: 4px;
+    max-width: 338px;
+}
+
+.modal-contents-2 {
+    width: 80%;
+    background-color: white;
+    text-align: center;
+    padding: 20px 10px;
+    position: relative;
+    border-radius: 4px;
+    max-width: 338px;
+}
+
+.modal-contents-3 {
+    width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    background-color: white;
+    text-align: start;
+    padding: 20px 25px;
+    position: relative;
+    border-radius: 4px;
+    max-width: 338px;
+}
+
+input {
+    margin: 15px auto;
+    display: block;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.input-2 {
+    margin: auto;
+    display: block;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: -webkit-fill-available;
+    max-width: 20rem;
+}
+
+.close {
+    text-align: start;
+    margin-left: 0%;
+    color: #9c9c9c;
+    font-weight: 700;
+    cursor: pointer;
+    background: #fff;
+    border: 0;
+}
+
+.column-2 {
+    float: right;
+    padding: 10px 0px 10px 10px;
+}
+
+.left {
+    width: 15%;
+}
+
+.right {
+    width:  85%; 
+}
+
+.custom-select {
+    font-family: Arial;
+    height: 35px;
+    /* centrar vertical y horizontalmente */
+    margin: 15px 0px 0px 0px;
+}
+
+.custom-select-2 {
+    width: 90%;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.custom-select-3 {
+    margin: auto;
+    display: block;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 338px;
+}
+
+option {
+    padding: 10px;
+}
+
+.padding_left_10 {
+    padding-left: 10px;
+}
+
+.container-estado-laboral{
+    margin-left: 10%;
+    margin-bottom: 20px;
+}
+.div-estado-laboral{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-button-estado-laboral{
+    width: 30px;
+}
+
+.label-estado-laboral{
+    width: 80%;
+    align-self: center;
+    justify-content: start;
+    display: flex;
+}
