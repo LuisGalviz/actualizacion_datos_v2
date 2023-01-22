@@ -13,10 +13,12 @@ session_start();
     <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="../modal/modal.css">
+    <link rel="stylesheet" type="text/css" href="../modal/modalGet/modalGet.css">
+    <link rel="stylesheet" type="text/css" href="../modal/modalPost/modalPost.css">
     <script src="../../js/modal.js"></script>
     <?php
-    require_once '../modal/modal.php';
+    require_once '../modal/modalGet/modalGet.php';
+    require_once '../modal/modalPost/modalPost.php'
     ?>
 
 </head>

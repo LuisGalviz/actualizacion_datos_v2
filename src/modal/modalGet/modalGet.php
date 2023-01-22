@@ -19,7 +19,7 @@ require_once '../../util/get/getPais.php';
                 echo   '<input class="right" type="email" readonly  placeholder="Correo de contacto" name="correoContacto" value=' . $email . '>';
             }
             ?>
-            <button type="button" id="postEmailP" onclick="clickMe('postEmailP','.inputPostEmailP')">NUEVO CORREO</input>
+            <button type="button" id="postEmailP" onclick="modal('postEmailP','.inputPostEmailP')">NUEVO CORREO</input>
         </form>
     </div>
 </div>
