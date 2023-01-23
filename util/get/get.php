@@ -1,7 +1,5 @@
 <?php
 ////////////////////GET//////////////////
-
-
 //Pidm, Type=tipo de dato que se quiere obtener, typeInfo= {correo,telefono,direccion}, atributeType={emailType,AddressType,PhoneType}
 function get_info($typeInfo, $type = '', $atributeType = '')
 {
@@ -23,7 +21,7 @@ function get_info($typeInfo, $type = '', $atributeType = '')
     } else if ($typeInfo == 'estadolaboral') { //DEVUELVE EL ESTADO LABORAL DEL USUARIO
         if ($data) {
             return $data[0]['employmentStatus'];
-        } else {
+        } else {//Si no encuentra estado devuelve NA
             return 'NA';
         }
     }

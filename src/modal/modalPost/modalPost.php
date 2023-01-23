@@ -1,6 +1,7 @@
 <?php
 require_once '../../util/post/postEmail.php';
 require_once '../../util/post/postTel.php';
+require_once '../../util/post/postDir.php';
 ?>
 <div class="inputPostEmailP" style='display: none'>
     <div class="modal-contents">
@@ -15,7 +16,7 @@ require_once '../../util/post/postTel.php';
             postEmail('PART', $_POST["emailP"]);
         }
         ?>
-        <form action="" id="formulario1" method="post">
+        <form action="" id="formulario1" method="post" onsubmit="setTimeout(function(){window.location.reload();},10);">
             <input type="email" placeholder="Nuevo correo de contacto" name="emailP" value=''>
             <button type="submit" name="postEmail" class="button">GUARDAR</button>
 
@@ -28,7 +29,7 @@ require_once '../../util/post/postTel.php';
 
         <button type="button" onclick="clickClose('.inputPostEmailF')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
-        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
+        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Corporativo</p>
 
         <?php
         if (array_key_exists('postEmailF', $_POST)) {
@@ -36,7 +37,7 @@ require_once '../../util/post/postTel.php';
         }
         ?>
 
-        <form action="" id="formulario1" method="post">
+        <form action="" id="formulario1" method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
             <input type="email" placeholder="Nuevo correo de contacto" name="emailF" value=''>
             <button type="submit" name="postEmailF" class="button" value="postEmailF">GUARDAR</button>
         </form>
@@ -48,7 +49,7 @@ require_once '../../util/post/postTel.php';
 
         <button type="button" onclick="clickClose('.inputPostTelPart')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
-        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
+        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Telefono Personal</p>
 
         <?php
         if (array_key_exists('postTelPart', $_POST)) {
@@ -57,7 +58,7 @@ require_once '../../util/post/postTel.php';
         }
         ?>
 
-        <form action="" id="formulario1" method="post">
+        <form action="" id="formulario1" method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
             <input type="number" placeholder="Nuevo telefono de contacto" name="telPart" value=''>
             <button type="submit" name="postTelPart" class="button" value="postTelPart">GUARDAR</button>
         </form>
@@ -69,7 +70,7 @@ require_once '../../util/post/postTel.php';
 
         <button type="button" onclick="clickClose('.inputPostTelTepe')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
-        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
+        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Telefono Fijo</p>
 
         <?php
         if (array_key_exists('postTelTepe', $_POST)) {
@@ -78,7 +79,7 @@ require_once '../../util/post/postTel.php';
         }
         ?>
 
-        <form action="" id="formulario1" method="post">
+        <form action="" id="formulario1" method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
             <input type="number" placeholder="Nuevo telefono de contacto" name="telTepe" value=''>
             <button type="submit" name="postTelTepe" class="button" value="postTelTepe">GUARDAR</button>
         </form>
@@ -90,19 +91,17 @@ require_once '../../util/post/postTel.php';
 
         <button type="button" onclick="clickClose('.inputPostDirT')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
-        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
+        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Direccion Permanente</p>
 
         <?php
-        if (array_key_exists('postDir', $_POST)) {
-            postDir('TEPE', $_POST["telTepe"]);
+        if (array_key_exists('postDirT', $_POST)) {
+            postDir('TEPE', $_POST["dirTemporal"]);
         }
         ?>
 
-        <form action="" id="formulario1" method="post">
-            <input type="number" placeholder="Nuevo telefono de contacto" name="telTepe" value=''>
-            <button type="submit" name="postDir" class="button" value="postDir">GUARDAR</button>
+        <form action="" id="formulario1" method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
+            <input type="number" placeholder="Nuevo telefono de contacto" name="dirTemporal" value=''>
+            <button type="submit" name="postDir" class="button" value="postDirT">GUARDAR</button>
         </form>
     </div>
 </div>
-
-<script type="text/javascript" src="../../js/evitarReenvio.js"></script>

@@ -3,6 +3,7 @@ require_once '../../util/get/get.php';
 require_once '../../util/get/getPidm.php';
 require_once '../../util/get/getDpto.php';
 require_once '../../util/get/getPais.php';
+require_once '../../util/post/postEstado.php';
 require_once '../../util/put/putEstado.php';
 ?>
 <div class="bg-modal" style='display: none'>
@@ -120,15 +121,19 @@ require_once '../../util/put/putEstado.php';
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p3"><i class="fa fa-id-card-o"></i> Estado Laboral</p>
         <?php
-        if (isset($_POST['buttonEstado'])) {
-            putEstado($_POST['choice']);
+        $data = get_info('estadolaboral'); //TRAE INFORMACION DEL ESTADO LABORAL DESDE LA API 
+        $_SESSION['estadoLaboral'] = $data;
+
+        if (isset($_POST['buttonEstado'])) { //Cuando se oprima el boton con name=buttonEstado toma las 'choice' del form de abajo con method POST. se ejecuta esto
+            if ($data == 'NA') {
+                echo $data;
+                postEstado($_POST['choice']);
+            } else {
+                putEstado($_POST['choice']);
+            }
         }
         ?>
-        <form method="POST">
-            <?php  //TRAE INFORMACION DEL ESTADO LABORAL DESDE LA API 
-            $data = get_info('estadolaboral');
-            $_SESSION['estadoLaboral'] = $data;
-            ?>
+        <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
             <div class="container-estado-laboral">
                 <div class="div-estado-laboral"><input class="radio-button-estado-laboral" type="radio" name="choice" value="Desempleado" id="Desempleado">
                     <label class="label-estado-laboral" for="Desempleado">Desempleado</label>
@@ -154,7 +159,7 @@ require_once '../../util/put/putEstado.php';
             </div>
             <script>
                 //COlOCA POR DEFECTO CUAL DE LAS OPCIONES ESTA SELECCIONADA DESDE EL GET
-                document.getElementById('<?php echo $data ?>').checked = 'true';
+                if ('<?php echo $data ?>' != 'NA') document.getElementById('<?php echo $data ?>').checked = 'true'; //Verifica que si vino informacion desde el get del estado
             </script>
             <button type="submit" name="buttonEstado">CONFIRMAR Y CONTINUAR</button>
         </form>
