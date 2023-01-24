@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -17,6 +18,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../modal/modalPost/modalPost.css">
     <script src="../../js/modal.js"></script>
     <script src="../../js/change.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
     <?php
     require_once '../modal/modalGet/modalGet.php';
     require_once '../modal/modalPost/modalPost.php';

@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 require_once '../../util/get/get.php';
 require_once '../../util/get/getPidm.php';
 require_once '../../util/get/getDpto.php';
@@ -11,6 +12,27 @@ require_once '../../util/put/putEstado.php';
         <button type="button" onclick="clickClose('.bg-modal')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
+        <script>
+            const listNumber=()=>{
+                $.ajax({
+                    type:'GET',
+                    url:'https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/correo/tipo/PART',
+                    contentType:'application/json',
+                    async:true,
+                    beforeSend:function(){
+                        console.log('holi');
+                    },
+                    success:function(data){
+                        console.log(data);
+                    },error:function(error){
+                        console.log(error);
+                    }
+                })
+            };
+            $(document).ready(function($){
+                listNumber();
+            })
+        </script>
         <form>
             <label for="correoContacto" class="gotham_p4">Correo de contacto</label><br>
             <?php
