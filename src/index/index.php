@@ -94,7 +94,7 @@ session_start();
             <br>
             <div class="row">
                 <div class="column-2 left">
-                    <input type="checkbox" id="conditions" value="1" name="conditions" onchange="change()">
+                    <input type="checkbox" id="conditions" value="1" name="conditions" onchange="change()" require>
 
                 </div>
                 <div class="column-check rigth"> <label class="gotham_p4" for="conditions">Mis datos están correctos</label></div>

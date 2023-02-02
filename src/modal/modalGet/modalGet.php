@@ -1,37 +1,48 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Headers: *');
 require_once '../../util/get/get.php';
 require_once '../../util/get/getPidm.php';
 require_once '../../util/get/getDpto.php';
 require_once '../../util/get/getPais.php';
 require_once '../../util/post/postEstado.php';
 require_once '../../util/put/putEstado.php';
+require_once '../../util/post/postDir.php';
 ?>
-<div class="bg-modal" style='display: none'>
+<div class="bg-modal">
     <div class="modal-contents">
         <button type="button" onclick="clickClose('.bg-modal')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
         <script>
-            const listNumber=()=>{
+            /*/JQuery 
+            const listNumber = () => {
                 $.ajax({
-                    type:'GET',
-                    url:'https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/correo/tipo/PART',
-                    contentType:'application/json',
-                    async:true,
-                    beforeSend:function(){
+                    type: 'GET',
+                    url: 'https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/correo/tipo/PART',
+                    contentType: 'application/json',
+
+                    async: true,
+                    crossDomain: true,
+                    headers: {
+                        "accept": "application/json",
+                        "Access-Control-Allow-Origin": "*"
+                    },
+
+                    beforeSend: function() {
                         console.log('holi');
                     },
-                    success:function(data){
+                    success: function(data) {
                         console.log(data);
-                    },error:function(error){
+                    },
+                    error: function(error) {
                         console.log(error);
                     }
                 })
             };
-            $(document).ready(function($){
+            $(document).ready(function($) {
                 listNumber();
-            })
+            })*/
         </script>
         <form>
             <label for="correoContacto" class="gotham_p4">Correo de contacto</label><br>
@@ -192,12 +203,13 @@ require_once '../../util/put/putEstado.php';
         <button type="button" onclick="clickClose('.bg-modal-6')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p3"><i class="fa fa-map-marker phone_custom"></i> Dirección Permanente</p>
-        <form>
-            <?php
-            $data = get_info('direccion', 'DP', 'addressType');
-            if (!$data) {
-                $_SESSION['dirP'] = 'No registra';
-            ?>
+        <?php
+        $data = get_info('direccion', 'DP', 'addressType'); //get de la direccion permanente
+        //Muestra si tiene datos el get o no
+        if (!$data) {
+            $_SESSION['dirP'] = 'No registra';
+        ?>
+            <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
                 <label for="direccionCompleta3" class="gotham_p4">Dirección Completa</label><br>
                 <input type="text" class="gotham_p5 input-2" id="direccionCompleta" name="direccionCompleta" value=''><br>
                 <input type="text" class="gotham_p5 input-2" id="direccionCompleta2" name="direccionCompleta2" value=''><br>
@@ -215,55 +227,58 @@ require_once '../../util/put/putEstado.php';
                 <select class="custom-select-3 gotham_p5" name="ciudad" id="ciudad">
                     <option value=''></option>
                 </select><br>
-            <?php
-            } else {
-                $_SESSION['dirP'] = $data[0]['line1'] . "<br>" . $data[0]['line2'] . "<br>" . $data[0]['city'] .  "<br>" . buscarDpto($data[0]['state']) . "<br>" . buscarPais($data[0]['nation']) . "<br>";
-                foreach ($data as $key => $value) {
-                    $pais = buscarPais($data[$key]['nation']);
-                    $dpto = buscarDpto($data[$key]['state']);
+                <button type="submit" name="buttonDP">CONFIRMAR Y CONTINUAR</button>
+            </form>
+        <?php
+        } else {
+            $_SESSION['dirP'] = $data[0]['line1'] . "<br>" . $data[0]['line2'] . "<br>" . $data[0]['city'] .  "<br>" . buscarDpto($data[0]['state']) . "<br>" . buscarPais($data[0]['nation']) . "<br>";
+            $pais = buscarPais($data[0]['nation']);
+            $dpto = buscarDpto($data[0]['state']);
+            //Mostrar direccion permanente
+            $direccionCompleta = $data[0]['line1'];
+            $barrio = $data[0]['line2'];
+            $ciudad = $data[0]['city'];
+            echo   '<form>';
+            echo   ' <label for="direccionCompleta" class="gotham_p4">Dirección Completa</label><br>';
+            echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta" name="direccionCompleta">' . $direccionCompleta . '</input><br>';
+            echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta2" name="direccionCompleta2" value=' . $barrio . '><br>';
+            echo   ' <label for="barrio" class="gotham_p4">Barrio</label><br>';
+            echo   '<input type="text" class="gotham_p5 input-2" id="barrio" name="barrio" value=' . $barrio . '><br>';
+            echo   '<label for="pais" class="gotham_p4">País</label><br>';
+            echo   '<select class="custom-select-3 gotham_p5" name="pais" id="pais">';
+            echo ' <option value=' . $pais . '>' . $pais . '</option>';
+            echo ' </select><br>';
+            echo ' <label for="departamento" class="gotham_p4">Estado / Departamento</label><br>';
+            echo ' <select class="custom-select-3 gotham_p5" name="departamento" id="departamento">';
+            echo '     <option value=' . $dpto . '>' . $dpto . '</option>';
+            echo ' </select><br>';
+            echo '  <label for="ciudad" class="gotham_p4">Ciudad / Municipio</label><br>';
+            echo ' <select class="custom-select-3 gotham_p5" name="ciudad" id="ciudad">';
+            echo '     <option value=' . $ciudad . '>' . $ciudad . '</option>';
+            echo ' </select><br>';
+            echo ' <button  type="submit" name="buttonDP">CONFIRMAR Y CONTINUAR</button>';
+            echo ' </form>';
+        }
+        ?>
 
-                    //Mostrar direccion permanente
-
-                    $direccionCompleta = $data[$key]['line1'];
-                    $barrio = $data[$key]['line2'];
-                    $ciudad = $data[$key]['city'];
-                    echo   ' <label for="direccionCompleta" class="gotham_p4">Dirección Completa</label><br>';
-                    echo   ' <label type="text" class="gotham_p5 input-2" id="direccionCompleta" name="direccionCompleta">' . $direccionCompleta . '</label><br>';
-                    echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta2" name="direccionCompleta2" value=' . $barrio . '><br>';
-                    echo   ' <label for="barrio" class="gotham_p4">Barrio</label><br>';
-                    echo   '<input type="text" class="gotham_p5 input-2" id="barrio" name="barrio" value=' . $barrio . '><br>';
-                    echo   '<label for="pais" class="gotham_p4">País</label><br>';
-                    echo   '<select class="custom-select-3 gotham_p5" name="pais" id="pais">';
-                    echo ' <option value=' . $pais . '>' . $pais . '</option>';
-                    echo ' </select><br>';
-                    echo ' <label for="departamento" class="gotham_p4">Estado / Departamento</label><br>';
-                    echo ' <select class="custom-select-3 gotham_p5" name="departamento" id="departamento">';
-                    echo '     <option value=' . $dpto . '>' . $dpto . '</option>';
-                    echo ' </select><br>';
-                    echo '  <label for="ciudad" class="gotham_p4">Ciudad / Municipio</label><br>';
-                    echo ' <select class="custom-select-3 gotham_p5" name="ciudad" id="ciudad">';
-                    echo '     <option value=' . $ciudad . '>' . $ciudad . '</option>';
-                    echo ' </select><br>';
-                }
-            }
-            ?>
-            <button type="button">CONFIRMAR Y CONTINUAR</button>
     </div>
-    </form>
+
 </div>
 <div class="bg-modal-7">
     <div class="modal-contents-3">
         <button type="button" onclick="clickClose('.bg-modal-7')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p3"><i class="fa fa-map-marker phone_custom"></i> Dirección Temporal</p>
-        <form>
-            <?php
-            //$data = json_decode(file_get_contents('https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/24421/direccion/tipo/DT'), true); // direcion temporal
-            $data = get_info('direccion', 'DT',  'addressType');
+        <?php
+        $data = get_info('direccion', 'DT',  'addressType');
 
-            if (!$data) {
-                $_SESSION['dirT'] = 'No registra';
-            ?>
+        if (isset($_POST['buttonDT'])) { //Cuando se oprima el boton con name=buttonEstado toma las 'choice' del form de abajo con method POST. se ejecuta esto
+            postDir('DT', 'holamundo1');
+        }
+
+        if (!$data) {
+            $_SESSION['dirT'] = 'No registra';
+        ?> <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
                 <label for="direccionCompleta3" class="gotham_p4">Dirección Completa</label><br>
                 <input type="text" class="gotham_p5 input-2" id="direccionCompleta" name="direccionCompleta" value=''><br>
                 <input type="text" class="gotham_p5 input-2" id="direccionCompleta2" name="direccionCompleta2" value=''><br>
@@ -271,50 +286,68 @@ require_once '../../util/put/putEstado.php';
                 <input type="text" class="gotham_p5 input-2" id="barrio" name="barrio" value=''><br>
                 <label for="pais" class="gotham_p4">País</label><br>
                 <select class="custom-select-3 gotham_p5" name="pais" id="pais">
-                    <option value=''></option>
+                    <option value='COL' selected="true">Colombia</option>
+                    <?php
+                    $data_pais = json_decode(file_get_contents('../../assets/paises.json'), true);
+                    foreach ($data_pais as $key => $value) {
+                        if ($value['codigo'] != 'COL') ?>
+                        <option value='<?php echo $value['codigo']; ?>'><?php echo $value['descripcion']; ?></option>
+                    <?php }
+                    ?>
+
                 </select><br>
-                <label for="departamento" class="gotham_p4">Estado / Departamento</label><br>
-                <select class="custom-select-3 gotham_p5" name="departamento" id="departamento">
-                    <option value=''></option>
+                <label for="departamentoT" class="gotham_p4">Estado / Departamento</label><br>
+                <select class="custom-select-3 gotham_p5" name="departamentoT" id="departamentoT">
+                    <option value='08' selected="true">Atlántico</option>
+                    <?php
+                    $data_dpto = json_decode(file_get_contents('../../assets/dpto.json'), true);
+                    foreach ($data_dpto as $key => $value) {
+                        if ($value['codigo'] != '08') ?>
+                        <option value='<?php echo $value['codigo']; ?>'><?php echo $value['descripcion']; ?></option>
+                    <?php }
+                    ?>
+
                 </select><br>
                 <label for="ciudad" class="gotham_p4">Ciudad / Municipio</label><br>
-                <select class="custom-select-3 gotham_p5" name="ciudad" id="ciudad">
-                    <option value=''></option>
-                </select><br>
-            <?php
-            } else {
-                $_SESSION['dirT'] = $data[0]['line1'] . "<br>" . $data[0]['line2'] . "<br>" . $data[0]['city'] .  "<br>" . buscarDpto($data[0]['state']) . "<br>" . buscarPais($data[0]['nation']) . "<br>";
-                foreach ($data as $key => $value) {
-                    $pais = buscarPais($data[0]['nation']);
-                    $dpto = buscarDpto($data[0]['state']);
+                <input class="custom-select-3 gotham_p5" name="ciudadT" id="ciudadT" value=''><br>
+                <button type="submit" name="buttonDT">CONFIRMAR Y CONTINUAR</button>
+            </form>
+        <?php
+        } else {
+            $_SESSION['dirT'] = $data[0]['line1'] . "<br>" . $data[0]['line2'] . "<br>" . $data[0]['city'] .  "<br>" . buscarDpto($data[0]['state']) . "<br>" . buscarPais($data[0]['nation']) . "<br>";
+            foreach ($data as $key => $value) {
+                $pais = buscarPais($data[0]['nation']);
+                $dpto = buscarDpto($data[0]['state']);
 
-                    //Mostrar direccion temporal
+                //Mostrar direccion temporal
 
-                    $direccionCompleta = $data[$key]['line1'];
-                    $barrio = $data[$key]['line2'];
-                    $ciudad = $data[$key]['city'];
-                    echo  '<label for="direccionCompleta3" class="gotham_p4">Dirección Completa</label><br>';
-                    echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta" name="direccionCompleta" value=' . $direccionCompleta . '><br>';
-                    echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta2" name="direccionCompleta2" value=' . $barrio . '><br>';
-                    echo   ' <label for="barrio" class="gotham_p4">Barrio</label><br>';
-                    echo   '<input type="text" class="gotham_p5 input-2" id="barrio" name="barrio" value=' . $barrio . '><br>';
-                    echo   '<label for="pais" class="gotham_p4">País</label><br>';
-                    echo   '<select class="custom-select-3 gotham_p5" name="pais" id="pais">';
-                    echo ' <option value=' . $pais . '>' . $pais . '</option>';
-                    echo ' </select><br>';
-                    echo ' <label for="departamento" class="gotham_p4">Estado / Departamento</label><br>';
-                    echo ' <select class="custom-select-3 gotham_p5" name="departamento" id="departamento">';
-                    echo '     <option value=' . $dpto . '>' . $dpto . '</option>';
-                    echo ' </select><br>';
-                    echo '  <label for="ciudad" class="gotham_p4">Ciudad / Municipio</label><br>';
-                    echo ' <select class="custom-select-3 gotham_p5" name="ciudad" id="ciudad">';
-                    echo '     <option value=' . $ciudad . '>' . $ciudad . '</option>';
-                    echo ' </select><br>';
-                }
+                $direccionCompleta = $data[$key]['line1'];
+                $direccionCompleta2 = $data[$key]['line2'];
+                $direccionCompleta3 = $data[$key]['line3'];
+                $ciudad = $data[$key]['city'];
+                echo ' <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">';
+                echo  '<label for="direccionCompleta3" class="gotham_p4">Dirección Completa</label><br>';
+                echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta" name="direccionCompleta" value="' . $direccionCompleta . '"><br>';
+                echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta2" name="direccionCompleta2" value="' . $direccionCompleta2 . '"><br>';
+                echo   ' <label for="barrio" class="gotham_p4">Barrio</label><br>';
+                echo   '<input type="text" class="gotham_p5 input-2" id="barrio" name="barrio" value="' . $direccionCompleta3 . '"><br>';
+                echo   '<label for="pais" class="gotham_p4">País</label><br>';
+                echo   '<select class="custom-select-3 gotham_p5" name="pais" id="pais">';
+                echo ' <option value=' . $pais . '>' . $pais . '</option>';
+                echo ' </select><br>';
+                echo ' <label for="departamento" class="gotham_p4">Estado / Departamento</label><br>';
+                echo ' <select class="custom-select-3 gotham_p5" name="departamento" id="departamento">';
+                echo '     <option value=' . $dpto . '>' . $dpto . '</option>';
+                echo ' </select><br>';
+                echo '  <label for="ciudad" class="gotham_p4">Ciudad / Municipio</label><br>';
+                echo ' <select class="custom-select-3 gotham_p5" name="ciudad" id="ciudad">';
+                echo '     <option value=' . $ciudad . '>' . $ciudad . '</option>';
+                echo ' </select><br>';
+                echo '<button type="submit" name="buttonDT">CONFIRMAR Y CONTINUAR</button>';
+                echo ' </form>';
             }
-            ?>
-            <button type="button" id="postDirT" onclick="clickMe('postDirT','.inputPostDirT')">Agregar direccion temporal</button>
-        </form>
+        }
+        ?>
     </div>
 </div>
 <!-- END Modal Section -->

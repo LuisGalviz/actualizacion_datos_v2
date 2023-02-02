@@ -12,14 +12,17 @@ require_once '../../util/post/postDir.php';
 
         <?php
         if (array_key_exists('postEmail', $_POST)) {
-            $_SESSION['emailP'] = $_POST['emailP'];
-            postEmail('PART', $_POST["emailP"]);
+            if ($_POST['emailP'] == '') {
+                echo '<h1>Holi</h1>';
+            } else {
+                $_SESSION['emailP'] = $_POST['emailP'];
+                postEmail('PART', $_POST["emailP"]);
+            }
         }
         ?>
         <form action="" id="formulario1" method="post" onsubmit="setTimeout(function(){window.location.reload();},10);">
-            <input type="email" placeholder="Nuevo correo de contacto" name="emailP" value=''>
+            <input type="email" placeholder="Nuevo correo de contacto" name="emailP" value='' required>
             <button type="submit" name="postEmail" class="button">GUARDAR</button>
-
         </form>
     </div>
 </div>
@@ -38,7 +41,7 @@ require_once '../../util/post/postDir.php';
         ?>
 
         <form action="" id="formulario1" method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
-            <input type="email" placeholder="Nuevo correo de contacto" name="emailF" value=''>
+            <input type="email" placeholder="Nuevo correo de contacto" name="emailF" value='' required>
             <button type="submit" name="postEmailF" class="button" value="postEmailF">GUARDAR</button>
         </form>
     </div>
@@ -59,7 +62,7 @@ require_once '../../util/post/postDir.php';
         ?>
 
         <form action="" id="formulario1" method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
-            <input type="number" placeholder="Nuevo telefono de contacto" name="telPart" value=''>
+            <input type="number" placeholder="Nuevo telefono de contacto" name="telPart" min="3000000000" required>
             <button type="submit" name="postTelPart" class="button" value="postTelPart">GUARDAR</button>
         </form>
     </div>
@@ -80,28 +83,8 @@ require_once '../../util/post/postDir.php';
         ?>
 
         <form action="" id="formulario1" method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
-            <input type="number" placeholder="Nuevo telefono de contacto" name="telTepe" value=''>
+            <input type="number" placeholder="Nuevo telefono de contacto" name="telTepe" value='' min="3000000000" required>
             <button type="submit" name="postTelTepe" class="button" value="postTelTepe">GUARDAR</button>
-        </form>
-    </div>
-</div>
-
-<div class="inputPostDirT" style='display: none'>
-    <div class="modal-contents">
-
-        <button type="button" onclick="clickClose('.inputPostDirT')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
-        <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
-        <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Direccion Permanente</p>
-
-        <?php
-        if (array_key_exists('postDirT', $_POST)) {
-            postDir('TEPE', $_POST["dirTemporal"]);
-        }
-        ?>
-
-        <form action="" id="formulario1" method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
-            <input type="number" placeholder="Nuevo telefono de contacto" name="dirTemporal" value=''>
-            <button type="submit" name="postDir" class="button" value="postDirT">GUARDAR</button>
         </form>
     </div>
 </div>
