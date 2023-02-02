@@ -8,42 +8,13 @@ require_once '../../util/get/getPais.php';
 require_once '../../util/post/postEstado.php';
 require_once '../../util/put/putEstado.php';
 require_once '../../util/post/postDir.php';
+require_once '../../util/put/putDir.php';
 ?>
 <div class="bg-modal">
     <div class="modal-contents">
         <button type="button" onclick="clickClose('.bg-modal')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p3"><i class="fa fa-envelope"></i> Correo Personal</p>
-        <script>
-            /*/JQuery 
-            const listNumber = () => {
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/correo/tipo/PART',
-                    contentType: 'application/json',
-
-                    async: true,
-                    crossDomain: true,
-                    headers: {
-                        "accept": "application/json",
-                        "Access-Control-Allow-Origin": "*"
-                    },
-
-                    beforeSend: function() {
-                        console.log('holi');
-                    },
-                    success: function(data) {
-                        console.log(data);
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                })
-            };
-            $(document).ready(function($) {
-                listNumber();
-            })*/
-        </script>
         <form>
             <label for="correoContacto" class="gotham_p4">Correo de contacto</label><br>
             <?php
@@ -159,7 +130,6 @@ require_once '../../util/post/postDir.php';
 
         if (isset($_POST['buttonEstado'])) { //Cuando se oprima el boton con name=buttonEstado toma las 'choice' del form de abajo con method POST. se ejecuta esto
             if ($data == 'NA') {
-                echo $data;
                 postEstado($_POST['choice']);
             } else {
                 putEstado($_POST['choice']);
@@ -231,7 +201,7 @@ require_once '../../util/post/postDir.php';
             </form>
         <?php
         } else {
-            $_SESSION['dirP'] = $data[0]['line1'] . "<br>" . $data[0]['line2'] . "<br>" . $data[0]['city'] .  "<br>" . buscarDpto($data[0]['state']) . "<br>" . buscarPais($data[0]['nation']) . "<br>";
+            $_SESSION['dirP'] = $data[0]['line1'] . "<br>" . $data[0]['line2'] . "<br>" . $data[0]['city'] .  "<br>" . buscarDpto($data[0]['state'])['descripcion'] . "<br>" . buscarPais($data[0]['nation'])['descripcion'] . "<br>";
             $pais = buscarPais($data[0]['nation']);
             $dpto = buscarDpto($data[0]['state']);
             //Mostrar direccion permanente
@@ -246,7 +216,7 @@ require_once '../../util/post/postDir.php';
             echo   '<input type="text" class="gotham_p5 input-2" id="barrio" name="barrio" value=' . $barrio . '><br>';
             echo   '<label for="pais" class="gotham_p4">País</label><br>';
             echo   '<select class="custom-select-3 gotham_p5" name="pais" id="pais">';
-            echo ' <option value=' . $pais . '>' . $pais . '</option>';
+            echo ' <option value=' . $pais['descripcion'] . '>' . $pais['descripcion'] . '</option>';
             echo ' </select><br>';
             echo ' <label for="departamento" class="gotham_p4">Estado / Departamento</label><br>';
             echo ' <select class="custom-select-3 gotham_p5" name="departamento" id="departamento">';
@@ -273,19 +243,23 @@ require_once '../../util/post/postDir.php';
         $data = get_info('direccion', 'DT',  'addressType');
 
         if (isset($_POST['buttonDT'])) { //Cuando se oprima el boton con name=buttonEstado toma las 'choice' del form de abajo con method POST. se ejecuta esto
-            postDir('DT', 'holamundo1');
+            if (!$data) {
+                postDir('DT', $_POST["direccionT"], $_POST["complementoT"], $_POST["barrioT"], $_POST["paisT"], $_POST["departamentoT"], $_POST["ciudadT"]);
+            } else {
+                putDir('DT', $_POST["direccionT"], $_POST["complementoT"], $_POST["barrioT"], $_POST["paisT"], $_POST["departamentoT"], $_POST["ciudadT"], '1');
+            }
         }
 
         if (!$data) {
             $_SESSION['dirT'] = 'No registra';
         ?> <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
-                <label for="direccionCompleta3" class="gotham_p4">Dirección Completa</label><br>
-                <input type="text" class="gotham_p5 input-2" id="direccionCompleta" name="direccionCompleta" value=''><br>
-                <input type="text" class="gotham_p5 input-2" id="direccionCompleta2" name="direccionCompleta2" value=''><br>
-                <label for="barrio" class="gotham_p4">Barrio</label><br>
-                <input type="text" class="gotham_p5 input-2" id="barrio" name="barrio" value=''><br>
-                <label for="pais" class="gotham_p4">País</label><br>
-                <select class="custom-select-3 gotham_p5" name="pais" id="pais">
+                <label for="direccionT" class="gotham_p4">Dirección Completa</label><br>
+                <input type="text" class="gotham_p5 input-2" id="direccionT" name="direccionT" value=''><br>
+                <input type="text" class="gotham_p5 input-2" id="complementoT" name="complementoT" value=''><br>
+                <label for="barrioT" class="gotham_p4">Barrio</label><br>
+                <input type="text" class="gotham_p5 input-2" id="barrioT" name="barrioT" value=''><br>
+                <label for="paisT" class="gotham_p4">País</label><br>
+                <select class="custom-select-3 gotham_p5" name="paisT" id="paisT">
                     <option value='COL' selected="true">Colombia</option>
                     <?php
                     $data_pais = json_decode(file_get_contents('../../assets/paises.json'), true);
@@ -308,43 +282,50 @@ require_once '../../util/post/postDir.php';
                     ?>
 
                 </select><br>
-                <label for="ciudad" class="gotham_p4">Ciudad / Municipio</label><br>
+                <label for="ciudadT" class="gotham_p4">Ciudad / Municipio</label><br>
                 <input class="custom-select-3 gotham_p5" name="ciudadT" id="ciudadT" value=''><br>
                 <button type="submit" name="buttonDT">CONFIRMAR Y CONTINUAR</button>
             </form>
-        <?php
+            <?php
         } else {
-            $_SESSION['dirT'] = $data[0]['line1'] . "<br>" . $data[0]['line2'] . "<br>" . $data[0]['city'] .  "<br>" . buscarDpto($data[0]['state']) . "<br>" . buscarPais($data[0]['nation']) . "<br>";
+            $_SESSION['dirT'] = $data[0]['line1'] . "<br>" . $data[0]['line2'] . "<br>" . $data[0]['city'] .  "<br>" . buscarDpto($data[0]['state'])['descripcion'] . "<br>" . buscarPais($data[0]['nation'])['descripcion'] . "<br>";
             foreach ($data as $key => $value) {
-                $pais = buscarPais($data[0]['nation']);
-                $dpto = buscarDpto($data[0]['state']);
 
-                //Mostrar direccion temporal
-
-                $direccionCompleta = $data[$key]['line1'];
-                $direccionCompleta2 = $data[$key]['line2'];
-                $direccionCompleta3 = $data[$key]['line3'];
-                $ciudad = $data[$key]['city'];
+                $direccionT = $data[$key]['line1'];
+                $complementoT = $data[$key]['line2'];
+                $barrioT = $data[$key]['line3'];
+                $paisT = buscarPais($data[0]['nation']);
+                $dptoT = buscarDpto($data[0]['state']);
+                $ciudadT = $data[$key]['city'];
                 echo ' <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">';
-                echo  '<label for="direccionCompleta3" class="gotham_p4">Dirección Completa</label><br>';
-                echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta" name="direccionCompleta" value="' . $direccionCompleta . '"><br>';
-                echo   ' <input type="text" class="gotham_p5 input-2" id="direccionCompleta2" name="direccionCompleta2" value="' . $direccionCompleta2 . '"><br>';
-                echo   ' <label for="barrio" class="gotham_p4">Barrio</label><br>';
-                echo   '<input type="text" class="gotham_p5 input-2" id="barrio" name="barrio" value="' . $direccionCompleta3 . '"><br>';
-                echo   '<label for="pais" class="gotham_p4">País</label><br>';
-                echo   '<select class="custom-select-3 gotham_p5" name="pais" id="pais">';
-                echo ' <option value=' . $pais . '>' . $pais . '</option>';
+                echo ' <label for="direccionT" class="gotham_p4">Dirección Completa</label><br>';
+                echo ' <input type="text" class="gotham_p5 input-2" id="direccionT" name="direccionT" value="' . $direccionT . '"><br>';
+                echo ' <input type="text" class="gotham_p5 input-2" id="complementoT" name="complementoT" value="' . $complementoT . '"><br>';
+                echo ' <label for="barrioT" class="gotham_p4">Barrio</label><br>';
+                echo ' <input type="text" class="gotham_p5 input-2" id="barrioT" name="barrioT" value="' . $barrioT . '"><br>';
+                echo ' <label for="paisT" class="gotham_p4">País</label><br>';
+                echo ' <select class="custom-select-3 gotham_p5" name="paisT" id="paisT">';
+                echo ' <option value=' . $paisT['codigo'] . ' selected="true">' . $paisT['descripcion'] . '</option>';
+                $data_pais = json_decode(file_get_contents("../../assets/paises.json"), true);
+                foreach ($data_pais as $key => $value) {
+                    if ($value["codigo"] != $paisT['codigo']) ?>
+                    <option value="<?php echo $value["codigo"]; ?>"><?php echo $value["descripcion"]; ?></option>
+                <?php }
                 echo ' </select><br>';
-                echo ' <label for="departamento" class="gotham_p4">Estado / Departamento</label><br>';
-                echo ' <select class="custom-select-3 gotham_p5" name="departamento" id="departamento">';
-                echo '     <option value=' . $dpto . '>' . $dpto . '</option>';
+                echo ' <label for="departamentoT" class="gotham_p4">Estado / Departamento</label><br>';
+                echo ' <select class="custom-select-3 gotham_p5" name="departamentoT" id="departamentoT">';
+                echo '     <option value=' . $dpto['codigo'] . ' selected="true">' . $dptoT['descripcion'] . '</option>';
+
+                $data_dpto = json_decode(file_get_contents("../../assets/dpto.json"), true);
+                foreach ($data_dpto as $key => $value) {
+                    if ($value["codigo"] != $dptoT['codigo']) ?>
+                    <option value="<?php echo $value["codigo"]; ?>"><?php echo $value["descripcion"]; ?></option>
+        <?php }
                 echo ' </select><br>';
-                echo '  <label for="ciudad" class="gotham_p4">Ciudad / Municipio</label><br>';
-                echo ' <select class="custom-select-3 gotham_p5" name="ciudad" id="ciudad">';
-                echo '     <option value=' . $ciudad . '>' . $ciudad . '</option>';
-                echo ' </select><br>';
-                echo '<button type="submit" name="buttonDT">CONFIRMAR Y CONTINUAR</button>';
-                echo ' </form>';
+                echo ' <label for="ciudadT" class="gotham_p4">Ciudad / Municipio</label><br>';
+                echo ' <input class="custom-select-3 gotham_p5" name="ciudadT" id="ciudadT" value="'.$ciudadT.'"><br>';
+                echo ' <button type="submit" name="buttonDT">CONFIRMAR Y CONTINUAR</button>';
+                echo '  </form>';
             }
         }
         ?>

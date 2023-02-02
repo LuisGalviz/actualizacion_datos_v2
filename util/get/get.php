@@ -3,7 +3,7 @@
 //Pidm, Type=tipo de dato que se quiere obtener, typeInfo= {correo,telefono,direccion}, atributeType={emailType,AddressType,PhoneType}
 function get_info($typeInfo, $type = '', $atributeType = '')
 {
-    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
+    $opts = array('http' => array('header' => "User-Agent:MyAgent/1.0\r\n"));
     $context = stream_context_create($opts);
     $header = file_get_contents('https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/' . get_pidm('lgalviz') . '/' . $typeInfo, false, $context);
     $data = json_decode($header, true);
@@ -16,11 +16,10 @@ function get_info($typeInfo, $type = '', $atributeType = '')
                 $temp++;
             }
         }
-        if (!$newData) {
-            return false;
+        if (count($newData) > 0) {
+            return $newData;
         }
-
-        return $newData;
+        return false;
     } else if ($typeInfo == 'estadolaboral') { //DEVUELVE EL ESTADO LABORAL DEL USUARIO
         if ($data) {
             return $data[0]['employmentStatus'];
