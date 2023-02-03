@@ -305,12 +305,12 @@ require_once '../../util/post/postDir.php';
             $ciudadT2 = $data[0]['city'];
             echo ' <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">';
             echo ' <label for="direccionT2" class="gotham_p4">Dirección Completa</label><br>';
-            echo ' <input type="text" class="gotham_p5 input-2" id="direccionT2" name="direccionT2" value="' . $direccionT2 . '"><br>';
-            echo ' <input type="text" class="gotham_p5 input-2" id="complementoT2" name="complementoT2" value="' . $complementoT2 . '"><br>';
+            echo ' <input type="text" class="gotham_p5 input-2" id="direccionT2" name="direccionT2" value="' . $direccionT2 . '" required><br>';
+            echo ' <input type="text" class="gotham_p5 input-2" id="complementoT2" name="complementoT2" value="' . $complementoT2 . '" required><br>';
             echo ' <label for="barrioT2" class="gotham_p4">Barrio</label><br>';
-            echo ' <input type="text" class="gotham_p5 input-2" id="barrioT2" name="barrioT2" value="' . $barrioT2 . '"><br>';
+            echo ' <input type="text" class="gotham_p5 input-2" id="barrioT2" name="barrioT2" value="' . $barrioT2 . '" required><br>';
             echo ' <label for="paisT2" class="gotham_p4">País</label><br>';
-            echo ' <select class="custom-select-3 gotham_p5" name="paisT2" id="paisT2">';
+            echo ' <select class="custom-select-3 gotham_p5" name="paisT2" id="paisT2" required>';
             echo ' <option value=' . $paisT2['codigo'] . ' selected="true">' . $paisT2['descripcion'] . '</option>';
             $data_pais = json_decode(file_get_contents("../../assets/paises.json"), true);
             foreach ($data_pais as $key => $value) {
@@ -319,7 +319,7 @@ require_once '../../util/post/postDir.php';
             <?php }
             echo ' </select><br>';
             echo ' <label for="departamentoT2" class="gotham_p4">Estado / Departamento</label><br>';
-            echo ' <select class="custom-select-3 gotham_p5" name="departamentoT2" id="departamentoT2">';
+            echo ' <select class="custom-select-3 gotham_p5" name="departamentoT2" id="departamentoT2" required>';
             echo '     <option value=' . $dpto2['codigo'] . ' selected="true">' . $dpto2['descripcion'] . '</option>';
 
             $data_dpto = json_decode(file_get_contents("../../assets/dpto.json"), true);
@@ -329,7 +329,7 @@ require_once '../../util/post/postDir.php';
         <?php }
             echo ' </select><br>';
             echo ' <label for="ciudadT2" class="gotham_p4">Ciudad / Municipio</label><br>';
-            echo ' <input class="custom-select-3 gotham_p5" name="ciudadT2" id="ciudadT2" value="' . $ciudadT2 . '"><br>';
+            echo ' <input class="custom-select-3 gotham_p5" name="ciudadT2" id="ciudadT2" value="' . $ciudadT2 . '" required><br>';
             echo ' <button type="submit" name="buttonDT2">CONFIRMAR Y CONTINUAR 2</button>';
             echo '  </form>';
         }

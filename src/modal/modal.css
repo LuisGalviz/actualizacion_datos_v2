@@ -229,3 +229,9 @@ option {
     align-items: center;
     z-index: 1;
 }
+
+.gotham_p {
+    font-family: "Gotham";
+    font-size: 18px;
+    color: #1d1d1b;
+}
