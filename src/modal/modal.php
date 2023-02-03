@@ -62,6 +62,7 @@ require_once '../../util/del/delEmail.php';
         ?>
     </div>
 </div>
+
 <div class="bg-modal-2">
     <div class="modal-contents">
         <button type="button" onclick="clickClose('.bg-modal-2')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
