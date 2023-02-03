@@ -15,13 +15,11 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="../modal/modalGet/modalGet.css">
-    <link rel="stylesheet" type="text/css" href="../modal/modalPost/modalPost.css">
     <script src="../../js/modal.js"></script>
     <script src="../../js/change.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
     <?php
     require_once '../modal/modalGet/modalGet.php';
-    require_once '../modal/modalPost/modalPost.php';
     ?>
 
 </head>
