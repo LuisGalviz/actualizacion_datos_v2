@@ -1,4 +1,4 @@
-.gotham_title {
+.gotham_title_un {
     font-family: "Gotham";
     font-size: 20px;
     color: #1d1d1b;
@@ -7,7 +7,7 @@
     font-weight: bold;
 }
 
-.gotham_p3 {
+.gotham_p_un3 {
     font-family: "Gotham";
     font-size: 18px;
     color: #1d1d1b;
@@ -15,16 +15,16 @@
     text-align: center;
 }
 
-.gotham_p4 {
+.gotham_p_un4 {
     font-family: "Gotham";
     font-size: 16px;
     color: #1d1d1b;
     font-weight: 500;
     margin-bottom: 5px;
     text-align: start;
-} 
+}
 
-.gotham_p5 {
+.gotham_p_un5 {
     font-family: "Gotham";
     font-size: 16px;
     color: #d10a11;
@@ -32,7 +32,7 @@
     text-align: start;
 }
 
-.yellow_p {
+.yellow_p_un {
     color: #b78b1e;
 }
 
@@ -40,7 +40,7 @@
     font-size: 20px;
 }
 
-.row {
+.row_un {
     display: flex;
 }
 
@@ -59,6 +59,14 @@ button {
     border-radius: 50px;
     width: 90%;
     max-width: 20rem;
+}
+
+.button_eliminar {
+    width: 2rem;
+    border-radius: 50px;
+    margin-left: 1rem;
+    background-color: #d10a11;
+    color: white;
 }
 
 .disabled {
@@ -157,7 +165,7 @@ input {
 }
 
 .right {
-    width:  85%; 
+    width: 100%;
 }
 
 .custom-select {
@@ -191,21 +199,21 @@ option {
     padding-left: 10px;
 }
 
-.container-estado-laboral{
+.container_un-estado-laboral {
     margin-left: 10%;
     margin-bottom: 20px;
 }
-.div-estado-laboral{
-    display:flex;
+.div-estado-laboral {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.radio-button-estado-laboral{
+.radio-button-estado-laboral {
     width: 30px;
 }
 
-.label-estado-laboral{
+.label-estado-laboral {
     width: 80%;
     align-self: center;
     justify-content: start;
@@ -230,7 +238,7 @@ option {
     z-index: 1;
 }
 
-.gotham_p {
+.gotham_p_un {
     font-family: "Gotham";
     font-size: 18px;
     color: #1d1d1b;
