@@ -244,18 +244,10 @@ require_once '../../util/post/postDir.php';
     </div>
 </div>
 <?php
-if (isset($_POST['buttonDP'])) {
-    postDir('DP', $_POST["direccionP"], $_POST["complementoP"], $_POST["barrioP"], $_POST["paisP"], $_POST["departamentoP"], $_POST["ciudadP"]);
-}
-if (isset($_POST['buttonDP2'])) {
-    putDir('DP', $_POST["direccionP2"], $_POST["complementoP2"], $_POST["barrioP2"], $_POST["paisP2"], $_POST["departamentoP2"], $_POST["ciudadP2"], '1');
-}
-if (isset($_POST['buttonDT'])) {
-    postDir('DT', $_POST["direccionT"], $_POST["complementoT"], $_POST["barrioT"], $_POST["paisT"], $_POST["departamentoT"], $_POST["ciudadT"]);
-}
-if (isset($_POST['buttonDT2'])) {
-    putDir('DT', $_POST["direccionT2"], $_POST["complementoT2"], $_POST["barrioT2"], $_POST["paisT2"], $_POST["departamentoT2"], $_POST["ciudadT2"], '1');
-}
+if (isset($_POST['buttonDP'])) postDir('DP', $_POST["direccionP"], $_POST["complementoP"], $_POST["barrioP"], $_POST["paisP"], $_POST["departamentoP"], $_POST["ciudadP"]);
+if (isset($_POST['buttonDP2'])) putDir('DP', $_POST["direccionP2"], $_POST["complementoP2"], $_POST["barrioP2"], $_POST["paisP2"], $_POST["departamentoP2"], $_POST["ciudadP2"], '1');
+if (isset($_POST['buttonDT'])) postDir('DT', $_POST["direccionT"], $_POST["complementoT"], $_POST["barrioT"], $_POST["paisT"], $_POST["departamentoT"], $_POST["ciudadT"]);
+if (isset($_POST['buttonDT2'])) putDir('DT', $_POST["direccionT2"], $_POST["complementoT2"], $_POST["barrioT2"], $_POST["paisT2"], $_POST["departamentoT2"], $_POST["ciudadT2"], '1');
 ?>
 <div class="bg-modal-6">
     <div class="modal-contents-3">
@@ -270,10 +262,10 @@ if (isset($_POST['buttonDT2'])) {
             $_SESSION['dirP'] = 'No registra';
         ?> <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
                 <label for="direccionP" class="gotham_p4">Dirección Completa</label><br>
-                <input type="text" class="gotham_p5 input-2" id="direccionP" name="direccionP" value='' required><br>
-                <input type="text" class="gotham_p5 input-2" id="complementoP" name="complementoP" value='' required><br>
+                <input type="text" placeholder="Direccion Principal" class="gotham_p5 input-2" id="direccionP" name="direccionP" value='' required><br>
+                <input type="text" placeholder="Direccion Principal" class="gotham_p5 input-2" id="complementoP" name="complementoP" value='' required><br>
                 <label for="barrioP" class="gotham_p4">Barrio</label><br>
-                <input type="text" class="gotham_p5 input-2" id="barrioP" name="barrioP" value='' required><br>
+                <input type="text" placeholder="Barrio" class="gotham_p5 input-2" id="barrioP" name="barrioP" value='' required><br>
                 <label for="paisP" class="gotham_p4">País</label><br>
                 <select class="custom-select-3 gotham_p5" name="paisP" id="paisP" required>
                     <option value='COL' selected="true">Colombia</option>
@@ -299,7 +291,7 @@ if (isset($_POST['buttonDT2'])) {
 
                 </select><br>
                 <label for="ciudadP" class="gotham_p4">Ciudad / Municipio</label><br>
-                <input class="custom-select-3 gotham_p5" name="ciudadP" id="ciudadP" value='' required><br>
+                <input class="custom-select-3 gotham_p5" placeholder="Ciudad/Municipio" name="ciudadP" id="ciudadP" value='' required><br>
                 <button type="submit" name="buttonDP">CONFIRMAR Y CONTINUAR</button>
             </form>
             <?php
@@ -338,7 +330,7 @@ if (isset($_POST['buttonDT2'])) {
             echo ' </select><br>';
             echo ' <label for="ciudadP2" class="gotham_p4">Ciudad / Municipio</label><br>';
             echo ' <input class="custom-select-3 gotham_p5" name="ciudadP2" id="ciudadP2" value="' . $ciudadP2 . '" required><br>';
-            echo ' <button type="submit" name="buttonDP2">CONFIRMAR Y CONTINUAR 2</button>';
+            echo ' <button type="submit" name="buttonDP2">CONFIRMAR Y CONTINUAR</button>';
             echo '  </form>';
         }
         ?>
@@ -356,10 +348,10 @@ if (isset($_POST['buttonDT2'])) {
             $_SESSION['dirT'] = 'No registra';
         ?> <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
                 <label for="direccionT" class="gotham_p4">Dirección Completa</label><br>
-                <input type="text" class="gotham_p5 input-2" id="direccionT" name="direccionT" value='' required><br>
-                <input type="text" class="gotham_p5 input-2" id="complementoT" name="complementoT" value='' required><br>
+                <input type="text" class="gotham_p5 input-2" placeholder="Direccion Principal" id="direccionT" name="direccionT" value='' required><br>
+                <input type="text" class="gotham_p5 input-2" placeholder="Direccion Principal" id="complementoT" name="complementoT" value='' required><br>
                 <label for="barrioT" class="gotham_p4">Barrio</label><br>
-                <input type="text" class="gotham_p5 input-2" id="barrioT" name="barrioT" value='' required><br>
+                <input type="text" class="gotham_p5 input-2" placeholder="Barrio" id="barrioT" name="barrioT" value='' required><br>
                 <label for="paisT" class="gotham_p4">País</label><br>
                 <select class="custom-select-3 gotham_p5" name="paisT" id="paisT" required>
                     <option value='COL' selected="true">Colombia</option>
@@ -385,7 +377,7 @@ if (isset($_POST['buttonDT2'])) {
 
                 </select><br>
                 <label for="ciudadT" class="gotham_p4">Ciudad / Municipio</label><br>
-                <input class="custom-select-3 gotham_p5" name="ciudadT" id="ciudadT" value='' required><br>
+                <input class="custom-select-3 gotham_p5" placeholder="Ciudad/Municipio" name="ciudadT" id="ciudadT" value='' required><br>
                 <button type="submit" name="buttonDT">CONFIRMAR Y CONTINUAR</button>
             </form>
             <?php
@@ -424,7 +416,7 @@ if (isset($_POST['buttonDT2'])) {
             echo ' </select><br>';
             echo ' <label for="ciudadT2" class="gotham_p4">Ciudad / Municipio</label><br>';
             echo ' <input class="custom-select-3 gotham_p5" name="ciudadT2" id="ciudadT2" value="' . $ciudadT2 . '" required><br>';
-            echo ' <button type="submit" name="buttonDT2">CONFIRMAR Y CONTINUAR 2</button>';
+            echo ' <button type="submit" name="buttonDT2">CONFIRMAR Y CONTINUAR</button>';
             echo '  </form>';
         }
         ?>
