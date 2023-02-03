@@ -275,9 +275,9 @@ require_once '../../util/del/delEmail.php';
 </div>
 <?php
 if (isset($_POST['buttonDP'])) postDir('DP', $_POST["direccionP"], $_POST["complementoP"], $_POST["barrioP"], $_POST["paisP"], $_POST["departamentoP"], $_POST["ciudadP"]);
-if (isset($_POST['buttonDP2'])) putDir('DP', $_POST["direccionP2"], $_POST["complementoP2"], $_POST["barrioP2"], $_POST["paisP2"], $_POST["departamentoP2"], $_POST["ciudadP2"], '1');
+if (isset($_POST['buttonDP2'])) putDir('DP', $_POST["direccionP2"], $_POST["complementoP2"], $_POST["barrioP2"], $_POST["paisP2"], $_POST["departamentoP2"], $_POST["ciudadP2"], $_SESSION['sequenciaP2']);
 if (isset($_POST['buttonDT'])) postDir('DT', $_POST["direccionT"], $_POST["complementoT"], $_POST["barrioT"], $_POST["paisT"], $_POST["departamentoT"], $_POST["ciudadT"]);
-if (isset($_POST['buttonDT2'])) putDir('DT', $_POST["direccionT2"], $_POST["complementoT2"], $_POST["barrioT2"], $_POST["paisT2"], $_POST["departamentoT2"], $_POST["ciudadT2"], '1');
+if (isset($_POST['buttonDT2'])) putDir('DT', $_POST["direccionT2"], $_POST["complementoT2"], $_POST["barrioT2"], $_POST["paisT2"], $_POST["departamentoT2"], $_POST["ciudadT2"], $_SESSION['sequenciaT2']);
 ?>
 <div class="bg-modal-6">
     <div class="modal-contents-3">
@@ -333,6 +333,7 @@ if (isset($_POST['buttonDT2'])) putDir('DT', $_POST["direccionT2"], $_POST["comp
             $paisP2 = buscarPais($data[0]['nation']);
             $dptoP2 = buscarDpto($data[0]['state']);
             $ciudadP2 = $data[0]['city'];
+            $_SESSION['sequenciaP2'] = $data[0]['seq'];
             echo ' <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">';
             echo ' <label for="direccionP2" class="gotham_p_un4">Dirección Completa</label><br>';
             echo ' <input type="text" class="gotham_p_un5 input-2" id="direccionP2" name="direccionP2" value="' . $direccionP2 . '" required><br>';
@@ -419,6 +420,7 @@ if (isset($_POST['buttonDT2'])) putDir('DT', $_POST["direccionT2"], $_POST["comp
             $paisT2 = buscarPais($data[0]['nation']);
             $dpto2 = buscarDpto($data[0]['state']);
             $ciudadT2 = $data[0]['city'];
+            $_SESSION['sequenciaT2'] = $data[0]['seq']; //id de la direccion
             echo ' <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">';
             echo ' <label for="direccionT2" class="gotham_p_un4">Dirección Completa</label><br>';
             echo ' <input type="text" class="gotham_p_un5 input-2" id="direccionT2" name="direccionT2" value="' . $direccionT2 . '" required><br>';
