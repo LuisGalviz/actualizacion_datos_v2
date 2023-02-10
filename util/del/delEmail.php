@@ -2,8 +2,8 @@
 function delEmail($type, $correo)
 {
 
-    $json = json_encode(array("pidm" => get_pidm('lgalviz'), "emailType" => $type, "emailAddress" => $correo, "dataOrigin" => ""));
-    $url = 'https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/' . get_pidm('lgalviz') . '/correo';
+    $json = json_encode(array("pidm" => '218436', "emailType" => $type, "emailAddress" => $correo, "dataOrigin" => ""));
+    $url = 'https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/correo';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");

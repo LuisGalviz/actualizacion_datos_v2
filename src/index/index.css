@@ -86,6 +86,7 @@
 
 .container_button {
     width: 100%;
+    max-width: 100%;
     margin: auto;
     border: 2px solid;
     border-color: #b78b1e;
@@ -96,6 +97,10 @@
 
 .yellow_p {
     color: #b78b1e;
+}
+
+.red_p{
+    color: #d10a11;
 }
 
 .angle_up_custom {
@@ -110,6 +115,7 @@
 
 .row {
     display: flex;
+    justify-content: center;
 }
 
 button {
@@ -152,4 +158,8 @@ input {
 
 .left {
     width: 15%;
+}
+
+.checkbox-position{
+    width: 5%;
 }
