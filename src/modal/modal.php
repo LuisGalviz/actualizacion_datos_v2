@@ -55,7 +55,7 @@
         <h1 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p_un3"><i class="fa fa-envelope"></i> Correo Corporativo</p>
         <form action="">
-            <input type="email" placeholder="Nuevo correo de contacto" id="emailFajax" value='' required>
+            <input type="email" placeholder="Nuevo correo de contacto" id="emailFajax" value='' onkeypress="return event.keyCode != 13;" required>
             <button type="submit" id="postEmailFajax" class="button">GUARDAR</button>
         </form>
     </div>
@@ -80,8 +80,9 @@
         <h1 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p_un3"><i class="fa fa-envelope"></i> Telefono Personal</p>
         <form action="">
-            <input type="number" placeholder="Nuevo telefono de contacto" id="inputTelPartAjax" min="3000000000" required>
-            <button type="submit" id="postTelPartAjax" class="button">GUARDAR</button>
+            <input type="number" placeholder="Nuevo telefono de contacto" id="inputTelPartAjax" onkeypress="return event.keyCode != 13;" required>
+            <p id="errorMessageTelPart" style="display:none; color:red;">Por favor ingresa un número válido</p>
+            <button type="button" id="postTelPartAjax" class="button" onclick="validateTel('inputTelPartAjax','errorMessageTelPart','CELU')">GUARDAR</button>
         </form>
     </div>
 </div>
@@ -104,8 +105,9 @@
         <h1 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p_un3"><i class="fa fa-envelope"></i> Telefono Fijo</p>
         <form action="">
-            <input type="number" placeholder="Nuevo telefono de contacto" id="inputTelTepeAjax" min="3000000" required>
-            <button type="submit" id="postTelTepeAjax" class="button">GUARDAR</button>
+            <input type="number" placeholder="Nuevo telefono de contacto" id="inputTelTepeAjax" onkeypress="return event.keyCode != 13;" required>
+            <p id="errorMessageTelTepe" style="display:none; color:red;">Por favor ingresa un número válido</p>
+            <button type="button" id="postTelTepeAjax" class="button" onclick="validateTel('inputTelTepeAjax','errorMessageTelTepe','TEPE')">GUARDAR</button>
         </form>
     </div>
 </div>
@@ -142,12 +144,6 @@
         </form>
     </div>
 </div>
-<?php
-//if (isset($_POST['buttonDP'])) postDir('DP', $_POST["direccionP"], $_POST["complementoP"], $_POST["barrioP"], $_POST["paisP"], $_POST["departamentoP"], $_POST["ciudadP"]);
-//if (isset($_POST['buttonDP2'])) putDir('DP', $_POST["direccionP2"], $_POST["complementoP2"], $_POST["barrioP2"], $_POST["paisP2"], $_POST["departamentoP2"], $_POST["ciudadP2"], $_SESSION['sequenciaP2']);
-//if (isset($_POST['buttonDT'])) postDir('DT', $_POST["direccionT"], $_POST["complementoT"], $_POST["barrioT"], $_POST["paisT"], $_POST["departamentoT"], $_POST["ciudadT"]);
-//if (isset($_POST['buttonDT2'])) putDir('DT', $_POST["direccionT2"], $_POST["complementoT2"], $_POST["barrioT2"], $_POST["paisT2"], $_POST["departamentoT2"], $_POST["ciudadT2"], $_SESSION['sequenciaT2']);
-?>
 <div class="bg-modal-6">
     <div class="modal-contents-3">
         <button type="button" onclick="clickClose('.bg-modal-6')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
@@ -155,12 +151,12 @@
         <p class="yellow_p gotham_p_un3"><i class="fa fa-map-marker phone_custom"></i> Dirección Permanente</p>
         <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
             <label for="direccionP" class="gotham_p_un4">Dirección Completa</label><br>
-            <input type="text" placeholder="Direccion Principal" class="gotham_p_un5 input-2" id="direccionP" name="direccionP" value='' required><br>
-            <input type="text" placeholder="Direccion Principal" class="gotham_p_un5 input-2" id="complementoP" name="complementoP" value='' required><br>
+            <input type="text" placeholder="Direccion Principal" class="gotham_p_un5 input-2" id="direccionP" name="direccionP" value='' onkeypress="return event.keyCode != 13;" required><br>
+            <input type="text" placeholder="Direccion Principal" class="gotham_p_un5 input-2" id="complementoP" name="complementoP" value='' onkeypress="return event.keyCode != 13;" required><br>
             <label for="barrioP" class="gotham_p_un4">Barrio</label><br>
-            <input type="text" placeholder="Barrio" class="gotham_p_un5 input-2" id="barrioP" name="barrioP" value='' required><br>
+            <input type="text" placeholder="Barrio" class="gotham_p_un5 input-2" id="barrioP" name="barrioP" value='' onkeypress="return event.keyCode != 13;" required><br>
             <label for="paisP" class="gotham_p_un4">País</label><br>
-            <select class="custom-select-3 gotham_p_un5" name="paisP" id="paisP" required>
+            <select class="custom-select-3 gotham_p_un5" name="paisP" id="paisP" onkeypress="return event.keyCode != 13;" required>
                 <option value='COL' selected>Colombia</option>
                 <?php
                 $data_pais = json_decode(file_get_contents('../../assets/paises.json'), true);
@@ -172,7 +168,7 @@
 
             </select><br>
             <label for="departamentoP" class="gotham_p_un4">Estado / Departamento</label><br>
-            <select class="custom-select-3 gotham_p_un5" name="departamentoP" id="departamentoP" required>
+            <select class="custom-select-3 gotham_p_un5" name="departamentoP" id="departamentoP" onkeypress="return event.keyCode != 13;" required>
                 <option value='08' selected>Atlántico</option>
                 <?php
                 $data_dpto = json_decode(file_get_contents('../../assets/dpto.json'), true);
@@ -184,9 +180,10 @@
 
             </select><br>
             <label for="ciudadP" class="gotham_p_un4">Ciudad / Municipio</label><br>
-            <input class="gotham_p_un5 input-2" placeholder="Ciudad/Municipio" name="ciudadP" id="ciudadP" value='' required><br>
+            <input class="gotham_p_un5 input-2" placeholder="Ciudad/Municipio" name="ciudadP" id="ciudadP" value='' onkeypress="return event.keyCode != 13;" required><br>
             <input type="hidden" id="seqP" value="">
-            <button type="submit" id="buttonDP">CONFIRMAR Y CONTINUAR</button>
+            <p id="errorMessageDirP" style="display:none; color:red;">Por favor completa todos los campos</p>
+            <button type="button" id="buttonDP" onclick="validateDir('errorMessageDirP','P')">CONFIRMAR Y CONTINUAR</button>
         </form>
     </div>
 </div>
@@ -198,12 +195,12 @@
         <p class="yellow_p gotham_p_un3"><i class="fa fa-map-marker phone_custom"></i> Dirección Temporal</p>
         <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
             <label for="direccionT" class="gotham_p_un4">Dirección Completa</label><br>
-            <input type="text" class="gotham_p_un5 input-2" placeholder="Direccion Principal" id="direccionT" name="direccionT" value='' required><br>
-            <input type="text" class="gotham_p_un5 input-2" placeholder="Direccion Principal" id="complementoT" name="complementoT" value='' required><br>
+            <input type="text" class="gotham_p_un5 input-2" placeholder="Direccion Principal" id="direccionT" name="direccionT" value='' onkeypress="return event.keyCode != 13;" required><br>
+            <input type="text" class="gotham_p_un5 input-2" placeholder="Direccion Principal" id="complementoT" name="complementoT" value='' onkeypress="return event.keyCode != 13;" required><br>
             <label for="barrioT" class="gotham_p_un4">Barrio</label><br>
-            <input type="text" class="gotham_p_un5 input-2" placeholder="Barrio" id="barrioT" name="barrioT" value='' required><br>
+            <input type="text" class="gotham_p_un5 input-2" placeholder="Barrio" id="barrioT" name="barrioT" value='' onkeypress="return event.keyCode != 13;" required><br>
             <label for="paisT" class="gotham_p_un4">País</label><br>
-            <select class="custom-select-3 gotham_p_un5" name="paisT" id="paisT" required>
+            <select class="custom-select-3 gotham_p_un5" name="paisT" id="paisT" onkeypress="return event.keyCode != 13;" required>
                 <option value='COL' selected="true">Colombia</option>
                 <?php
                 $data_pais = json_decode(file_get_contents('../../assets/paises.json'), true);
@@ -215,7 +212,7 @@
 
             </select><br>
             <label for="departamentoT" class="gotham_p_un4">Estado / Departamento</label><br>
-            <select class="custom-select-3 gotham_p_un5" name="departamentoT" id="departamentoT" required>
+            <select class="custom-select-3 gotham_p_un5" name="departamentoT" id="departamentoT" onkeypress="return event.keyCode != 13;" required>
                 <option value='08' selected="true">Atlántico</option>
                 <?php
                 $data_dpto = json_decode(file_get_contents('../../assets/dpto.json'), true);
@@ -227,10 +224,10 @@
 
             </select><br>
             <label for="ciudadT" class="gotham_p_un4">Ciudad / Municipio</label><br>
-            <input class="gotham_p_un5 input-2" placeholder="Ciudad/Municipio" name="ciudadT" id="ciudadT" value='' required><br>
+            <input class="gotham_p_un5 input-2" placeholder="Ciudad/Municipio" name="ciudadT" id="ciudadT" value='' onkeypress="return event.keyCode != 13;" required><br>
             <input type="hidden" id="seqT" value="">
-            <button type="submit" id="buttonDT">CONFIRMAR Y CONTINUAR</button>
+            <p id="errorMessageDirT" style="display:none; color:red;">Por favor completa todos los campos</p>
+            <button type="button" id="buttonDT" onclick="validateDir('errorMessageDirT','T')">CONFIRMAR Y CONTINUAR</button>
         </form>
     </div>
 </div>
-<!------------------==========================================---->
