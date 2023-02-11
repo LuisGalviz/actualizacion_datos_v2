@@ -14,7 +14,7 @@ function validateEmail(idEmail, errorMsg, type) {
     "Cookie",
     "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000"
   );
-  letraw = JSON.stringify({
+  let raw = JSON.stringify({
     pidm: 218436,
     emailType: type,
     emailAddress: $("#" + idEmail).val(),

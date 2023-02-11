@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $("#buttonEstado").click(function () {
     let selectedRadio = $("input[name='choice']:checked");
-    letradioValue = selectedRadio.val();
+    let radioValue = selectedRadio.val();
     //    console.log(radioValue);
 
     let myHeaders = new Headers();
@@ -17,7 +17,7 @@ $(document).ready(function () {
         employmentStatus: radioValue,
       });
 
-      letrequestOptions = {
+      let requestOptions = {
         method: "PUT",
         headers: myHeaders,
         body: raw,
