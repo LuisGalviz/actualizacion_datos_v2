@@ -1,19 +1,19 @@
 function deleteEmail(correo, type) {
-  letmyHeaders = new Headers();
+  let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append(
     "Cookie",
     "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000"
   );
 
-  letraw = JSON.stringify({
+  let raw = JSON.stringify({
     pidm: "218436",
     emailType: type,
     emailAddress: correo,
     dataOrigin: "",
   });
 
-  letrequestOptions = {
+  let requestOptions = {
     method: "DELETE",
     headers: myHeaders,
     body: raw,

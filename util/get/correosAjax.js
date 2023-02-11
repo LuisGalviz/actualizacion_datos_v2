@@ -1,5 +1,5 @@
 function getCorreo(typeInfo, type, idIndex, usr, idModal) {
-  let pidm = getPidm(usr);
+  let  pidm = getPidm(usr);
   pidm.done(function (data) {
     $.ajax({
       type: "GET",
@@ -10,7 +10,7 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal) {
         typeInfo,
       success: function (data2) {
         let html = "";
-        let cont = 1;
+        let  cont = 1;
         data2.forEach((element) => {
           if (element["emailType"] == type) {
             if (cont > 0) {
@@ -35,14 +35,14 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal) {
 }
 
 //Devuelve correo, Tipo de correo, ID que se modifica en el index, usuario
-let correosPart = getCorreo(
+let  correosPart = getCorreo(
   "correo",
   "PART",
   "#emailParticularAjax",
   "lgalviz",
   "#correoPartAjax"
 );
-let correosFunc = getCorreo(
+let  correosFunc = getCorreo(
   "correo",
   "FUNC",
   "#emailFuncAjax",

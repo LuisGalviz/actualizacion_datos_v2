@@ -1,6 +1,6 @@
 function validateTel(idTel, errorMsg, type) {
-  lettel = document.getElementById(idTel).value;
-  let regex;
+  let tel = document.getElementById(idTel).value;
+  let  regex;
   if (idTel == "inputTelPartAjax") {
     regex = /^3[0-9]{9}$/;
   } else if (idTel == "inputTelTepeAjax") {
@@ -13,13 +13,13 @@ function validateTel(idTel, errorMsg, type) {
 
   document.getElementById(errorMsg).style.display = "none";
 
-  letmyHeaders = new Headers();
+  let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append(
     "Cookie",
     "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000"
   );
-  letraw = JSON.stringify({
+  let raw = JSON.stringify({
     pidm: "218436",
     phoneType: type,
     phoneArea: "604",
@@ -29,7 +29,7 @@ function validateTel(idTel, errorMsg, type) {
     dataOrigin: "CAMEL",
   });
 
-  letrequestOptions = {
+  let requestOptions = {
     method: "POST",
     headers: myHeaders,
     body: raw,

@@ -1,10 +1,10 @@
 $(document).ready(function () {
   $("#buttonEstado").click(function () {
-    letselectedRadio = $("input[name='choice']:checked");
+    let selectedRadio = $("input[name='choice']:checked");
     letradioValue = selectedRadio.val();
     //    console.log(radioValue);
 
-    letmyHeaders = new Headers();
+    let myHeaders = new Headers();
     myHeaders.append("Content-Type", "text/plain");
     myHeaders.append(
       "Cookie",
@@ -12,7 +12,7 @@ $(document).ready(function () {
     );
 
     if ($("#estadoAjax").html().length > 0) {
-      letraw = JSON.stringify({
+      let raw = JSON.stringify({
         pidm: "218436",
         employmentStatus: radioValue,
       });
@@ -32,12 +32,12 @@ $(document).ready(function () {
         .then((result) => console.log(result))
         .catch((error) => console.log("error", error));
     } else {
-      letraw = JSON.stringify({
+      let raw = JSON.stringify({
         pidm: "218436",
         employmentStatus: radioValue,
         dataOrigin: "APPMOVIL",
       });
-      letrequestOptions = {
+      let requestOptions = {
         method: "POST",
         headers: myHeaders,
         body: raw,

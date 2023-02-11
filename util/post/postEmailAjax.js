@@ -1,6 +1,6 @@
 function validateEmail(idEmail, errorMsg, type) {
-  letemail = document.getElementById(idEmail).value;
-  letregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  let email = document.getElementById(idEmail).value;
+  let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   if (!regex.test(email)) {
     document.getElementById(errorMsg).style.display = "block";
     return;
@@ -8,7 +8,7 @@ function validateEmail(idEmail, errorMsg, type) {
 
   document.getElementById(errorMsg).style.display = "none";
   // Código para el botón
-  letmyHeaders = new Headers();
+  let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append(
     "Cookie",
@@ -21,7 +21,7 @@ function validateEmail(idEmail, errorMsg, type) {
     dataOrigin: "CAMEL",
   });
 
-  letrequestOptions = {
+  let requestOptions = {
     method: "POST",
     headers: myHeaders,
     body: raw,
