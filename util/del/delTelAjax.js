@@ -1,28 +1,20 @@
-function validateEmail(idEmail, errorMsg, type) {
-  letemail = document.getElementById(idEmail).value;
-  letregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  if (!regex.test(email)) {
-    document.getElementById(errorMsg).style.display = "block";
-    return;
-  }
-
-  document.getElementById(errorMsg).style.display = "none";
-  // Código para el botón
+function deleteEmail(correo, type) {
   letmyHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append(
     "Cookie",
     "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000"
   );
+
   letraw = JSON.stringify({
-    pidm: 218436,
+    pidm: "218436",
     emailType: type,
-    emailAddress: $("#" + idEmail).val(),
-    dataOrigin: "CAMEL",
+    emailAddress: correo,
+    dataOrigin: "",
   });
 
   letrequestOptions = {
-    method: "POST",
+    method: "DELETE",
     headers: myHeaders,
     body: raw,
     redirect: "follow",
@@ -35,5 +27,4 @@ function validateEmail(idEmail, errorMsg, type) {
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
-  location.reload();
 }

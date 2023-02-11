@@ -17,7 +17,7 @@ function validateDir(errorMsg, type) {
 
   document.getElementById(errorMsg).style.display = "none";
 
-  var myHeaders = new Headers();
+  letmyHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append(
     "Cookie",
@@ -31,7 +31,7 @@ function validateDir(errorMsg, type) {
   }
 
   if ($(dir).html().length > 0) {
-    var raw = JSON.stringify({
+    letraw = JSON.stringify({
       pidm: "218436",
       addressType: "D" + type,
       sequence: $("#seq" + type).val(),
@@ -46,7 +46,7 @@ function validateDir(errorMsg, type) {
       line3: $("#barrio" + type).val(),
     });
 
-    var requestOptions = {
+    letrequestOptions = {
       method: "PUT",
       headers: myHeaders,
       body: raw,
@@ -61,7 +61,7 @@ function validateDir(errorMsg, type) {
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
   } else {
-    var raw = JSON.stringify({
+    letraw = JSON.stringify({
       pidm: "218436",
       addressType: "D" + type,
       city: $("#ciudad" + type).val(),
@@ -75,7 +75,7 @@ function validateDir(errorMsg, type) {
       line3: $("#barrio" + type).val(),
     });
 
-    var requestOptions = {
+    letrequestOptions = {
       method: "POST",
       headers: myHeaders,
       body: raw,

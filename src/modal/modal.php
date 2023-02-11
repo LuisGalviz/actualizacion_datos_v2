@@ -1,6 +1,7 @@
 <script src="../../util/get/pidmAjax.js"></script>
 <script src="../../util/get/dptoAjax.js"></script>
 <script src="../../util/get/paisAjax.js"></script>
+<script src="../../util/del/delTelAjax.js"></script>
 <script src="../../util/get/correosAjax.js"></script>
 <script src="../../util/get/telefonosAjax.js"></script>
 <script src="../../util/get/estadoLaboralAjax.js"></script>

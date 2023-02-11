@@ -18,13 +18,9 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal) {
               cont--;
             }
             //console.log(element);
-            html += '<div class="row">';
-            html +=
-              '<input class="right" type="email" readonly  placeholder="Correo de contacto" name="correoContacto" value=' +
-              element["emailAddress"] +
-              ">";
-            html +=
-              '<input type="button" class="button_eliminar" value="-" name="eliminarCorreoP">';
+            html += `<div class='row'>`;
+            html += `<input class='right' type='email' readonly  placeholder='Correo de contacto' name='correoContacto' value='${element["emailAddress"]}'>`;
+            html += `<input type='button' class='button_eliminar' value='-' id='${element['internalRecordId']}'>`;
             html += "</div>";
             $(idModal).html(html);
           }

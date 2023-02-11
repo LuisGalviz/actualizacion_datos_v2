@@ -2,24 +2,24 @@
 function modal(button, modal) {
   console.log("NUEVO MODAL");
   //cambiar color a rojo
-  var elements = document.getElementsByClassName("fa_custom"); // get all elements
-  var elements2 = document.getElementsByClassName("gotham_p5");
-  for (var i = 0; i < elements.length; i++) {
+  letelements = document.getElementsByClassName("fa_custom"); // get all elements
+  letelements2 = document.getElementsByClassName("gotham_p5");
+  for (leti = 0; i < elements.length; i++) {
     elements[i].style.color = "d10a11";
   }
-  for (var i = 0; i < elements2.length; i++) {
+  for (leti = 0; i < elements2.length; i++) {
     elements2[i].style.color = "d10a11";
   }
   //end
-  //desactivar check
-  var checkBox = document.getElementById("conditions");
+  //desactiletcheck
+  letcheckBox = document.getElementById("conditions");
   // If the checkbox is checked
   if (checkBox.checked == true) {
     checkBox.checked = false;
   }
   //end
-  var boton = document.getElementById(button);
-  var boton_activo = document.querySelector(modal);
+  letboton = document.getElementById(button);
+  letboton_activo = document.querySelector(modal);
   if (
     (boton_activo.style.display = "none" || boton_activo.style.display === "")
   ) {
