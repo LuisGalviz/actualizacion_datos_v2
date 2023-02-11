@@ -91,6 +91,8 @@
             </div>
         </div>
     </div>
+
+    <script src="../../util/del/delEmailAjax.js"></script>
 </body>
 
 </html>

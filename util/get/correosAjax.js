@@ -1,4 +1,4 @@
-function getCorreo(typeInfo, type, idIndex, usr, idModal,dataArray) {
+function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
   let pidm = getPidm(usr);
   pidm.done(function (data) {
     $.ajax({
@@ -27,11 +27,20 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal,dataArray) {
             localData.push({
               id: element["internalRecordId"],
               email: element["emailAddress"],
-              type:element['emailType']
+              type: element["emailType"],
             });
           }
         });
+
         localStorage.setItem(dataArray, JSON.stringify(localData));
+
+        // Disparar el evento storage
+        var storageEvent = new StorageEvent("storage", {
+          key: dataArray,
+          newValue: JSON.stringify(localData),
+          url: window.location.href,
+        });
+        window.dispatchEvent(storageEvent);
       },
       error: function (error) {
         return error;
@@ -56,5 +65,5 @@ let correosFunc = getCorreo(
   "#emailFuncAjax",
   "lgalviz",
   "#correoFuncAjax",
-  'arrayEmailFunc'
+  "arrayEmailFunc"
 );

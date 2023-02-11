@@ -231,10 +231,3 @@
 <script src="../../util/post/postTelAjax.js"></script>
 <script src="../../util/post/postEstadoAjax.js"></script>
 <script src="../../util/post/postDirAjax.js"></script>
-<script>
-  window.onload = function() {
-    var script = document.createElement("script");
-    script.src = "../../util/del/delTelAjax.js";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  }
-</script>
