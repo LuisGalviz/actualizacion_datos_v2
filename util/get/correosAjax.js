@@ -1,5 +1,5 @@
-function getCorreo(typeInfo, type, idIndex, usr, idModal) {
-  let  pidm = getPidm(usr);
+function getCorreo(typeInfo, type, idIndex, usr, idModal,dataArray) {
+  let pidm = getPidm(usr);
   pidm.done(function (data) {
     $.ajax({
       type: "GET",
@@ -10,7 +10,8 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal) {
         typeInfo,
       success: function (data2) {
         let html = "";
-        let  cont = 1;
+        let cont = 1;
+        let localData = [];
         data2.forEach((element) => {
           if (element["emailType"] == type) {
             if (cont > 0) {
@@ -20,11 +21,17 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal) {
             //console.log(element);
             html += `<div class='row'>`;
             html += `<input class='right' type='email' readonly  placeholder='Correo de contacto' name='correoContacto' value='${element["emailAddress"]}'>`;
-            html += `<input type='button' class='button_eliminar' value='-' id='${element['internalRecordId']}'>`;
+            html += `<input type='button' class='button_eliminar' value='-' id='${element["internalRecordId"]}'>`;
             html += "</div>";
             $(idModal).html(html);
+            localData.push({
+              id: element["internalRecordId"],
+              email: element["emailAddress"],
+              type:element['emailType']
+            });
           }
         });
+        localStorage.setItem(dataArray, JSON.stringify(localData));
       },
       error: function (error) {
         return error;
@@ -35,17 +42,19 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal) {
 }
 
 //Devuelve correo, Tipo de correo, ID que se modifica en el index, usuario
-let  correosPart = getCorreo(
+let correosPart = getCorreo(
   "correo",
   "PART",
   "#emailParticularAjax",
   "lgalviz",
-  "#correoPartAjax"
+  "#correoPartAjax",
+  "arrayEmailPart"
 );
-let  correosFunc = getCorreo(
+let correosFunc = getCorreo(
   "correo",
   "FUNC",
   "#emailFuncAjax",
   "lgalviz",
-  "#correoFuncAjax"
+  "#correoFuncAjax",
+  'arrayEmailFunc'
 );

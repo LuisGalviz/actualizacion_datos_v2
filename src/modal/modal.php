@@ -1,15 +1,3 @@
-<script src="../../util/get/pidmAjax.js"></script>
-<script src="../../util/get/dptoAjax.js"></script>
-<script src="../../util/get/paisAjax.js"></script>
-<script src="../../util/del/delTelAjax.js"></script>
-<script src="../../util/get/correosAjax.js"></script>
-<script src="../../util/get/telefonosAjax.js"></script>
-<script src="../../util/get/estadoLaboralAjax.js"></script>
-<script src="../../util/get/dirAjax.js"></script>
-<script src="../../util/post/postEmailAjax.js"></script>
-<script src="../../util/post/postTelAjax.js"></script>
-<script src="../../util/post/postEstadoAjax.js"></script>
-<script src="../../util/post/postDirAjax.js"></script>
 <div class="bg-modal">
     <div class="modal-contents">
         <button type="button" onclick="clickClose('.bg-modal')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
@@ -232,3 +220,21 @@
         </form>
     </div>
 </div>
+<script src="../../util/get/pidmAjax.js"></script>
+<script src="../../util/get/dptoAjax.js"></script>
+<script src="../../util/get/paisAjax.js"></script>
+<script src="../../util/get/correosAjax.js"></script>
+<script src="../../util/get/telefonosAjax.js"></script>
+<script src="../../util/get/estadoLaboralAjax.js"></script>
+<script src="../../util/get/dirAjax.js"></script>
+<script src="../../util/post/postEmailAjax.js"></script>
+<script src="../../util/post/postTelAjax.js"></script>
+<script src="../../util/post/postEstadoAjax.js"></script>
+<script src="../../util/post/postDirAjax.js"></script>
+<script>
+  window.onload = function() {
+    var script = document.createElement("script");
+    script.src = "../../util/del/delTelAjax.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+</script>
