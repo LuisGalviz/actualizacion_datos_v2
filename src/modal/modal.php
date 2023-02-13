@@ -6,7 +6,8 @@
         <form>
             <label for="correoContacto" class="gotham_p_un4">Correo de contacto</label><br>
             <div id='correoPartAjax'></div>
-            <button type="button" id="postEmailP" onclick="modal('.inputPostEmailP')">NUEVO CORREO</input>
+            <button class="button_agregar" type="button" onclick="modal('.inputPostEmailP')">AGREGAR CORREO</button>
+            <button type="button" id="postEmailP" onclick="greenInputConfirm('#button .gotham_p5','.bg-modal')">CONFIRMAR</button>
         </form>
     </div>
 </div>
@@ -19,7 +20,7 @@
         <form action="" id="formularioEmailP">
             <input type="email" placeholder="Nuevo correo de contacto" id='emailPajax' value='' onkeypress="return event.keyCode != 13;" required>
             <p id="errorMessageEmailP" style="display:none; color:red;">Por favor ingresa un correo electrónico válido</p>
-            <button type="button" id='postEmailAjax' class="button" onclick="validateEmail('emailPajax','errorMessageEmailP','PART')">GUARDAR</button>
+            <button type="button" id='postEmailAjax' onclick="validateEmail('emailPajax','errorMessageEmailP','PART','.inputPostEmailP')">GUARDAR</button>
         </form>
     </div>
 </div>
@@ -32,20 +33,7 @@
         <form>
             <label for="correoContacto2" class="gotham_p_un4">Correo de contacto</label><br>
             <div id='correoFuncAjax'></div>
-            <!---BUTTON DISABLED------------------------------------------->
-            <button class="disabled" type="button" id="postEmailF" onclick="modal('.inputPostEmailF')" disabled>NUEVO CORREO</button>
-        </form>
-    </div>
-</div>
-<div class="inputPostEmailF" style='display: none'>
-    <div class="modal-contents">
-
-        <button type="button" onclick="clickClose('.inputPostEmailF')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
-        <h1 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h1>
-        <p class="yellow_p gotham_p_un3"><i class="fa fa-envelope"></i> Correo Corporativo</p>
-        <form action="">
-            <input type="email" placeholder="Nuevo correo de contacto" id="emailFajax" value='' onkeypress="return event.keyCode != 13;" required>
-            <button type="submit" id="postEmailFajax" class="button">GUARDAR</button>
+            <button type="button" onclick="greenInputConfirm('#button2 .gotham_p5','.bg-modal-2')">CONFIRMAR</button>
         </form>
     </div>
 </div>
@@ -105,7 +93,7 @@
         <button type="button" onclick="clickClose('.bg-modal-5')" class="close"><i class="fa fa-arrow-left"></i> Regresar</button>
         <h1 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h1>
         <p class="yellow_p gotham_p_un3"><i class="fa fa-id-card-o"></i> Estado Laboral</p>
-        <form>
+        <div>
             <div class="container_un-estado-laboral">
                 <div class="div-estado-laboral"><input class="radio-button-estado-laboral" type="radio" name="choice" value="Desempleado" id="Desempleado">
                     <label class="label-estado-laboral" for="Desempleado">Desempleado</label>
@@ -129,8 +117,8 @@
                     <label class="label-estado-laboral" for="Jubilado">Jubilado</label>
                 </div>
             </div>
-            <button type="submit" id="buttonEstado">CONFIRMAR Y CONTINUAR</button>
-        </form>
+            <button id="buttonEstado">CONFIRMAR Y CONTINUAR</button>
+        </div>
     </div>
 </div>
 <div class="bg-modal-6">

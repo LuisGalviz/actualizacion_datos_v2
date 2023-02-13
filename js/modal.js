@@ -10,3 +10,8 @@ function modal(modal) {
 function clickClose(modal) {
   $(modal).css("display", "none");
 }
+
+function greenInputConfirm(elementId, modal) {
+  $(elementId).css("color", "rgb(0, 160, 0)");
+  $(modal).css("display", "none");
+}

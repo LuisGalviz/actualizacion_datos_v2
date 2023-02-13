@@ -29,7 +29,11 @@ $(document).ready(function () {
         requestOptions
       )
         .then((response) => response.text())
-        .then((result) => console.log(result))
+        .then((result) => {
+          console.log(result);
+          getEstado("estadolaboral", "#estadoAjax", "lgalviz");
+          greenInputConfirm("#button5 .gotham_p5", ".bg-modal-5");
+        })
         .catch((error) => console.log("error", error));
     } else {
       let raw = JSON.stringify({
@@ -49,7 +53,11 @@ $(document).ready(function () {
         requestOptions
       )
         .then((response) => response.text())
-        .then((result) => console.log(result))
+        .then((result) => {
+          console.log(result);
+          getEstado("estadolaboral", "#estadoAjax", "lgalviz");
+          greenInputConfirm("#button5 .gotham_p5", ".bg-modal-5");
+        })
         .catch((error) => console.log("error", error));
     }
   });

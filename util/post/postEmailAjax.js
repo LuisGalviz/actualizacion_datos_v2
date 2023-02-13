@@ -1,7 +1,25 @@
-function validateEmail(idEmail, errorMsg, type) {
+function validateEmail(idEmail, errorMsg, type, modal) {
   let email = document.getElementById(idEmail).value;
   let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  if (!regex.test(email)) {
+  let exist;
+
+  if (window.localStorage.getItem("arrayTelPart")) {
+    //console.log("El evento está guardado en el Local Storage.");
+    // Actualiza la página
+    data1 = JSON.parse(localStorage.getItem("arrayEmailPart"));
+    data1.forEach((element) => {
+      let validId = element["email"];
+      //  console.log(element);
+      if (validId == email) {
+        exist = true;
+        return;
+      }
+    });
+  } else {
+    //  console.log("El evento no existe en el Local Storage.");
+  }
+  // console.log(exist);
+  if (!regex.test(email) || exist) {
     document.getElementById(errorMsg).style.display = "block";
     return;
   }
@@ -33,7 +51,18 @@ function validateEmail(idEmail, errorMsg, type) {
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => console.log(result))
+    .then((result) => {
+      console.log(result);
+      getCorreo(
+        "correo",
+        type,
+        "#emailParticularAjax",
+        "lgalviz",
+        "#correoPartAjax",
+        "arrayEmailPart"
+      );
+      $("#" + idEmail).val('');
+      $(modal).hide();
+    })
     .catch((error) => console.log("error", error));
-  location.reload();
 }

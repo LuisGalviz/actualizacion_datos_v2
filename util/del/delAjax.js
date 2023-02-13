@@ -6,6 +6,7 @@ $(document).ready(function () {
     if (event.key == "arrayEmailPart") {
       // Actualiza la página
       data1 = JSON.parse(localStorage.getItem(event.key));
+      console.log(data1);
       data1.forEach((element) => {
         let invalidId = element["id"];
         let escapedId = jQuery.escapeSelector(invalidId);
@@ -65,8 +66,22 @@ $(document).ready(function () {
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log(result);
+        if (typeRequest == "correo") {
+          getCorreo(
+            "correo",
+            typeInfo,
+            "#emailParticularAjax",
+            "lgalviz",
+            "#correoPartAjax",
+            "arrayEmailPart"
+          );
+        } else if (typeRequest == "telefono") {
+        } else {
+          error;
+        }
+      })
       .catch((error) => console.log("error", error));
-    location.reload();
   }
 });

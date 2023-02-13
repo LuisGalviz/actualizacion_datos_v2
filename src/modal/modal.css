@@ -51,6 +51,17 @@
     color: white;
 }
 
+.button_agregar {
+    display: block;
+    background-color: #fff;
+    color: #1d1d1b;
+    border: 2px solid #d10a11;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.8em;
+}
+
 .disabled {
     opacity: 0.5;
     cursor: not-allowed;
