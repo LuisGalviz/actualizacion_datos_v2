@@ -12,14 +12,13 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
         type,
       success: function (element) {
         if (element.length > 0) {
-          let html = "";
           let departamento = buscarDpto();
           departamento.done(function (datos) {
-            datos.forEach((element2) => {
-              if (element2["codigo"] == element[0]["state"]) {
-                $("#departamento" + idform).val(element2["codigo"]);
-                let paises = buscarPais();
-                paises.done(function (datos2) {
+            let pais = buscarPais();
+            pais.done(function (datos2) {
+              datos.forEach((element2) => {
+                if (element2["codigo"] == element[0]["state"]) {
+                  $("#departamento" + idform).val(element2["codigo"]);
                   datos2.forEach((element3) => {
                     if (element3["codigo"] == element[0]["nation"]) {
                       $("#pais" + idform).val(element3["codigo"]);
@@ -37,11 +36,10 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
                       );
                     }
                   });
-                });
-              }
+                }
+              });
             });
           });
-          $(idModal).html(html);
 
           $("#direccion" + idform).val(element[0]["line1"]);
           $("#complemento" + idform).val(element[0]["line2"]);
@@ -58,7 +56,6 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
   });
 }
 
-//Devuelve correo, Tipo de correo, ID que se modifica en el index, usuario, id modal en modal, terminacion id del form
 let dirPerm = getDir(
   "direccion",
   "DP",

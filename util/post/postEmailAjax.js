@@ -3,22 +3,11 @@ function validateEmail(idEmail, errorMsg, type, modal) {
   let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   let exist;
 
-  if (window.localStorage.getItem("arrayEmailPart")) {
-    //console.log("El evento está guardado en el Local Storage.");
-    // Actualiza la página
-    data1 = JSON.parse(localStorage.getItem("arrayEmailPart"));
-    data1.forEach((element) => {
-      let validId = element["email"];
-      //  console.log(element);
-      if (validId == email) {
-        exist = true;
-        return;
-      }
-    });
-  } else {
-    //  console.log("El evento no existe en el Local Storage.");
-  }
-  // console.log(exist);
+  let storedEmails = JSON.parse(
+    window.localStorage.getItem("arrayEmailPart") || "[]"
+  );
+  exist = storedEmails.some((item) => item.email === email);
+
   if (!regex.test(email) || exist) {
     document.getElementById(errorMsg).style.display = "block";
     return;
@@ -26,23 +15,20 @@ function validateEmail(idEmail, errorMsg, type, modal) {
 
   document.getElementById(errorMsg).style.display = "none";
   // Código para el botón
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append(
-    "Cookie",
-    "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000"
-  );
-  let raw = JSON.stringify({
-    pidm: 218436,
-    emailType: type,
-    emailAddress: email,
-    dataOrigin: "CAMEL",
+  let myHeaders = new Headers({
+    "Content-Type": "application/json",
+    Cookie: "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000",
   });
 
   let requestOptions = {
     method: "POST",
     headers: myHeaders,
-    body: raw,
+    body: JSON.stringify({
+      pidm: 218436,
+      emailType: type,
+      emailAddress: email,
+      dataOrigin: "CAMEL",
+    }),
     redirect: "follow",
   };
 
@@ -61,7 +47,7 @@ function validateEmail(idEmail, errorMsg, type, modal) {
         "#correoPartAjax",
         "arrayEmailPart"
       );
-      $("#" + idEmail).val('');
+      $("#" + idEmail).val("");
       $(modal).hide();
     })
     .catch((error) => console.log("error", error));

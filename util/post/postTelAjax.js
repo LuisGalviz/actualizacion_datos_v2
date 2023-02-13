@@ -1,30 +1,19 @@
 function validateTel(idTel, errorMsg, type, modal) {
   let tel = $("#" + idTel).val();
-  let regex;
-  let exist;
-  let arrayLocalStorage;
-  if (idTel == "inputTelPartAjax") {
-    regex = /^3[0-9]{9}$/;
-    arrayLocalStorage = "arrayTelPart";
-  } else if (idTel == "inputTelTepeAjax") {
-    regex = /^3[0-9]{6}$/;
-    arrayLocalStorage = "arrayTelTepe";
+  let regex, arrayLocalStorage;
+  switch (idTel) {
+    case "inputTelPartAjax":
+      regex = /^3[0-9]{9}$/;
+      arrayLocalStorage = "arrayTelPart";
+      break;
+    case "inputTelTepeAjax":
+      regex = /^3[0-9]{6}$/;
+      arrayLocalStorage = "arrayTelTepe";
+      break;
   }
-  if (window.localStorage.getItem(arrayLocalStorage)) {
-    //console.log("El evento está guardado en el Local Storage.");
-    // Actualiza la página
-    data1 = JSON.parse(localStorage.getItem(arrayLocalStorage));
-    data1.forEach((element) => {
-      let validId = element["tel"];
-      //  console.log(element);
-      if (validId == tel) {
-        exist = true;
-        return;
-      }
-    });
-  } else {
-    //  console.log("El evento no existe en el Local Storage.");
-  }
+  let localStorageData = JSON.parse(localStorage.getItem(arrayLocalStorage));
+  let exist =
+    localStorageData && localStorageData.some((item) => item["tel"] === tel);
 
   if (!regex.test(tel) || exist) {
     document.getElementById(errorMsg).style.display = "block";
@@ -33,38 +22,38 @@ function validateTel(idTel, errorMsg, type, modal) {
 
   document.getElementById(errorMsg).style.display = "none";
 
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append(
-    "Cookie",
-    "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000"
-  );
-  let raw = JSON.stringify({
-    pidm: "218436",
-    phoneType: type,
-    phoneArea: "604",
-    phoneNumber: tel,
-    phoneExt: "",
-    intlAccess: "+57",
-    dataOrigin: "CAMEL",
+  const myHeaders = new Headers({
+    "Content-Type": "application/json",
+    Cookie: "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000",
   });
 
-  let requestOptions = {
+  const requestOptions = {
     method: "POST",
     headers: myHeaders,
-    body: raw,
+    body: JSON.stringify({
+      pidm: "218436",
+      phoneType: type,
+      phoneArea: "604",
+      phoneNumber: tel,
+      phoneExt: "",
+      intlAccess: "+57",
+      dataOrigin: "CAMEL",
+    }),
     redirect: "follow",
   };
 
   let id1, id2, arrayTel;
-  if (type == "CELU") {
-    id1 = "#telParticularAjax";
-    id2 = "#telPartAjax";
-    arrayTel = "arrayTelPart";
-  } else if (type == "TEPE") {
-    id1 = "#telTepeAjax";
-    id2 = "#telTepAjax";
-    arrayTel = "arrayTelTepe";
+  switch (type) {
+    case "CELU":
+      id1 = "#telParticularAjax";
+      id2 = "#telPartAjax";
+      arrayTel = "arrayTelPart";
+      break;
+    case "TEPE":
+      id1 = "#telTepeAjax";
+      id2 = "#telTepAjax";
+      arrayTel = "arrayTelTepe";
+      break;
   }
 
   fetch(

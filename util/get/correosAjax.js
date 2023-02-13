@@ -1,12 +1,8 @@
 function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
-  if (window.localStorage.getItem(dataArray)) {
-    window.localStorage.removeItem(dataArray);
-    console.log(
-      "La clave '" + dataArray + "' se ha eliminado del Local Storage."
-    );
-  } else {
-    console.log("La clave '" + dataArray + "' no existe en el Local Storage.");
-  }
+  window.localStorage.removeItem(dataArray);
+  console.log(
+    "The key '" + dataArray + "' has been removed from Local Storage."
+  );
 
   let pidm = getPidm(usr);
   pidm.done(function (data) {
@@ -19,29 +15,18 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
         typeInfo,
       success: function (data2) {
         let html = "";
-        let cont = 1;
-        let contEmail = 0;
         let localData = [];
 
         data2.forEach((element) => {
-          //console.log("esta es la data2" + element["emailType"]);
-          if (element["emailType"] == type) {
-            contEmail++;
-            if (cont > 0) {
+          if (element["emailType"] === type) {
+            if (!html) {
               $(idIndex).html(element["emailAddress"]);
-              cont--;
-            }
-            //console.log(element);
-            html += `<div class='row'>`;
-            html += `<input class='right' type='email' readonly  placeholder='Correo de contacto' name='correoContacto' value='${element["emailAddress"]}'>`;
-            if (type == "PART") {
-              html += `<input type='button' class='button_eliminar' value='-' id='${element["internalRecordId"]}'>`;
-            } else {
-              html += `<input type='button' class='button_eliminar disabled' value='-' id='${element["internalRecordId"]}'>`;
             }
 
-            html += "</div>";
-            $(idModal).html(html);
+            html += `<div class='row'>
+                      <input class='right' type='email' readonly  placeholder='Contact email' name='correoContacto' value='${element["emailAddress"]}'>
+                      <input type='button' class='button_eliminar${type === "PART" ? "" : " disabled"}' value='-' id='${element["internalRecordId"]}'>
+                    </div>`;
             localData.push({
               id: element["internalRecordId"],
               email: element["emailAddress"],
@@ -49,21 +34,17 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
             });
           }
         });
-        if (contEmail == 0) {
-          html += `<div class='row'>`;
-          html += `<label style="
-          margin: 20px;
-          color: gray;
-      ">Aún no tiene Correos</label>`;
-          html += "</div>";
-          $(idModal).html(html);
-        }
 
+        if (!html) {
+          $(idIndex).html("NA");
+          html = `<div class='row'>
+                    <label style="margin: 20px; color: gray;">No emails yet</label>
+                  </div>`;
+        }
+        $(idModal).html(html);
         localStorage.setItem(dataArray, JSON.stringify(localData));
-       // let dsata1 = JSON.parse(localStorage.getItem(dataArray));
-        //console.log(dsata1);
-        // Disparar el evento storage
-        var storageEvent = new StorageEvent("storage", {
+
+        const storageEvent = new StorageEvent("storage", {
           key: dataArray,
           newValue: JSON.stringify(localData),
           url: window.location.href,
@@ -72,14 +53,12 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
       },
       error: function (error) {
         return error;
-        // Acción a realizar en caso de error en la petición
       },
     });
   });
 }
 
-//Devuelve correo, Tipo de correo, ID que se modifica en el index, usuario
-let correosPart = getCorreo(
+const correosPart = getCorreo(
   "correo",
   "PART",
   "#emailParticularAjax",
@@ -87,7 +66,7 @@ let correosPart = getCorreo(
   "#correoPartAjax",
   "arrayEmailPart"
 );
-let correosFunc = getCorreo(
+const correosFunc = getCorreo(
   "correo",
   "FUNC",
   "#emailFuncAjax",

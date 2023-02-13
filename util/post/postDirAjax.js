@@ -16,79 +16,57 @@ function validateDir(errorMsg, type) {
   }
 
   document.getElementById(errorMsg).style.display = "none";
+  let myHeaders = new Headers({
+    "Content-Type": "application/json",
+    Cookie: "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000",
+  });
+  let dir, dir2, method;
 
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append(
-    "Cookie",
-    "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000"
-  );
-  let dir;
-  if (type == "P") {
+  if (type === "P") {
     dir = "#dirPermanenteAjax";
-  } else if (type == "T") {
+    dir2 = "#dirPermAjax";
+  } else if (type === "T") {
     dir = "#dirTemporalAjax";
+    dir2 = "#dirTempAjax";
   }
 
-  if ($(dir).html().length > 0) {
-    let raw = JSON.stringify({
-      pidm: "218436",
-      addressType: "D" + type,
-      sequence: $("#seq" + type).val(),
-      city: $("#ciudad" + type).val(),
-      state: $("#departamento" + type).val(),
-      nation: $("#pais" + type).val(),
-      dataOrigin: "CAMEL",
-      zip: "0",
-      county: "0",
-      line1: $("#direccion" + type).val(),
-      line2: $("#complemento" + type).val(),
-      line3: $("#barrio" + type).val(),
-    });
+  method = $(dir).html().length > 0 ? "PUT" : "POST";
 
-    let requestOptions = {
-      method: "PUT",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
+  const requestBody = JSON.stringify({
+    pidm: "218436",
+    addressType: "D" + type,
+    sequence: method === "PUT" ? $("#seq" + type).val() : undefined,
+    city: $("#ciudad" + type).val(),
+    state: $("#departamento" + type).val(),
+    nation: $("#pais" + type).val(),
+    dataOrigin: "CAMEL",
+    zip: "0",
+    county: "0",
+    line1: $("#direccion" + type).val(),
+    line2: $("#complemento" + type).val(),
+    line3: $("#barrio" + type).val(),
+  });
 
-    fetch(
-      "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/direccion",
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  } else {
-    let raw = JSON.stringify({
-      pidm: "218436",
-      addressType: "D" + type,
-      city: $("#ciudad" + type).val(),
-      state: $("#departamento" + type).val(),
-      nation: $("#pais" + type).val(),
-      dataOrigin: "CAMEL",
-      zip: "0",
-      county: "0",
-      line1: $("#direccion" + type).val(),
-      line2: $("#complemento" + type).val(),
-      line3: $("#barrio" + type).val(),
-    });
+  const requestOptions = {
+    method,
+    headers: myHeaders,
+    body: requestBody,
+    redirect: "follow",
+  };
 
-    let requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch(
-      "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/direccion",
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  }
-  location.reload();
+  fetch(
+    "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/direccion",
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => {
+      console.log(result);
+      getDir("direccion", "D" + type, dir, "lgalviz", dir2, type);
+      if (type === "P") {
+        greenInputConfirm("#button6 .gotham_p5", ".bg-modal-6");
+      } else if (type === "T") {
+        greenInputConfirm("#button7 .gotham_p5", ".bg-modal-7");
+      }
+    })
+    .catch((error) => console.log("error", error));
 }
