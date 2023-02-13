@@ -43,24 +43,6 @@
 .row_un {
     display: flex;
 }
-
-button {
-    background-color: #d10a11;
-    border: none;
-    color: white;
-    padding: 10px 0px;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 5%;
-    cursor: pointer;
-    border-radius: 50px;
-    width: 90%;
-    max-width: 20rem;
-}
-
 .button_eliminar {
     width: 2rem;
     border-radius: 50px;
@@ -125,16 +107,6 @@ button {
     max-width: 338px;
 }
 
-input {
-    margin: 15px auto;
-    display: block;
-    padding: 8px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 320px;
-}
-
 .input-2 {
     margin: auto;
     display: block;
@@ -154,16 +126,6 @@ input {
     background: #fff;
     border: 0;
 }
-
-.column-2 {
-    float: right;
-    padding: 10px 0px 10px 10px;
-}
-
-.left {
-    width: 15%;
-}
-
 .right {
     width: 100%;
 }

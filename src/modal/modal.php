@@ -6,7 +6,7 @@
         <form>
             <label for="correoContacto" class="gotham_p_un4">Correo de contacto</label><br>
             <div id='correoPartAjax'></div>
-            <button type="button" id="postEmailP" onclick="modal('postEmailP','.inputPostEmailP')">NUEVO CORREO</input>
+            <button type="button" id="postEmailP" onclick="modal('.inputPostEmailP')">NUEVO CORREO</input>
         </form>
     </div>
 </div>
@@ -33,7 +33,7 @@
             <label for="correoContacto2" class="gotham_p_un4">Correo de contacto</label><br>
             <div id='correoFuncAjax'></div>
             <!---BUTTON DISABLED------------------------------------------->
-            <button class="disabled" type="button" id="postEmailF" onclick="modal('postEmailF','.inputPostEmailF')" disabled>NUEVO CORREO</button>
+            <button class="disabled" type="button" id="postEmailF" onclick="modal('.inputPostEmailF')" disabled>NUEVO CORREO</button>
         </form>
     </div>
 </div>
@@ -59,7 +59,7 @@
                 <label for="numeroContacto" class="gotham_p_un4 padding_left_10">Número de contacto</label><br>
                 <div id='telPartAjax'></div>
             </div>
-            <button type="button" id="postTelPart" onclick="modal('postTelPart','.inputPostTelPart')">Agregar Teléfono Celular</button>
+            <button type="button" id="postTelPart" onclick="modal('.inputPostTelPart')">Agregar Teléfono Celular</button>
         </form>
     </div>
 </div>
@@ -83,7 +83,7 @@
         <form>
             <label for="numeroContacto2" class="gotham_p_un4 padding_left_10">Número de contacto</label><br>
             <div id="telTepAjax"></div>
-            <button type="button" id="postTelTepe" onclick="modal('postTelTepe','.inputPostTelTepe')">Agregar Teléfono Fijo</button>
+            <button type="button" id="postTelTepe" onclick="modal('.inputPostTelTepe')">Agregar Teléfono Fijo</button>
         </form>
     </div>
 </div>

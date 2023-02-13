@@ -1,4 +1,4 @@
-function getTel(typeInfo, type, idIndex, usr, idModal) {
+function getTel(typeInfo, type, idIndex, usr, idModal,dataArray) {
   let pidm = getPidm(usr);
   pidm.done(function (data) {
     $.ajax({
@@ -11,36 +11,48 @@ function getTel(typeInfo, type, idIndex, usr, idModal) {
       success: function (data2) {
         let html = "";
         let cont = 1;
+        let localData = [];
         data2.forEach((element) => {
-          if (element["phoneType"] == type) {
+          let codePhone = element["intlAccess"];
+          let seqPhone = element["seq"];
+          let phoneType = element["phoneType"];
+          if (phoneType == type) {
             let phone = element["phoneNumber"];
             if (cont > 0) {
               $(idIndex).html(phone);
               cont--;
             }
-          //  console.log(element);
-            let codePhone = element["intlAccess"];
-            html += '<div class="row">';
-            html += '<div class="column-2 left">';
-            html += '<select class="custom-select">';
-            html +=
-              "<option value=" + codePhone + ">" + codePhone + "</option>";
+            //  console.log(element);
+
+            html += `<div class='row'>`;
+            html += `<div class='column-2 leftTel'>`;
+            html += `<select class='custom-select'>`;
+            html += `<option value='${codePhone}'>${codePhone}</option>`;
             html += "</select>";
             html += "</div>";
-            html += '<div class="column-2 right">';
-            html +=
-              '<input class="right" type="number" placeholder="Número de contacto" name="numeroContacto" value=' +
-              phone +
-              ">";
+            html += `<div class='column-2 right'>`;
+            html += `<input class='right' type='number' placeholder='Número de contacto' name='numeroContacto' value='${phone}'>`;
             html += "</div>";
-            html += '<div class="column-2">';
-            html += '<input type="button" value="-" class="button_eliminar">';
+            html += `<div class='column-2'>`;
+            html += `<input type='button' value='-' id='telIdDelete${seqPhone}' class='button_eliminar'>`;
             html += "</div>";
             html += "</div>";
-
             $(idModal).html(html);
+            localData.push({
+              id: seqPhone,
+              type: phoneType,
+            });
           }
         });
+        localStorage.setItem(dataArray, JSON.stringify(localData));
+
+        // Disparar el evento storage
+        var storageEvent = new StorageEvent("storage", {
+          key: dataArray,
+          newValue: JSON.stringify(localData),
+          url: window.location.href,
+        });
+        window.dispatchEvent(storageEvent);
       },
       error: function (error) {
         return error;
@@ -56,12 +68,14 @@ let telPart = getTel(
   "CELU",
   "#telParticularAjax",
   "lgalviz",
-  "#telPartAjax"
+  "#telPartAjax",
+  "arrayTelPart"
 );
 let telTepe = getTel(
   "telefono",
   "TEPE",
   "#telTepeAjax",
   "lgalviz",
-  "#telTepAjax"
+  "#telTepAjax",
+  "arrayTelTepe"
 );

@@ -156,7 +156,12 @@ input {
     align-items: center;
 }
 
-.left {
+.leftCheck{
+    width: 10%;
+    padding-left: 0px !important;
+}
+
+.leftTel {
     width: 15%;
 }
 
