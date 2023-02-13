@@ -1,4 +1,13 @@
-function getTel(typeInfo, type, idIndex, usr, idModal,dataArray) {
+function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
+  if (window.localStorage.getItem(dataArray)) {
+    window.localStorage.removeItem(dataArray);
+    console.log(
+      "La clave '" + dataArray + "' se ha eliminado del Local Storage."
+    );
+  } else {
+    console.log("La clave '" + dataArray + "' no existe en el Local Storage.");
+  }
+
   let pidm = getPidm(usr);
   pidm.done(function (data) {
     $.ajax({
@@ -11,12 +20,15 @@ function getTel(typeInfo, type, idIndex, usr, idModal,dataArray) {
       success: function (data2) {
         let html = "";
         let cont = 1;
+        let contTel = 0;
         let localData = [];
         data2.forEach((element) => {
+          console.log("esta es la data2" + element["phoneType"]);
           let codePhone = element["intlAccess"];
           let seqPhone = element["seq"];
           let phoneType = element["phoneType"];
           if (phoneType == type) {
+            contTel++;
             let phone = element["phoneNumber"];
             if (cont > 0) {
               $(idIndex).html(phone);
@@ -41,11 +53,24 @@ function getTel(typeInfo, type, idIndex, usr, idModal,dataArray) {
             localData.push({
               id: seqPhone,
               type: phoneType,
+              tel:phone,
             });
           }
         });
-        localStorage.setItem(dataArray, JSON.stringify(localData));
 
+        if (contTel == 0) {
+          html += `<div class='row'>`;
+          html += `<label style="
+          margin: 20px;
+          color: gray;
+      ">Aún no tiene Telefonos</label>`;
+          html += "</div>";
+          $(idModal).html(html);
+        }
+
+        localStorage.setItem(dataArray, JSON.stringify(localData));
+        let dsata1 = JSON.parse(localStorage.getItem(dataArray));
+        console.log(dsata1);
         // Disparar el evento storage
         var storageEvent = new StorageEvent("storage", {
           key: dataArray,

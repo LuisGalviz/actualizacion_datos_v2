@@ -1,9 +1,9 @@
 function validateEmail(idEmail, errorMsg, type, modal) {
-  let email = document.getElementById(idEmail).value;
+  let email = $("#" + idEmail).val();
   let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   let exist;
 
-  if (window.localStorage.getItem("arrayTelPart")) {
+  if (window.localStorage.getItem("arrayEmailPart")) {
     //console.log("El evento está guardado en el Local Storage.");
     // Actualiza la página
     data1 = JSON.parse(localStorage.getItem("arrayEmailPart"));
@@ -35,7 +35,7 @@ function validateEmail(idEmail, errorMsg, type, modal) {
   let raw = JSON.stringify({
     pidm: 218436,
     emailType: type,
-    emailAddress: $("#" + idEmail).val(),
+    emailAddress: email,
     dataOrigin: "CAMEL",
   });
 

@@ -24,7 +24,7 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
         let localData = [];
 
         data2.forEach((element) => {
-          console.log("esta es la data2" + element["emailType"]);
+          //console.log("esta es la data2" + element["emailType"]);
           if (element["emailType"] == type) {
             contEmail++;
             if (cont > 0) {
@@ -54,14 +54,14 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
           html += `<label style="
           margin: 20px;
           color: gray;
-      ">Aún no Correos</label>`;
+      ">Aún no tiene Correos</label>`;
           html += "</div>";
           $(idModal).html(html);
         }
 
         localStorage.setItem(dataArray, JSON.stringify(localData));
-        let dsata1 = JSON.parse(localStorage.getItem(dataArray));
-        console.log(dsata1);
+       // let dsata1 = JSON.parse(localStorage.getItem(dataArray));
+        //console.log(dsata1);
         // Disparar el evento storage
         var storageEvent = new StorageEvent("storage", {
           key: dataArray,

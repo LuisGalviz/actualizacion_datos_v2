@@ -6,7 +6,7 @@ $(document).ready(function () {
     if (event.key == "arrayEmailPart") {
       // Actualiza la página
       data1 = JSON.parse(localStorage.getItem(event.key));
-      console.log(data1);
+      //console.log(data1);
       data1.forEach((element) => {
         let invalidId = element["id"];
         let escapedId = jQuery.escapeSelector(invalidId);
@@ -78,6 +78,25 @@ $(document).ready(function () {
             "arrayEmailPart"
           );
         } else if (typeRequest == "telefono") {
+          if (typeInfo == "CELU") {
+            getTel(
+              "telefono",
+              "CELU",
+              "#telParticularAjax",
+              "lgalviz",
+              "#telPartAjax",
+              "arrayTelPart"
+            );
+          } else if (typeInfo == "TEPE") {
+            getTel(
+              "telefono",
+              "TEPE",
+              "#telTepeAjax",
+              "lgalviz",
+              "#telTepAjax",
+              "arrayTelTepe"
+            );
+          }
         } else {
           error;
         }

@@ -1,12 +1,32 @@
-function validateTel(idTel, errorMsg, type) {
-  let tel = document.getElementById(idTel).value;
-  let  regex;
+function validateTel(idTel, errorMsg, type, modal) {
+  let tel = $("#" + idTel).val();
+  let regex;
+  let exist;
+  let arrayLocalStorage;
   if (idTel == "inputTelPartAjax") {
     regex = /^3[0-9]{9}$/;
+    arrayLocalStorage = "arrayTelPart";
   } else if (idTel == "inputTelTepeAjax") {
     regex = /^3[0-9]{6}$/;
+    arrayLocalStorage = "arrayTelTepe";
   }
-  if (!regex.test(tel)) {
+  if (window.localStorage.getItem(arrayLocalStorage)) {
+    //console.log("El evento está guardado en el Local Storage.");
+    // Actualiza la página
+    data1 = JSON.parse(localStorage.getItem(arrayLocalStorage));
+    data1.forEach((element) => {
+      let validId = element["tel"];
+      //  console.log(element);
+      if (validId == tel) {
+        exist = true;
+        return;
+      }
+    });
+  } else {
+    //  console.log("El evento no existe en el Local Storage.");
+  }
+
+  if (!regex.test(tel) || exist) {
     document.getElementById(errorMsg).style.display = "block";
     return;
   }
@@ -36,12 +56,27 @@ function validateTel(idTel, errorMsg, type) {
     redirect: "follow",
   };
 
+  let id1, id2, arrayTel;
+  if (type == "CELU") {
+    id1 = "#telParticularAjax";
+    id2 = "#telPartAjax";
+    arrayTel = "arrayTelPart";
+  } else if (type == "TEPE") {
+    id1 = "#telTepeAjax";
+    id2 = "#telTepAjax";
+    arrayTel = "arrayTelTepe";
+  }
+
   fetch(
     "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/telefono",
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => console.log(result))
+    .then((result) => {
+      console.log(result);
+      getTel("telefono", type, id1, "lgalviz", id2, arrayTel);
+      $("#" + idTel).val("");
+      $(modal).hide();
+    })
     .catch((error) => console.log("error", error));
-  location.reload();
 }
