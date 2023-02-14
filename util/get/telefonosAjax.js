@@ -21,17 +21,12 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
 
             html += `
               <div class='row'>
-                <div class='column-2 leftTel'>
-                  <select class='custom-select'>
+                  <select class='col-2 form-select-tel'>
                     <option value='${codePhone}'>${codePhone}</option>
                   </select>
-                </div>
-                <div class='column-2 right'>
-                  <input class='right' type='number' placeholder='Número de contacto' name='numeroContacto' value='${phone}'>
-                </div>
-                <div class='column-2'>
-                  <input type='button' value='-' id='telIdDelete${seqPhone}' class='button_eliminar'>
-                </div>
+                  <input class='col-6' type='number' placeholder='Número de contacto' name='numeroContacto' value='${phone}'>
+                  <button class='col-1 icon-button button_eliminar' id='telIdDelete${seqPhone}'><i class="fa-sharp fa-solid fa-circle-xmark"></i></button>
+                <button class='col-1  icon-button'><i class='fa-solid fa-circle-check'></i></button>
               </div>
             `;
 

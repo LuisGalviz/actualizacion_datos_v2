@@ -1,32 +1,10 @@
 .gotham_title_un {
-    font-family: "Gotham";
-    font-size: 20px;
-    color: #1d1d1b;
-    text-shadow: 1px 0 #1d1d1b;
     letter-spacing: 0.5px;
     font-weight: bold;
-}
-
-.gotham_p_un3 {
-    font-family: "Gotham";
-    font-size: 18px;
-    color: #1d1d1b;
-    font-weight: 500;
     text-align: center;
 }
 
-.gotham_p_un4 {
-    font-family: "Gotham";
-    font-size: 16px;
-    color: #1d1d1b;
-    font-weight: 500;
-    margin-bottom: 5px;
-    text-align: start;
-}
-
 .gotham_p_un5 {
-    font-family: "Gotham";
-    font-size: 16px;
     color: #d10a11;
     margin-top: 0;
     text-align: start;
@@ -43,23 +21,51 @@
 .row_un {
     display: flex;
 }
+.icon-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    color: #009900;
+}
+
 .button_eliminar {
-    width: 2rem;
-    border-radius: 50px;
-    margin-left: 1rem;
-    background-color: #d10a11;
-    color: white;
+    color: #d10a11;
+}
+
+.fa-circle-check,
+.fa-circle-xmark {
+    font-size: 1.8em;
+}
+
+.icon-button:focus {
+    outline: none;
 }
 
 .button_agregar {
     display: block;
     background-color: #fff;
-    color: #1d1d1b;
-    border: 2px solid #d10a11;
+    border: 1px solid #d10a11;
     width: 80%;
     margin: 0 auto;
-    text-align: center;
     font-size: 0.8em;
+    padding: 0.5em 0px;
+    border-radius: 50px;
+    width: 15em;
+}
+
+.button_confirmar {
+    display: block;
+    background-color: #d10a11;
+    border: none;
+    color: white;
+    padding: 0.6em 0px;
+    margin: 0.5em auto;
+    border-radius: 50px;
+    width: 15em;
 }
 
 .disabled {
@@ -78,76 +84,51 @@
     width: 100%;
     height: 100%;
     position: fixed;
-    top: 0;
     display: none;
     justify-content: center;
     align-items: center;
 }
 
 .modal-contents {
-    width: 80%;
-    max-height: 80%;
+    width: 95%;
     overflow-y: auto;
     background-color: white;
-    text-align: start;
-    padding: 20px 25px;
-    position: relative;
+    padding: 1em;
     border-radius: 4px;
-    max-width: 338px;
+    max-width: 450px;
 }
 
 .modal-contents-2 {
-    width: 80%;
+    width: 95%;
     background-color: white;
-    text-align: center;
-    padding: 20px 10px;
+    padding: 1em;
     position: relative;
     border-radius: 4px;
-    max-width: 338px;
+    max-width: 450px;
 }
 
 .modal-contents-3 {
-    width: 80%;
-    max-height: 80%;
+    width: 95%;
+    max-height: 90%;
     overflow-y: auto;
     background-color: white;
     text-align: start;
-    padding: 20px 25px;
+    padding: 1em;
     position: relative;
     border-radius: 4px;
-    max-width: 338px;
-}
-
-.input-2 {
-    margin: auto;
-    display: block;
-    padding: 8px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: -webkit-fill-available;
-    max-width: 20rem;
+    max-width: 450px;
 }
 
 .close {
-    text-align: start;
-    margin-left: 0%;
     color: #9c9c9c;
-    font-weight: 700;
-    cursor: pointer;
     background: #fff;
     border: 0;
 }
-.right {
-    width: 100%;
-}
 
-.custom-select {
-    font-family: Arial;
-    height: 35px;
-    /* centrar vertical y horizontalmente */
-    margin: 15px 0px 0px 0px;
+.form-select-tel {
+    padding: 0.4em;
+    appearance: none;
 }
-
 .custom-select-2 {
     width: 90%;
     border-radius: 20px;
@@ -162,35 +143,6 @@
     border-radius: 5px;
     width: 100%;
     max-width: 338px;
-}
-
-option {
-    padding: 10px;
-}
-
-.padding_left_10 {
-    padding-left: 10px;
-}
-
-.container_un-estado-laboral {
-    margin-left: 10%;
-    margin-bottom: 20px;
-}
-.div-estado-laboral {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.radio-button-estado-laboral {
-    width: 30px;
-}
-
-.label-estado-laboral {
-    width: 80%;
-    align-self: center;
-    justify-content: start;
-    display: flex;
 }
 /*POST*/
 

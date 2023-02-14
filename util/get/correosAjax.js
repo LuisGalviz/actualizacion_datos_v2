@@ -24,9 +24,13 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
             }
 
             html += `<div class='row'>
-                      <input class='right' type='email' readonly  placeholder='Contact email' name='correoContacto' value='${element["emailAddress"]}'>
-                      <input type='button' class='button_eliminar${type === "PART" ? "" : " disabled"}' value='-' id='${element["internalRecordId"]}'>
+                      <input class='col-8 ' type='email' readonly  placeholder='Contact email' name='correoContacto' value='${
+                        element["emailAddress"]
+                      }'>
+                      <button class='col-1 icon-button button_eliminar${type === "PART" ? "" : " disabled"}' id='${element["internalRecordId"]}'><i class="fa-sharp fa-solid fa-circle-xmark"></i></button>
+                      <button class='col-1  icon-button'><i class='fa-solid fa-circle-check'></i></button>
                     </div>`;
+
             localData.push({
               id: element["internalRecordId"],
               email: element["emailAddress"],

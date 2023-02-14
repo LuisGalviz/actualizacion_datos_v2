@@ -1,5 +1,5 @@
-.margin_out {
-    margin: 0px;
+body {
+    font-family: "Gotham", sans-serif;
 }
 
 .header_black {
@@ -29,77 +29,52 @@
 }
 
 .gotham_title {
-    font-family: "Gotham";
-    font-size: 20px;
     color: #1d1d1b;
     text-shadow: 1px 0 #1d1d1b;
     letter-spacing: 0.5px;
-    font-weight: bold;
 }
 
-.gotham_p {
-    font-family: "Gotham";
-    font-size: 18px;
-    color: #1d1d1b;
-}
-
-.gotham_p2 {
-    font-family: "Gotham";
-    font-size: 16px;
-    color: #1d1d1b;
-}
-
-.gotham_p3 {
-    font-family: "Gotham";
-    font-size: 18px;
-    color: #1d1d1b;
-    font-weight: 500;
+.center_text {
     text-align: center;
 }
 
-.gotham_p4 {
-    font-family: "Gotham";
-    font-size: 16px;
+.container-button-title {
     color: #1d1d1b;
     font-weight: 500;
-    margin-bottom: 5px;
     text-align: start;
 }
 
 .gotham_p5 {
-    font-family: "Gotham";
-    font-size: 16px;
     color: #d10a11;
-    margin-top: 0;
     text-align: start;
 }
 
 .container_form {
-    width: 100%;
     margin: auto;
     border: 2px solid;
     border-color: #b78b1e;
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0px 5px #fff8e7;
+    margin-bottom: 1em;
 }
 
 .container_button {
     width: 100%;
     max-width: 100%;
-    margin: auto;
     border: 2px solid;
     border-color: #b78b1e;
     border-radius: 15px;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 10px;
     background-color: #fdf7e9;
+    margin-bottom: 0.4em;
 }
 
 .yellow_p {
     color: #b78b1e;
 }
 
-.red_p{
+.red_p {
     color: #d10a11;
 }
 
@@ -109,40 +84,37 @@
     font-size: 22px;
 }
 
-.espacio {
-    margin: 5px;
+#conditions {
+    min-width: 1rem;
+}
+
+.container-confirmar-form {
+    text-align: center;
 }
 
 .row {
-    display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5em 0;
 }
 
-button {
+.button-confirmar {
     background-color: #d10a11;
     border: none;
     color: white;
     padding: 10px 0px;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
     margin: 4px 5%;
-    cursor: pointer;
     border-radius: 50px;
-    width: 90%;
-    max-width: 20rem;
+    width: 15em;
 }
 
 input {
     margin: 15px auto;
     display: block;
-    padding: 8px;
+    padding: 0.4em;
     border: 1px solid gray;
     border-radius: 5px;
     width: 100%;
-    max-width: 320px;
 }
 
 .column-2 {
@@ -156,7 +128,7 @@ input {
     align-items: center;
 }
 
-.leftCheck{
+.leftCheck {
     width: 10%;
     padding-left: 0px !important;
 }
@@ -165,6 +137,6 @@ input {
     width: 15%;
 }
 
-.checkbox-position{
+.checkbox-position {
     width: 5%;
 }
