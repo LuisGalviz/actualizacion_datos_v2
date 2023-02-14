@@ -17,15 +17,7 @@ body {
 }
 
 .container {
-    width: 75%;
     margin: 10%;
-}
-
-.container_head {
-    width: 100%;
-    margin: 8px;
-    margin: auto;
-    padding: 10px;
 }
 
 .gotham_title {
@@ -115,28 +107,4 @@ input {
     border: 1px solid gray;
     border-radius: 5px;
     width: 100%;
-}
-
-.column-2 {
-    float: right;
-    padding: 10px 0px 10px 10px;
-}
-
-.column-check {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.leftCheck {
-    width: 10%;
-    padding-left: 0px !important;
-}
-
-.leftTel {
-    width: 15%;
-}
-
-.checkbox-position {
-    width: 5%;
 }
