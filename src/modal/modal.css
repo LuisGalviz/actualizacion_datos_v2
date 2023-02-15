@@ -121,6 +121,8 @@
 .form-select-tel {
     padding: 0.4em;
     appearance: none;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
 }
 .custom-select-2 {
     width: 90%;
