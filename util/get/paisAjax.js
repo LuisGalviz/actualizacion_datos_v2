@@ -47,6 +47,7 @@ $("#paisP").change(function () {
     $("#departamentoP").prop("disabled", false);
     $("#departamentoP").val("08");
     $("#ciudadP").prop("disabled", false);
+    $("#ciudadP").val("0");
   }
 });
 
@@ -64,5 +65,6 @@ $("#paisT").change(function () {
     $("#departamentoT").prop("disabled", false);
     $("#departamentoT").val("08");
     $("#ciudadT").prop("disabled", false);
+    $("#ciudadT").val("0");
   }
 });

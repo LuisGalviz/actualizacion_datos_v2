@@ -1,16 +1,20 @@
 function validateDir(errorMsg, type) {
-  let city = $("#ciudad" + type).val();
   let line1 = $("#direccion" + type).val();
   let line2 = $("#complemento" + type).val();
   let line3 = $("#barrio" + type).val();
+  let pais = $("#pais" + type).val();
+  let city = $("#ciudad" + type).val();
+  let state = $("#departamento" + type).val();
   let regex = /^\S.*$/;
 
-  if (
-    !regex.test(city) ||
-    !regex.test(line1) ||
-    !regex.test(line2) ||
-    !regex.test(line3)
-  ) {
+  if (city == 0 || state == 0) {
+    if (pais == "COL") {
+      document.getElementById(errorMsg).style.display = "block";
+      return;
+    }
+  }
+
+  if (!regex.test(line1) || !regex.test(line2) || !regex.test(line3)) {
     document.getElementById(errorMsg).style.display = "block";
     return;
   }
