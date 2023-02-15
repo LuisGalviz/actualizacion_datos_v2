@@ -12,32 +12,65 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
         type,
       success: function (element) {
         if (element.length > 0) {
-          let departamento = buscarDpto();
-          departamento.done(function (datos) {
-            let pais = buscarPais();
-            pais.done(function (datos2) {
-              datos.forEach((element2) => {
-                if (element2["codigo"] == element[0]["state"]) {
-                  $("#departamento" + idform).val(element2["codigo"]);
-                  datos2.forEach((element3) => {
-                    if (element3["codigo"] == element[0]["nation"]) {
-                      $("#pais" + idform).val(element3["codigo"]);
-                      $(idIndex).html(
-                        element[0]["line1"] +
-                          "<br>" +
-                          element[0]["line2"] +
-                          "<br>" +
-                          element[0]["city"] +
-                          "<br>" +
-                          element2["descripcion"] +
-                          "<br>" +
-                          element3["descripcion"] +
-                          "<br>"
+          //  console.log(element);
+          let html =
+            element[0]["line1"] +
+            "<br>" +
+            element[0]["line2"] +
+            "<br>" +
+            element[0]["line3"] +
+            "<br>";
+          $(idIndex).html(html);
+
+          buscarDpto().done(function (datos) {
+            datos.forEach((element2) => {
+              if (
+                element2["codigo"] == element[0]["state"] &&
+                element[0]["state"] != "0"
+              ) {
+                $.getJSON(
+                  `https://tananeoqa.uninorte.edu.co/PoblacionWS/api/rupe/paises/COL/departamentos/${element[0]["state"]}/ciudades`,
+                  function (data) {
+                    $.each(data, function (key, value) {
+                      $("#ciudadT").append(
+                        $("<option>", {
+                          value: value.codigo,
+                          text: value.descripcion,
+                        })
                       );
+                      $("#ciudadP").append(
+                        $("<option>", {
+                          value: value.codigo,
+                          text: value.descripcion,
+                        })
+                      );
+                    });
+                  }
+                );
+
+                $("#departamento" + idform).val(element2["codigo"]);
+                //  console.log(element2["codigo"]);
+                $(idIndex).append(element2["descripcion"] + "<br>");
+
+                buscarCiudad(element2["codigo"]).done(function (datos) {
+                  datos.forEach((element3) => {
+                    if (element3["codigo"] == element[0]["city"]) {
+                      $("#ciudad" + idform).val(element3["codigo"]);
+                      //console.log(element3["descripcion"]);
+                      $(idIndex).append(element3["descripcion"] + "<br>");
                     }
                   });
-                }
-              });
+                });
+              }
+            });
+          });
+          buscarPais().done(function (datos) {
+            datos.forEach((element2) => {
+              if (element2["codigo"] == element[0]["nation"]) {
+                $("#pais" + idform).val(element2["codigo"]);
+                // console.log(element2["descripcion"]);
+                $(idIndex).append(element2["descripcion"] + "<br>");
+              }
             });
           });
 

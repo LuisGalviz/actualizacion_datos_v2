@@ -28,7 +28,7 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
                         element["emailAddress"]
                       }'>
                       <button class='col-1 icon-button button_eliminar${type === "PART" ? "" : " disabled"}' id='${element["internalRecordId"]}'><i class="fa-sharp fa-solid fa-circle-xmark"></i></button>
-                      <button class='col-1  icon-button'><i class='fa-solid fa-circle-check'></i></button>
+                      <button class='col-1 icon-button${type === "PART" ? "" : " disabled"}' id='${element["internalRecordId"]}Update'><i class='fa-solid fa-circle-check'></i></button>
                     </div>`;
 
             localData.push({

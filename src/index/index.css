@@ -71,9 +71,8 @@ body {
 }
 
 .angle_up_custom {
-    padding-right: 10px;
+    padding-top: 0.2em;
     float: right;
-    font-size: 22px;
 }
 
 #conditions {
