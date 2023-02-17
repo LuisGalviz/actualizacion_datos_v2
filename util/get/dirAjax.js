@@ -3,13 +3,7 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
   pidm.done(function (data) {
     $.ajax({
       type: "GET",
-      url:
-        `${pdimEndpoint}` +
-        data["pidm"] +
-        "/" +
-        typeInfo +
-        "/tipo/" +
-        type,
+      url: `${pdimEndpoint}` + data["pidm"] + "/" + typeInfo + "/tipo/" + type,
       success: function (element) {
         if (element.length > 0) {
           //  console.log(element);
@@ -22,48 +16,60 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
             "<br>";
           $(idIndex).html(html);
 
-          buscarDpto().done(function (datos) {
-            datos.forEach((element2) => {
-              if (
-                element2["codigo"] == element[0]["state"] &&
-                element[0]["state"] != "0"
-              ) {
-                $.getJSON(
-                  `${dptoEndpoint}${element[0]["state"]}/ciudades`,
-                  function (data) {
-                    $.each(data, function (key, value) {
-                      $("#ciudadT").append(
-                        $("<option>", {
-                          value: value.codigo,
-                          text: value.descripcion,
-                        })
-                      );
-                      $("#ciudadP").append(
-                        $("<option>", {
-                          value: value.codigo,
-                          text: value.descripcion,
-                        })
-                      );
-                    });
-                  }
-                );
-
-                $("#departamento" + idform).val(element2["codigo"]);
-                //  console.log(element2["codigo"]);
-                $(idIndex).append(element2["descripcion"] + "<br>");
-
-                buscarCiudad(element2["codigo"]).done(function (datos) {
-                  datos.forEach((element3) => {
-                    if (element3["codigo"] == element[0]["city"]) {
-                      $("#ciudad" + idform).val(element3["codigo"]);
-                      //console.log(element3["descripcion"]);
-                      $(idIndex).append(element3["descripcion"] + "<br>");
+          if (element[0]["nation"] == "COL") {
+            buscarDpto().done(function (datos) {
+              datos.forEach((element2) => {
+                if (
+                  element2["codigo"] == element[0]["state"] &&
+                  element[0]["state"] != "0"
+                ) {
+                  $.getJSON(
+                    `${dptoEndpoint}${element[0]["state"]}/ciudades`,
+                    function (data) {
+                      $.each(data, function (key, value) {
+                        $("#ciudadT").append(
+                          $("<option>", {
+                            value: value.codigo,
+                            text: value.descripcion,
+                          })
+                        );
+                        $("#ciudadP").append(
+                          $("<option>", {
+                            value: value.codigo,
+                            text: value.descripcion,
+                          })
+                        );
+                      });
                     }
+                  );
+
+                  $("#departamento" + idform).val(element2["codigo"]);
+                  //  console.log(element2["codigo"]);
+                  $(idIndex).append(element2["descripcion"] + "<br>");
+
+                  buscarCiudad(element2["codigo"]).done(function (datos) {
+                    datos.forEach((element3) => {
+                      if (element3["codigo"] == element[0]["city"]) {
+                        $("#ciudad" + idform).val(element3["codigo"]);
+                        //console.log(element3["descripcion"]);
+                        $(idIndex).append(element3["descripcion"] + "<br>");
+                      }
+                    });
                   });
-                });
-              }
+                }
+              });
             });
-          });
+          } else {
+            departamentoP.prop("disabled", true);
+            departamentoP.val("0");
+            ciudadP.prop("disabled", true);
+            ciudadP.val("0");
+            departamentoT.prop("disabled", true);
+            departamentoT.val("0");
+            ciudadT.prop("disabled", true);
+            ciudadT.val("0");
+          }
+
           buscarPais().done(function (datos) {
             datos.forEach((element2) => {
               if (element2["codigo"] == element[0]["nation"]) {

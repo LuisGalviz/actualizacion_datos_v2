@@ -7,8 +7,9 @@ $(document).ready(function () {
       data1.forEach((element) => {
         let escapedId = jQuery.escapeSelector(element["id"]);
         $(document).on("click", `#${escapedId}`, function (event) {
-          event.preventDefault();
-          if (confirm("¿Estás seguro que deseas modificar?"))
+          console.log(escapedId+' eliminar');
+          //event.preventDefault();
+         // if (confirm("¿Estás seguro que deseas modificar?"))
             delButton(element["email"], element["type"], "correo");
         });
       });
@@ -20,8 +21,9 @@ $(document).ready(function () {
           "click",
           `#telIdDelete${element["id"]}`,
           function (event) {
-            event.preventDefault();
-            if (confirm("¿Estás seguro que deseas modificar?"))
+            console.log('telIdDelete'+element["id"] +' eliminar');
+         //   event.preventDefault();
+           // if (confirm("¿Estás seguro que deseas modificar?"))
               delButton(element["id"], element["type"], "telefono");
           }
         );

@@ -12,12 +12,6 @@ function buscarPais() {
 }
 
 $(document).ready(function () {
-  const paisP = $("#paisP");
-  const paisT = $("#paisT");
-  const departamentoP = $("#departamentoP");
-  const departamentoT = $("#departamentoT");
-  const ciudadP = $("#ciudadP");
-  const ciudadT = $("#ciudadT");
   $.getJSON(
     "https://tananeoqa.uninorte.edu.co/PoblacionWS/api/rupe/paises",
     function (data) {
