@@ -59,7 +59,7 @@ function validateDir(errorMsg, type) {
   };
 
   fetch(
-    "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/direccion",
+    `${Endpoint}direccion`,
     requestOptions
   )
     .then((response) => response.text())

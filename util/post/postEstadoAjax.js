@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     let method = $("#estadoAjax").html().length > 0 ? "PUT" : "POST";
     let url =
-      "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/estadolaboral";
+      `${Endpoint}estadolaboral`;
     let dataOrigin = method === "POST" ? { dataOrigin: "APPMOVIL" } : {};
 
     let body = JSON.stringify({

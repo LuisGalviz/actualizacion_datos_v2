@@ -33,7 +33,7 @@ function validateEmail(idEmail, errorMsg, type, modal) {
   };
 
   fetch(
-    "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/correo",
+    `${Endpoint}correo`,
     requestOptions
   )
     .then((response) => response.text())

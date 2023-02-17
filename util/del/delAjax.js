@@ -49,7 +49,7 @@ $(document).ready(function () {
       redirect: "follow",
     };
 
-    const fetchUrl = `https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/${typeRequest}`;
+    const fetchUrl = `${Endpoint}${typeRequest}`;
 
     fetch(fetchUrl, requestOptions)
       .then((response) => response.text())

@@ -57,7 +57,7 @@ function validateTel(idTel, errorMsg, type, modal) {
   }
 
   fetch(
-    "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/218436/telefono",
+    `${Endpoint}telefono`,
     requestOptions
   )
     .then((response) => response.text())
