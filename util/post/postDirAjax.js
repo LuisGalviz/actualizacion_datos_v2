@@ -37,7 +37,7 @@ function validateDir(errorMsg, type) {
   method = $(dir).html().length > 0 ? "PUT" : "POST";
 
   const requestBody = JSON.stringify({
-    pidm: "218436",
+    pidm: pidmUserUn,
     addressType: "D" + type,
     sequence: method === "PUT" ? $("#seq" + type).val() : undefined,
     city: $("#ciudad" + type).val(),
@@ -65,7 +65,7 @@ function validateDir(errorMsg, type) {
     .then((response) => response.text())
     .then((result) => {
       console.log(result);
-      getDir("direccion", "D" + type, dir, "lgalviz", dir2, type);
+      getDir("direccion", "D" + type, dir, userUn, dir2, type);
       if (type === "P") {
         greenInputConfirm("#button6 .gotham_p5", ".bg-modal-6");
       } else if (type === "T") {

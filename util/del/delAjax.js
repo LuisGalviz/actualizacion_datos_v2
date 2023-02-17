@@ -30,13 +30,13 @@ $(document).ready(function () {
     let raw =
       typeRequest === "correo"
         ? JSON.stringify({
-            pidm: "218436",
+            pidm: pidmUserUn,
             emailType: typeInfo,
             emailAddress: infoId,
             dataOrigin: "",
           })
         : JSON.stringify({
-            pidm: "218436",
+            pidm: pidmUserUn,
             phoneType: typeInfo,
             sequence: infoId,
             dataOrigin: "",
@@ -60,7 +60,7 @@ $(document).ready(function () {
             "correo",
             typeInfo,
             "#emailParticularAjax",
-            "lgalviz",
+            userUn,
             "#correoPartAjax",
             "arrayEmailPart"
           );
@@ -70,7 +70,7 @@ $(document).ready(function () {
               "telefono",
               "CELU",
               "#telParticularAjax",
-              "lgalviz",
+              userUn,
               "#telPartAjax",
               "arrayTelPart"
             );
@@ -79,7 +79,7 @@ $(document).ready(function () {
               "telefono",
               "TEPE",
               "#telTepeAjax",
-              "lgalviz",
+              userUn,
               "#telTepAjax",
               "arrayTelTepe"
             );

@@ -4,7 +4,7 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
     $.ajax({
       type: "GET",
       url:
-        "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/" +
+        `${pdimEndpoint}` +
         data["pidm"] +
         "/" +
         typeInfo +
@@ -29,7 +29,7 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
                 element[0]["state"] != "0"
               ) {
                 $.getJSON(
-                  `https://tananeoqa.uninorte.edu.co/PoblacionWS/api/rupe/paises/COL/departamentos/${element[0]["state"]}/ciudades`,
+                  `${dptoEndpoint}${element[0]["state"]}/ciudades`,
                   function (data) {
                     $.each(data, function (key, value) {
                       $("#ciudadT").append(
@@ -93,7 +93,7 @@ let dirPerm = getDir(
   "direccion",
   "DP",
   "#dirPermanenteAjax",
-  "lgalviz",
+  userUn,
   "#dirPermAjax",
   "P"
 );
@@ -102,7 +102,7 @@ let dirTemp = getDir(
   "direccion",
   "DT",
   "#dirTemporalAjax",
-  "lgalviz",
+  userUn,
   "#dirTempAjax",
   "T"
 );

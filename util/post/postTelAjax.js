@@ -31,7 +31,7 @@ function validateTel(idTel, errorMsg, type, modal) {
     method: "POST",
     headers: myHeaders,
     body: JSON.stringify({
-      pidm: "218436",
+      pidm: pidmUserUn,
       phoneType: type,
       phoneArea: "604",
       phoneNumber: tel,
@@ -63,7 +63,7 @@ function validateTel(idTel, errorMsg, type, modal) {
     .then((response) => response.text())
     .then((result) => {
       console.log(result);
-      getTel("telefono", type, id1, "lgalviz", id2, arrayTel);
+      getTel("telefono", type, id1, userUn, id2, arrayTel);
       $("#" + idTel).val("");
       $(modal).hide();
     })

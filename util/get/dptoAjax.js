@@ -1,6 +1,6 @@
 function buscarDpto() {
   return $.ajax({
-    url: "https://tananeoqa.uninorte.edu.co/PoblacionWS/api/rupe/paises/COL/departamentos",
+    url: `${dptoEndpoint}`,
     type: "GET",
     success: function (data_dpto) {
       return data_dpto;
@@ -13,7 +13,7 @@ function buscarDpto() {
 
 $(document).ready(function () {
   $.getJSON(
-    "https://tananeoqa.uninorte.edu.co/PoblacionWS/api/rupe/paises/COL/departamentos",
+    `${dptoEndpoint}`,
     function (data) {
       $.each(data, function (key, value) {
         $("#departamentoT").append(
@@ -36,7 +36,7 @@ $(document).ready(function () {
 $("#departamentoT").change(function () {
   const dpto = $(this).val();
   $.getJSON(
-    `https://tananeoqa.uninorte.edu.co/PoblacionWS/api/rupe/paises/COL/departamentos/${dpto}/ciudades`,
+    `${dptoEndpoint}${dpto}/ciudades`,
     function (data) {
       $("#ciudadT").empty();
       // Agregar una opción vacía para que el usuario tenga que seleccionar una ciudad
@@ -62,7 +62,7 @@ $("#departamentoT").change(function () {
 $("#departamentoP").change(function () {
   const dpto = $(this).val();
   $.getJSON(
-    `https://tananeoqa.uninorte.edu.co/PoblacionWS/api/rupe/paises/COL/departamentos/${dpto}/ciudades`,
+    `${dptoEndpoint}${dpto}/ciudades`,
     function (data) {
       $("#ciudadP").empty();
       // Agregar una opción vacía para que el usuario tenga que seleccionar una ciudad

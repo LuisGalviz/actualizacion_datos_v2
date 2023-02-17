@@ -4,7 +4,7 @@ function getEstado(typeInfo, idIndex, usr) {
     $.ajax({
       type: "GET",
       url:
-        "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/" +
+        `${pdimEndpoint}` +
         data["pidm"] +
         "/" +
         typeInfo,
@@ -24,4 +24,4 @@ function getEstado(typeInfo, idIndex, usr) {
 }
 
 //Devuelve correo, Tipo de correo, ID que se modifica en el index, usuario
-let estado = getEstado("estadolaboral", "#estadoAjax", "lgalviz");
+let estado = getEstado("estadolaboral", "#estadoAjax", userUn);

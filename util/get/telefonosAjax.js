@@ -4,7 +4,7 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
   pidm.done(function (data) {
     $.ajax({
       type: "GET",
-      url: `https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/${data["pidm"]}/${typeInfo}`,
+      url: `${pdimEndpoint}${data["pidm"]}/${typeInfo}`,
       success: function (data2) {
         let html = "";
         let localData = [];
@@ -71,7 +71,7 @@ let telPart = getTel(
   "telefono",
   "CELU",
   "#telParticularAjax",
-  "lgalviz",
+  userUn,
   "#telPartAjax",
   "arrayTelPart"
 );
@@ -79,7 +79,7 @@ let telTepe = getTel(
   "telefono",
   "TEPE",
   "#telTepeAjax",
-  "lgalviz",
+  userUn,
   "#telTepAjax",
   "arrayTelTepe"
 );

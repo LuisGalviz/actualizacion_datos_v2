@@ -43,7 +43,7 @@ function validateEmail(idEmail, errorMsg, type, modal) {
         "correo",
         type,
         "#emailParticularAjax",
-        "lgalviz",
+        userUn,
         "#correoPartAjax",
         "arrayEmailPart"
       );

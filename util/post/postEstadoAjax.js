@@ -14,7 +14,7 @@ $(document).ready(function () {
     let dataOrigin = method === "POST" ? { dataOrigin: "APPMOVIL" } : {};
 
     let body = JSON.stringify({
-      pidm: "218436",
+      pidm: pidmUserUn,
       employmentStatus: selectedRadio,
       ...dataOrigin,
     });
@@ -30,7 +30,7 @@ $(document).ready(function () {
       .then((response) => response.text())
       .then((result) => {
         console.log(result);
-        getEstado("estadolaboral", "#estadoAjax", "lgalviz");
+        getEstado("estadolaboral", "#estadoAjax", userUn);
         greenInputConfirm("#button5 .gotham_p5", ".bg-modal-5");
       })
       .catch((error) => console.log("error", error));

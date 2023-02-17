@@ -2,7 +2,7 @@ function getPidm(usuario) {
   return $.ajax({
     type: "GET",
     url:
-      "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/usuario/" +
+      `${pdimEndpoint}usuario/` +
       usuario,
     success: function (data) {
       return data;

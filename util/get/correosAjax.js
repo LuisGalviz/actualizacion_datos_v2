@@ -9,7 +9,7 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
     $.ajax({
       type: "GET",
       url:
-        "https://intunqa.uninorte.edu.co/sba-personas/api/v1/persona/pidm/" +
+        `${pdimEndpoint}` +
         data["pidm"] +
         "/" +
         typeInfo,
@@ -66,7 +66,7 @@ const correosPart = getCorreo(
   "correo",
   "PART",
   "#emailParticularAjax",
-  "lgalviz",
+  userUn,
   "#correoPartAjax",
   "arrayEmailPart"
 );
@@ -74,7 +74,7 @@ const correosFunc = getCorreo(
   "correo",
   "FUNC",
   "#emailFuncAjax",
-  "lgalviz",
+  userUn,
   "#correoFuncAjax",
   "arrayEmailFunc"
 );
