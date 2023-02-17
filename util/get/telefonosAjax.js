@@ -1,5 +1,6 @@
 function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
   let pidm = getPidm(usr);
+
   pidm.done(function (data) {
     $.ajax({
       type: "GET",
@@ -10,49 +11,7 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
 
         data2.forEach((element) => {
           if (element["phoneType"] === type) {
-            let codePhone;
-            if (type == "CELU") {
-              codePhone = element["intlAccess"];
-              $(document).ready(function () {
-                $.getJSON("../../assets/paisesTel.json", function (data) {
-                  $.each(data, function (key, value) {
-                    $(`#codePhone${type}`).append(
-                      $("<option>", {
-                        value: value.codigo,
-                        text: value.codigo,
-                      })
-                    );
-                    $("#inputCodPartAjax").append(
-                      $("<option>", {
-                        value: value.codigo,
-                        text: value.codigo,
-                      })
-                    );
-                  });
-                });
-              });
-            } else {
-              codePhone = element["phoneArea"];
-              $(document).ready(function () {
-                $.getJSON("../../assets/fijoTel.json", function (data) {
-                  $.each(data, function (key, value) {
-                    $(`#codePhone${type}`).append(
-                      $("<option>", {
-                        value: value.codigo,
-                        text: value.codigo,
-                      })
-                    );
-                    $("#inputCodTepeAjax").append(
-                      $("<option>", {
-                        value: value.codigo,
-                        text: value.codigo,
-                      })
-                    );
-                  });
-                });
-              });
-            }
-
+            let codePhone = element["intlAccess"];
             let seqPhone = element["seq"];
             let phone = element["phoneNumber"];
 
@@ -62,7 +21,7 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
 
             html += `
               <div class='row'>
-                  <select class='col-2 form-select-tel' id='codePhone${type}'>
+                  <select class='col-2 form-select-tel'>
                     <option value='${codePhone}'>${codePhone}</option>
                   </select>
                   <input class='col-6' type='number' placeholder='Número de contacto' name='numeroContacto' value='${phone}'>
@@ -107,29 +66,6 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
     });
   });
 }
-
-$(document).ready(function () {
-  $.getJSON("../../assets/fijoTel.json", function (data) {
-    $.each(data, function (key, value) {
-      $("#inputCodTepeAjax").append(
-        $("<option>", {
-          value: value.codigo,
-          text: value.codigo,
-        })
-      );
-    });
-  });
-  $.getJSON("../../assets/paisesTel.json", function (data) {
-    $.each(data, function (key, value) {
-      $("#inputCodPartAjax").append(
-        $("<option>", {
-          value: value.codigo,
-          text: value.codigo,
-        })
-      );
-    });
-  });
-});
 
 let telPart = getTel(
   "telefono",

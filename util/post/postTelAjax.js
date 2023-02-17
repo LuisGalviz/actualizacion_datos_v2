@@ -1,7 +1,5 @@
-function validateTel(idTel, codCELU, codTEPE, errorMsg, type, modal) {
+function validateTel(idTel, errorMsg, type, modal) {
   let tel = $("#" + idTel).val();
-  let codTel = $("#" + codCELU).val();
-  let codTepe = $("#" + codTEPE).val();
   let regex, arrayLocalStorage;
   switch (idTel) {
     case "inputTelPartAjax":
@@ -35,10 +33,10 @@ function validateTel(idTel, codCELU, codTEPE, errorMsg, type, modal) {
     body: JSON.stringify({
       pidm: "218436",
       phoneType: type,
-      phoneArea: codTepe,
+      phoneArea: "604",
       phoneNumber: tel,
       phoneExt: "",
-      intlAccess: codTel,
+      intlAccess: "+57",
       dataOrigin: "CAMEL",
     }),
     redirect: "follow",

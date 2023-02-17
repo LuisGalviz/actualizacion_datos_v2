@@ -65,12 +65,9 @@
                 <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
                 <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Telefono Personal</p>
                 <div>
-                    <div class="row"><select id="inputCodPartAjax" class="col-2 form-select-tel">
-                            <option value="57" selected>57</option>
-                        </select> <input class="col-8" type="number" placeholder="Nuevo telefono de contacto" id="inputTelPartAjax" onkeypress="return event.keyCode != 13;" required></div>
-
+                    <input type="number" placeholder="Nuevo telefono de contacto" id="inputTelPartAjax" onkeypress="return event.keyCode != 13;" required>
                     <p id="errorMessageTelPart" style="display:none; color:red;">Por favor ingresa un número válido</p>
-                    <button class="button_confirmar" id="postTelPartAjax" onclick="validateTel('inputTelPartAjax','inputCodPartAjax','0','errorMessageTelPart','CELU','.inputPostTelPart')">GUARDAR</button>
+                    <button class="button_confirmar" id="postTelPartAjax" onclick="validateTel('inputTelPartAjax','errorMessageTelPart','CELU','.inputPostTelPart')">GUARDAR</button>
                 </div>
             </div>
         </div>
@@ -97,11 +94,9 @@
             <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
             <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Telefono Fijo</p>
             <div>
-                <div class="row"> <select class="col-2 form-select-tel" id="inputCodTepeAjax"></select>
-                    <input class="col-8" type="number" placeholder="Nuevo telefono de contacto" id="inputTelTepeAjax" onkeypress="return event.keyCode != 13;" required>
-                </div>
+                <input type="number" placeholder="Nuevo telefono de contacto" id="inputTelTepeAjax" onkeypress="return event.keyCode != 13;" required>
                 <p id="errorMessageTelTepe" style="display:none; color:red;">Por favor ingresa un número válido</p>
-                <button id="postTelTepeAjax" class="button_confirmar" onclick="validateTel('inputTelTepeAjax','0','inputCodTepeAjax','errorMessageTelTepe','TEPE','.inputPostTelTepe')">GUARDAR</button>
+                <button id="postTelTepeAjax" class="button_confirmar" onclick="validateTel('inputTelTepeAjax','errorMessageTelTepe','TEPE','.inputPostTelTepe')">GUARDAR</button>
             </div>
         </div>
     </div>
