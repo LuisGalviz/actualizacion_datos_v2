@@ -1,5 +1,7 @@
-function validateTel(idTel, errorMsg, type, modal) {
+function validateTel(idTel, codCELU, codTEPE, errorMsg, type, modal) {
   let tel = $("#" + idTel).val();
+  let codTel = $("#" + codCELU).val();
+  let codTepe = $("#" + codTEPE).val();
   let regex, arrayLocalStorage;
   switch (idTel) {
     case "inputTelPartAjax":
@@ -33,10 +35,10 @@ function validateTel(idTel, errorMsg, type, modal) {
     body: JSON.stringify({
       pidm: pidmUserUn,
       phoneType: type,
-      phoneArea: "604",
+      phoneArea: codTepe,
       phoneNumber: tel,
       phoneExt: "",
-      intlAccess: "+57",
+      intlAccess: codTel,
       dataOrigin: "CAMEL",
     }),
     redirect: "follow",
@@ -56,10 +58,7 @@ function validateTel(idTel, errorMsg, type, modal) {
       break;
   }
 
-  fetch(
-    `${Endpoint}telefono`,
-    requestOptions
-  )
+  fetch(`${Endpoint}telefono`, requestOptions)
     .then((response) => response.text())
     .then((result) => {
       console.log(result);
