@@ -20,9 +20,7 @@
             <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Correo Personal</p>
             <div id="formularioEmailP">
                 <input type="email" placeholder="Nuevo correo de contacto" id='emailPajax' value='' onkeypress="return event.keyCode != 13;" required>
-                <div id="errorMessageEmailP" style="display:none;" class="alert alert-warning" role="alert">
-                    Ingresa un correo válido
-                </div>
+                <p id="errorMessageEmailP" style="display:none; color:red;">Por favor ingresa un correo electrónico válido</p>
                 <button class="button_confirmar" id='postEmailAjax' onclick="validateEmail('emailPajax','errorMessageEmailP','PART','.inputPostEmailP')">GUARDAR</button>
             </div>
         </div>
@@ -39,6 +37,7 @@
                 <div id='correoFuncAjax'></div>
             </div>
             <button class="button_confirmar" onclick="greenInputConfirm('#button2 .gotham_p5','.bg-modal-2')">CONFIRMAR</button>
+
         </div>
     </div>
 </div>
@@ -69,9 +68,8 @@
                     <div class="row"><select id="inputCodPartAjax" class="col-2 form-select-tel">
                             <option value="57" selected>57</option>
                         </select> <input class="col-8" type="number" placeholder="Nuevo telefono de contacto" id="inputTelPartAjax" onkeypress="return event.keyCode != 13;" required></div>
-                    <div id="errorMessageTelPart" style="display:none;" class="alert alert-warning" role="alert">
-                        Ingresa un número válido
-                    </div>
+
+                    <p id="errorMessageTelPart" style="display:none; color:red;">Por favor ingresa un número válido</p>
                     <button class="button_confirmar" id="postTelPartAjax" onclick="validateTel('inputTelPartAjax','inputCodPartAjax','0','errorMessageTelPart','CELU','.inputPostTelPart')">GUARDAR</button>
                 </div>
             </div>
@@ -102,9 +100,7 @@
                 <div class="row"> <select class="col-2 form-select-tel" id="inputCodTepeAjax"></select>
                     <input class="col-8" type="number" placeholder="Nuevo telefono de contacto" id="inputTelTepeAjax" onkeypress="return event.keyCode != 13;" required>
                 </div>
-                <div id="errorMessageTelTepe" style="display:none;" class="alert alert-warning" role="alert">
-                    Ingresa un número válido
-                </div>
+                <p id="errorMessageTelTepe" style="display:none; color:red;">Por favor ingresa un número válido</p>
                 <button id="postTelTepeAjax" class="button_confirmar" onclick="validateTel('inputTelTepeAjax','0','inputCodTepeAjax','errorMessageTelTepe','TEPE','.inputPostTelTepe')">GUARDAR</button>
             </div>
         </div>
@@ -168,9 +164,8 @@
                     <option value='0' selected>Seleccione una ciudad</option>
                 </select>
                 <input type="hidden" id="seqP" value="">
-                <div id="errorMessageDirP" style="display:none;" class="alert alert-warning" role="alert">
-                    Completa todos los campos
-                </div>
+                <p id="errorMessageDirP" style="display:none; color:red;">Por favor completa todos los campos</p>
+
             </div> <button class="button_confirmar" type="button" id="buttonDP" onclick="validateDir('errorMessageDirP','P')">CONFIRMAR Y CONTINUAR</button>
         </div>
     </div>
@@ -200,9 +195,8 @@
                     <option value='0' selected>Seleccione una ciudad</option>
                 </select>
                 <input type="hidden" id="seqT" value="">
-                <div id="errorMessageDirP" style="display:none;" class="alert alert-warning" role="alert">
-                    Completa todos los campos
-                </div>
+                <p id="errorMessageDirT" style="display:none; color:red;">Por favor completa todos los campos</p>
+
             </div> <button class="button_confirmar" type="button" id="buttonDT" onclick="validateDir('errorMessageDirT','T')">CONFIRMAR Y CONTINUAR</button>
         </div>
     </div>

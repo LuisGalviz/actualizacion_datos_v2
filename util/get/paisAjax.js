@@ -2,7 +2,6 @@ function buscarPais() {
   return $.ajax({
     url: "https://tananeoqa.uninorte.edu.co/PoblacionWS/api/rupe/paises",
     type: "GET",
-    dataType: "jsonp",
     success: function (data) {
       return data;
     },
