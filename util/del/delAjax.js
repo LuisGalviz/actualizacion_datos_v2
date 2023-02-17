@@ -6,17 +6,25 @@ $(document).ready(function () {
       data1 = JSON.parse(localStorage.getItem(event.key));
       data1.forEach((element) => {
         let escapedId = jQuery.escapeSelector(element["id"]);
-        $(document).on("click", `#${escapedId}`, function () {
-          delButton(element["email"], element["type"], "correo");
+        $(document).on("click", `#${escapedId}`, function (event) {
+          event.preventDefault();
+          if (confirm("¿Estás seguro que deseas modificar?"))
+            delButton(element["email"], element["type"], "correo");
         });
       });
     }
     if (event.key === "arrayTelPart" || event.key === "arrayTelTepe") {
       data1 = JSON.parse(localStorage.getItem(event.key));
       data1.forEach((element) => {
-        $(document).on("click", `#telIdDelete${element["id"]}`, function () {
-          delButton(element["id"], element["type"], "telefono");
-        });
+        $(document).on(
+          "click",
+          `#telIdDelete${element["id"]}`,
+          function (event) {
+            event.preventDefault();
+            if (confirm("¿Estás seguro que deseas modificar?"))
+              delButton(element["id"], element["type"], "telefono");
+          }
+        );
       });
     }
   });
