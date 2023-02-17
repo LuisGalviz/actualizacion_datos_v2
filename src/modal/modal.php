@@ -224,3 +224,4 @@
 <script src="../../util/post/postTelAjax.js"></script>
 <script src="../../util/post/postEstadoAjax.js"></script>
 <script src="../../util/post/postDirAjax.js"></script>
+<script src="../../util/update/updateTelAjax.js"></script>

@@ -11,49 +11,18 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
 
         data2.forEach((element) => {
           if (element["phoneType"] === type) {
+            let seqPhone = element["seq"];
             let codePhone;
             if (type == "CELU") {
               codePhone = element["intlAccess"];
-              $(document).ready(function () {
-                $.getJSON("../../assets/paisesTel.json", function (data) {
-                  $.each(data, function (key, value) {
-                    $(`#codePhone${type}`).append(
-                      $("<option>", {
-                        value: value.codigo,
-                        text: value.codigo,
-                      })
-                    );
-                    $("#inputCodPartAjax").append(
-                      $("<option>", {
-                        value: value.codigo,
-                        text: value.codigo,
-                      })
-                    );
-                  });
-                });
-              });
+              getCode("paisesTel.json", `#codePhone${seqPhone}`);
+              getCode("paisesTel.json", "#inputCodPartAjax");
             } else {
               codePhone = element["phoneArea"];
-              $(document).ready(function () {
-                $.getJSON("../../assets/fijoTel.json", function (data) {
-                  $.each(data, function (key, value) {
-                    $(`#codePhone${type}`).append(
-                      $("<option>", {
-                        value: value.codigo,
-                        text: value.codigo,
-                      })
-                    );
-                    $("#inputCodTepeAjax").append(
-                      $("<option>", {
-                        value: value.codigo,
-                        text: value.codigo,
-                      })
-                    );
-                  });
-                });
-              });
+              getCode("fijoTel.json", `#codePhone${seqPhone}`);
+              getCode("fijoTel.json", "#inputCodTepeAjax");
             }
-            let seqPhone = element["seq"];
+
             let phone = element["phoneNumber"];
 
             if (localData.length === 0) {
@@ -62,10 +31,10 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
 
             html += `
               <div class='row'>
-                  <select class='col-2 form-select-tel' id='codePhone${type}'>
+                  <select class='col-2 form-select-tel' id='codePhone${seqPhone}'>
                     <option value='${codePhone}'>${codePhone}</option>
                   </select>
-                  <input class='col-6' type='number' placeholder='Número de contacto' name='numeroContacto' value='${phone}'>
+                  <input class='col-6' type='number' id='telIdUpdate${seqPhone}Value' placeholder='Número de contacto' name='numeroContacto' value='${phone}'>
                   <button class='col-1 icon-button button_eliminar' id='telIdDelete${seqPhone}'><i class="fa-sharp fa-solid fa-circle-xmark"></i></button>
                 <button class='col-1  icon-button' id='telIdUpdate${seqPhone}'><i class='fa-solid fa-circle-check'></i></button>
               </div>
@@ -75,6 +44,9 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
               id: seqPhone,
               type: type,
               tel: phone,
+              phoneArea: element["phoneArea"],
+              phoneExt: element["phoneExt"],
+              intlAccess: element["intlAccess"],
             });
           }
         });
@@ -108,10 +80,10 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
   });
 }
 
-$(document).ready(function () {
-  $.getJSON("../../assets/fijoTel.json", function (data) {
+function getCode(url, id) {
+  $.getJSON(`../../assets/${url}`, function (data) {
     $.each(data, function (key, value) {
-      $("#inputCodTepeAjax").append(
+      $(id).append(
         $("<option>", {
           value: value.codigo,
           text: value.codigo,
@@ -119,17 +91,7 @@ $(document).ready(function () {
       );
     });
   });
-  $.getJSON("../../assets/paisesTel.json", function (data) {
-    $.each(data, function (key, value) {
-      $("#inputCodPartAjax").append(
-        $("<option>", {
-          value: value.codigo,
-          text: value.codigo,
-        })
-      );
-    });
-  });
-});
+}
 
 let telPart = getTel(
   "telefono",
