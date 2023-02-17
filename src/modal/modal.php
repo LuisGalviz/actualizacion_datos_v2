@@ -70,7 +70,7 @@
                     <div class="row"><select id="inputCodPartAjax" class="col-2 form-select-tel">
                             <option value="57" selected>57</option>
                         </select> <input class="col-8" type="number" placeholder="Nuevo telefono de contacto" id="inputTelPartAjax" onkeypress="return event.keyCode != 13;" required></div>
-                        <div id="errorMessageTelPart" style="display:none;" class="alert alert-warning" role="alert">
+                    <div id="errorMessageTelPart" style="display:none;" class="alert alert-warning" role="alert">
                         Ingresa un número válido
                     </div>
                     <button class="button_confirmar" id="postTelPartAjax" onclick="validateTel('inputTelPartAjax','inputCodPartAjax','0','errorMessageTelPart','CELU','.inputPostTelPart')">GUARDAR</button>
@@ -202,7 +202,7 @@
                     <option value='0' selected>Seleccione una ciudad</option>
                 </select>
                 <input type="hidden" id="seqT" value="">
-                <div id="errorMessageDirP" style="display:none;" class="alert alert-warning" role="alert">
+                <div id="errorMessageDirT" style="display:none;" class="alert alert-warning" role="alert">
                     Completa todos los campos
                 </div>
 
