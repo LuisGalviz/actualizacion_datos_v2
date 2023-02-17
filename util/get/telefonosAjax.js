@@ -15,12 +15,10 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
             let codePhone;
             if (type == "CELU") {
               codePhone = element["intlAccess"];
-              getCode("paisesTel.json", `#codePhone${seqPhone}`);
-              getCode("paisesTel.json", "#inputCodPartAjax");
+              getCode("paisesTel.json", `#codePhone${seqPhone}`);      
             } else {
               codePhone = element["phoneArea"];
               getCode("fijoTel.json", `#codePhone${seqPhone}`);
-              getCode("fijoTel.json", "#inputCodTepeAjax");
             }
 
             let phone = element["phoneNumber"];
@@ -109,3 +107,6 @@ let telTepe = getTel(
   "#telTepAjax",
   "arrayTelTepe"
 );
+
+getCode("paisesTel.json", "#inputCodPartAjax");
+getCode("fijoTel.json", "#inputCodTepeAjax");
