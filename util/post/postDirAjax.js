@@ -24,14 +24,12 @@ function validateDir(errorMsg, type) {
     "Content-Type": "application/json",
     Cookie: "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000",
   });
-  let dir, dir2, method;
+  let dir, method;
 
   if (type === "P") {
     dir = "#dirPermanenteAjax";
-    dir2 = "#dirPermAjax";
   } else if (type === "T") {
     dir = "#dirTemporalAjax";
-    dir2 = "#dirTempAjax";
   }
 
   method = $(dir).html().length > 0 ? "PUT" : "POST";
@@ -58,14 +56,11 @@ function validateDir(errorMsg, type) {
     redirect: "follow",
   };
 
-  fetch(
-    `${Endpoint}direccion`,
-    requestOptions
-  )
+  fetch(`${Endpoint}direccion`, requestOptions)
     .then((response) => response.text())
     .then((result) => {
       console.log(result);
-      getDir("direccion", "D" + type, dir, userUn, dir2, type);
+      getDir("direccion", "D" + type, dir, userUn, type);
       if (type === "P") {
         greenInputConfirm("#button6 .gotham_p5", ".bg-modal-6");
       } else if (type === "T") {

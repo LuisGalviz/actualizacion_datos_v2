@@ -1,4 +1,4 @@
-function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
+function getDir(typeInfo, type, idIndex, usr, idform) {
   let pidm = getPidm(usr);
   pidm.done(function (data) {
     $.ajax({
@@ -60,14 +60,17 @@ function getDir(typeInfo, type, idIndex, usr, idModal, idform) {
               });
             });
           } else {
-            departamentoP.prop("disabled", true);
-            departamentoP.val("0");
-            ciudadP.prop("disabled", true);
-            ciudadP.val("0");
-            departamentoT.prop("disabled", true);
-            departamentoT.val("0");
-            ciudadT.prop("disabled", true);
-            ciudadT.val("0");
+            if (idform == "P") {
+              departamentoP.prop("disabled", true);
+              departamentoP.val("0");
+              ciudadP.prop("disabled", true);
+              ciudadP.val("0");
+            } else if (idform == "T") {
+              departamentoT.prop("disabled", true);
+              departamentoT.val("0");
+              ciudadT.prop("disabled", true);
+              ciudadT.val("0");
+            }
           }
 
           buscarPais().done(function (datos) {
@@ -100,7 +103,6 @@ let dirPerm = getDir(
   "DP",
   "#dirPermanenteAjax",
   userUn,
-  "#dirPermAjax",
   "P"
 );
 
@@ -109,6 +111,5 @@ let dirTemp = getDir(
   "DT",
   "#dirTemporalAjax",
   userUn,
-  "#dirTempAjax",
   "T"
 );
