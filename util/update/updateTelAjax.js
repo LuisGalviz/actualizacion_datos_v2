@@ -12,7 +12,7 @@ $(document).ready(function () {
             `codePhone${element["id"]}`
           ).value;
 
-          updateButton(
+          updateTel(
             element["id"],
             element["type"],
             "telefono",
@@ -24,7 +24,7 @@ $(document).ready(function () {
       });
     }
   });
-  function updateButton(infoId, typeInfo, typeRequest, tel, codeTel, PHoneExt) {
+  function updateTel(infoId, typeInfo, typeRequest, tel, codeTel, PHoneExt) {
     console.log(tel);
     let myHeaders = new Headers({
       "Content-Type": "application/json",
