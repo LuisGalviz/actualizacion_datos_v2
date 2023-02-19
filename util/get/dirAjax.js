@@ -1,4 +1,5 @@
 function getDir(typeInfo, type, idIndex, usr, idform) {
+  const ciudad = $("#ciudad" + idform);
   let pidm = getPidm(usr);
   pidm.done(function (data) {
     $.ajax({
@@ -7,13 +8,7 @@ function getDir(typeInfo, type, idIndex, usr, idform) {
       success: function (element) {
         if (element.length > 0) {
           //  console.log(element);
-          let html =
-            element[0]["line1"] +
-            "<br>" +
-            element[0]["line2"] +
-            "<br>" +
-            element[0]["line3"] +
-            "<br>";
+          let html = `${element[0]["line1"]}<br>${element[0]["line2"]}<br>${element[0]["line3"]}<br>`;
           $(idIndex).html(html);
 
           if (element[0]["nation"] == "COL") {
@@ -27,13 +22,7 @@ function getDir(typeInfo, type, idIndex, usr, idform) {
                     `${dptoEndpoint}${element[0]["state"]}/ciudades`,
                     function (data) {
                       $.each(data, function (key, value) {
-                        $("#ciudadT").append(
-                          $("<option>", {
-                            value: value.codigo,
-                            text: value.descripcion,
-                          })
-                        );
-                        $("#ciudadP").append(
+                        ciudad.append(
                           $("<option>", {
                             value: value.codigo,
                             text: value.descripcion,
@@ -46,12 +35,10 @@ function getDir(typeInfo, type, idIndex, usr, idform) {
                   $("#departamento" + idform).val(element2["codigo"]);
                   //  console.log(element2["codigo"]);
                   $(idIndex).append(element2["descripcion"] + "<br>");
-
                   buscarCiudad(element2["codigo"]).done(function (datos) {
                     datos.forEach((element3) => {
                       if (element3["codigo"] == element[0]["city"]) {
-                        $("#ciudad" + idform).val(element3["codigo"]);
-                        //console.log(element3["descripcion"]);
+                        ciudad.val(element3["codigo"]);
                         $(idIndex).append(element3["descripcion"] + "<br>");
                       }
                     });
@@ -61,15 +48,11 @@ function getDir(typeInfo, type, idIndex, usr, idform) {
             });
           } else {
             if (idform == "P") {
-              departamentoP.prop("disabled", true);
-              departamentoP.val("0");
-              ciudadP.prop("disabled", true);
-              ciudadP.val("0");
+              departamentoP.prop("disabled", true).val("0");
+              ciudadP.prop("disabled", true).val("0");
             } else if (idform == "T") {
-              departamentoT.prop("disabled", true);
-              departamentoT.val("0");
-              ciudadT.prop("disabled", true);
-              ciudadT.val("0");
+              departamentoT.prop("disabled", true).val("0");
+              ciudadT.prop("disabled", true).val("0");
             }
           }
 
@@ -86,7 +69,7 @@ function getDir(typeInfo, type, idIndex, usr, idform) {
           $("#direccion" + idform).val(element[0]["line1"]);
           $("#complemento" + idform).val(element[0]["line2"]);
           $("#barrio" + idform).val(element[0]["line3"]);
-          $("#ciudad" + idform).val(element[0]["city"]);
+          ciudad.val(element[0]["city"]);
           $("#seq" + idform).val(element[0]["seq"]);
         }
       },
@@ -98,18 +81,5 @@ function getDir(typeInfo, type, idIndex, usr, idform) {
   });
 }
 
-let dirPerm = getDir(
-  "direccion",
-  "DP",
-  "#dirPermanenteAjax",
-  userUn,
-  "P"
-);
-
-let dirTemp = getDir(
-  "direccion",
-  "DT",
-  "#dirTemporalAjax",
-  userUn,
-  "T"
-);
+getDir("direccion", "DP", "#dirPermanenteAjax", userUn, "P");
+getDir("direccion", "DT", "#dirTemporalAjax", userUn, "T");

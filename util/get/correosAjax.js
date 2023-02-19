@@ -26,9 +26,8 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
             html += `<div class='row'>
                       <input class='col-8' id='emailIdUpdate${element["internalRecordId"]}Value' type='email' placeholder='Contact email' value='${
                         element["emailAddress"]
-                      }'>
-                      <button class='col-1 icon-button button_eliminar${type === "PART" ? "" : " disabled"}' id='${element["internalRecordId"]}'><i class="fa-sharp fa-solid fa-circle-xmark"></i></button>
-                      <button class='col-1 icon-button${type === "PART" ? "" : " disabled"}' id='${element["internalRecordId"]}Update'><i class='fa-solid fa-circle-check'></i></button>
+                      }' readonly>
+                      <button class='col-1 icon-button button_eliminar${type === "PART" ? "" : " disabled"}' id='${element["internalRecordId"]}'><i class="fa-solid fa-trash"></i></button>
                     </div>`;
 
             localData.push({
@@ -55,6 +54,7 @@ function getCorreo(typeInfo, type, idIndex, usr, idModal, dataArray) {
         });
         window.dispatchEvent(storageEvent);
       },
+      
       error: function (error) {
         return error;
       },

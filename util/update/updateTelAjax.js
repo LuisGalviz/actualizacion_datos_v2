@@ -24,7 +24,6 @@ $(document).ready(function () {
       });
     }
   });
-
   function updateButton(infoId, typeInfo, typeRequest, tel, codeTel, PHoneExt) {
     console.log(tel);
     let myHeaders = new Headers({
