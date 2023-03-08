@@ -1,28 +1,27 @@
 <?php
-require('../../php/cas_login.php');
+   require('../../php/cas_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="../modal/modal.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://kit.fontawesome.com/4dbf0b25da.js" crossorigin="anonymous"></script>
-    <script src="../../assets/api.js"></script>
-    <script src="../../js/modal.js"></script>
-    <script src="../../js/change.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css" async>
+    <link rel="stylesheet" type="text/css" href="../modal/modal.css" async>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" async>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script src="https://kit.fontawesome.com/4dbf0b25da.js" crossorigin="anonymous" async></script>
     <?php
     require_once '../modal/modal.php';
     ?>
 </head>
 
 <body>
+<div id="loader">
+  <div class="spinner"></div>
+</div>
     <div class="header">
         <div class="header_black"></div>
         <div class="header_yellow"></div>
@@ -35,7 +34,6 @@ require('../../php/cas_login.php');
             <p class="gotham_p">Porque te queremos cerca siempre, ayúdanos a <strong>validar</strong> , <strong>completar</strong> y <strong>actualizar</strong> tus datos.</p>
             <p class="gotham_p2">Última actualización: <?php echo "12/03/2016"; ?>. <br> Aquellos marcados con <i class="fa fa-warning fa_custom red_p"></i> podrían estar desactualizados.</p>
         </div>
-
         <div class="container_form">
             <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Correos electrónicos</p>
             <button type="button" id="button" onclick="modal('.bg-modal')" class="container_button">
@@ -87,7 +85,5 @@ require('../../php/cas_login.php');
             <button class="button-confirmar" id="button8">CONFIRMAR</button>
         </div>
     </div>
-    <script src="../../util/del/delAjax.js"></script>
 </body>
-
 </html>

@@ -1,4 +1,5 @@
 function getTel(typeInfo, type, idIndex, idModal, dataArray) {
+ 
   $.ajax({
     type: "GET",
     url: `${pdimEndpoint}${pidmUserUn}/${typeInfo}`,

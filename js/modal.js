@@ -15,3 +15,46 @@ function greenInputConfirm(elementId, modal) {
   $(elementId).css("color", "rgb(0, 160, 0)");
   $(modal).css("display", "none");
 }
+
+//delete input
+function deleteInput(id) {
+  const input = document.getElementById(`emailIdUpdate${id}Value`);
+  input.classList.add("delete");
+  input.addEventListener("animationend", () => {
+    input.value = "";
+    input.classList.remove("delete");
+  });
+}
+function deleteInputTel(id) {
+  const input = document.getElementById(`telIdUpdate${id}Value`);
+  input.classList.add("delete");
+  input.addEventListener("animationend", () => {
+    input.value = "";
+    input.classList.remove("delete");
+  });
+}
+
+//Update Imput
+function updateInput(id) {
+  const input = document.getElementById(`telIdUpdate${id}Value`);
+  const input2 = document.getElementById(`codePhone${id}`);
+  console.log(input2)
+  input.classList.add("update");
+  input.addEventListener("animationend", () => {
+    input.classList.remove("update");
+  });
+
+  input2.classList.add("update");
+  input2.addEventListener("animationend", () => {
+    input2.classList.remove("update");
+  });
+}
+
+
+//loading
+window.addEventListener("load", function(){
+	const loader = document.querySelector("#loader");
+	setTimeout(function(){
+		loader.className += " oculto"; // añade la clase "oculto" al div loader después de 1 segundo
+	}, 1000);
+});

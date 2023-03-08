@@ -8,7 +8,7 @@ window.addEventListener("storage", function (event) {
         console.log(escapedId + " eliminar");
         //event.preventDefault();
         // if (confirm("¿Estás seguro que deseas modificar?"))
-        delButton(element["email"], element["type"], "correo");
+        delButton(element["email"], element["type"], "correo", escapedId);
       });
     });
   }
@@ -19,13 +19,14 @@ window.addEventListener("storage", function (event) {
         console.log("telIdDelete" + element["id"] + " eliminar");
         //   event.preventDefault();
         // if (confirm("¿Estás seguro que deseas modificar?"))
-        delButton(element["id"], element["type"], "telefono");
+        delButton(element["id"], element["type"], "telefono", element["id"]);
       });
     });
   }
 });
 
-function delButton(infoId, typeInfo, typeRequest) {
+function delButton(infoId, typeInfo, typeRequest, inputId) {
+  typeRequest === "correo" ? deleteInput(inputId) : deleteInputTel(inputId);
   let myHeaders = new Headers({
     "Content-Type": "application/json",
     Cookie: "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000",

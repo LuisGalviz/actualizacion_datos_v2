@@ -166,3 +166,42 @@
 .alert {
     margin-top: 1em;
 }
+
+/*delete input*/
+@keyframes delete-input {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+input.delete {
+    animation-name: delete-input;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+/*update input*/
+@keyframes update-input {
+    from {
+        border-color: #ccc;
+        background: #ccc;
+      }
+      to {
+        border-color: #4CAF50;
+        background: #4CAF50;
+      }
+}
+
+input.update, select.update {
+    animation-name: update-input;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
