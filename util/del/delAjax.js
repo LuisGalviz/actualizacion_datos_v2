@@ -70,7 +70,7 @@ $(document).ready(function () {
             "correo",
             typeInfo,
             "#emailParticularAjax",
-            userUn,
+            pidmUserUn,
             "#correoPartAjax",
             "arrayEmailPart"
           );
@@ -80,7 +80,7 @@ $(document).ready(function () {
               "telefono",
               "CELU",
               "#telParticularAjax",
-              userUn,
+              pidmUserUn,
               "#telPartAjax",
               "arrayTelPart"
             );
@@ -89,7 +89,7 @@ $(document).ready(function () {
               "telefono",
               "TEPE",
               "#telTepeAjax",
-              userUn,
+              pidmUserUn,
               "#telTepAjax",
               "arrayTelTepe"
             );

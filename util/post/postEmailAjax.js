@@ -24,7 +24,7 @@ function validateEmail(idEmail, errorMsg, type, modal) {
     method: "POST",
     headers: myHeaders,
     body: JSON.stringify({
-      pidm: 218436,
+      pidm: pidmUserUn,
       emailType: type,
       emailAddress: email,
       dataOrigin: "CAMEL",
@@ -43,7 +43,7 @@ function validateEmail(idEmail, errorMsg, type, modal) {
         "correo",
         type,
         "#emailParticularAjax",
-        userUn,
+        pidmUserUn,
         "#correoPartAjax",
         "arrayEmailPart"
       );

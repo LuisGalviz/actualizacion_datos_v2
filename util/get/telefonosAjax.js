@@ -1,33 +1,30 @@
-function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
-  let pidm = getPidm(usr);
+function getTel(typeInfo, type, idIndex, idModal, dataArray) {
+  $.ajax({
+    type: "GET",
+    url: `${pdimEndpoint}${pidmUserUn}/${typeInfo}`,
+    success: function (data) {
+      let html = "";
+      let localData = [];
 
-  pidm.done(function (data) {
-    $.ajax({
-      type: "GET",
-      url: `${pdimEndpoint}${data["pidm"]}/${typeInfo}`,
-      success: function (data2) {
-        let html = "";
-        let localData = [];
+      data.forEach((element) => {
+        if (element["phoneType"] === type) {
+          let seqPhone = element["seq"];
+          let codePhone;
+          if (type == "CELU") {
+            codePhone = element["intlAccess"];
+            getCode("paisesTel.json", `#codePhone${seqPhone}`);
+          } else {
+            codePhone = element["phoneArea"];
+            getCode("fijoTel.json", `#codePhone${seqPhone}`);
+          }
 
-        data2.forEach((element) => {
-          if (element["phoneType"] === type) {
-            let seqPhone = element["seq"];
-            let codePhone;
-            if (type == "CELU") {
-              codePhone = element["intlAccess"];
-              getCode("paisesTel.json", `#codePhone${seqPhone}`);      
-            } else {
-              codePhone = element["phoneArea"];
-              getCode("fijoTel.json", `#codePhone${seqPhone}`);
-            }
+          let phone = element["phoneNumber"];
 
-            let phone = element["phoneNumber"];
+          if (localData.length === 0) {
+            $(idIndex).html(phone);
+          }
 
-            if (localData.length === 0) {
-              $(idIndex).html(phone);
-            }
-
-            html += `
+          html += `
               <div class='row'>
                   <select class='col-2 form-select-tel' id='codePhone${seqPhone}'>
                     <option value='${codePhone}'>${codePhone}</option>
@@ -38,20 +35,20 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
               </div>
             `;
 
-            localData.push({
-              id: seqPhone,
-              type: type,
-              tel: phone,
-              phoneArea: element["phoneArea"],
-              phoneExt: element["phoneExt"],
-              intlAccess: element["intlAccess"],
-            });
-          }
-        });
+          localData.push({
+            id: seqPhone,
+            type: type,
+            tel: phone,
+            phoneArea: element["phoneArea"],
+            phoneExt: element["phoneExt"],
+            intlAccess: element["intlAccess"],
+          });
+        }
+      });
 
-        if (localData.length === 0) {
-          $(idIndex).html("NA");
-          html += `
+      if (localData.length === 0) {
+        $(idIndex).html("NA");
+        html += `
             <div class='row'>
               <label style="
                 margin: 20px;
@@ -59,22 +56,21 @@ function getTel(typeInfo, type, idIndex, usr, idModal, dataArray) {
               ">Aún no tiene Telefonos</label>
             </div>
           `;
-        }
+      }
 
-        $(idModal).html(html);
-        localStorage.setItem(dataArray, JSON.stringify(localData));
+      $(idModal).html(html);
+      localStorage.setItem(dataArray, JSON.stringify(localData));
 
-        let storageEvent = new StorageEvent("storage", {
-          key: dataArray,
-          newValue: JSON.stringify(localData),
-          url: window.location.href,
-        });
-        window.dispatchEvent(storageEvent);
-      },
-      error: function (error) {
-        return error;
-      },
-    });
+      let storageEvent = new StorageEvent("storage", {
+        key: dataArray,
+        newValue: JSON.stringify(localData),
+        url: window.location.href,
+      });
+      window.dispatchEvent(storageEvent);
+    },
+    error: function (error) {
+      return error;
+    },
   });
 }
 
@@ -91,22 +87,15 @@ function getCode(url, id) {
   });
 }
 
-let telPart = getTel(
-  "telefono",
-  "CELU",
-  "#telParticularAjax",
-  userUn,
-  "#telPartAjax",
-  "arrayTelPart"
-);
-let telTepe = getTel(
-  "telefono",
-  "TEPE",
-  "#telTepeAjax",
-  userUn,
-  "#telTepAjax",
-  "arrayTelTepe"
-);
-
-getCode("paisesTel.json", "#inputCodPartAjax");
-getCode("fijoTel.json", "#inputCodTepeAjax");
+getMyPimdUser().then(function (myVar) {
+  getTel(
+    "telefono",
+    "CELU",
+    "#telParticularAjax",
+    "#telPartAjax",
+    "arrayTelPart"
+  );
+  getTel("telefono", "TEPE", "#telTepeAjax", "#telTepAjax", "arrayTelTepe");
+  getCode("paisesTel.json", "#inputCodPartAjax");
+  getCode("fijoTel.json", "#inputCodTepeAjax");
+});

@@ -12,7 +12,7 @@ $(document).ready(function () {
             `codePhone${element["id"]}`
           ).value;
 
-          updateTel(
+          updateButton(
             element["id"],
             element["type"],
             "telefono",
@@ -24,7 +24,7 @@ $(document).ready(function () {
       });
     }
   });
-  function updateTel(infoId, typeInfo, typeRequest, tel, codeTel, PHoneExt) {
+  function updateButton(infoId, typeInfo, typeRequest, tel, codeTel, PHoneExt) {
     console.log(tel);
     let myHeaders = new Headers({
       "Content-Type": "application/json",
@@ -69,7 +69,7 @@ $(document).ready(function () {
             "telefono",
             "CELU",
             "#telParticularAjax",
-            userUn,
+            pidmUserUn,
             "#telPartAjax",
             "arrayTelPart"
           );
@@ -78,7 +78,7 @@ $(document).ready(function () {
             "telefono",
             "TEPE",
             "#telTepeAjax",
-            userUn,
+            pidmUserUn,
             "#telTepAjax",
             "arrayTelTepe"
           );

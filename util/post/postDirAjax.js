@@ -60,7 +60,7 @@ function validateDir(errorMsg, type) {
     .then((response) => response.text())
     .then((result) => {
       console.log(result);
-      getDir("direccion", "D" + type, dir, userUn, type);
+      getDir("direccion", "D" + type, dir, pidmUserUn, type);
       if (type === "P") {
         greenInputConfirm("#button6 .gotham_p5", ".bg-modal-6");
       } else if (type === "T") {

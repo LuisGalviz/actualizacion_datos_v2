@@ -1,10 +1,9 @@
-async function getDir(typeInfo, type, idIndex, usr, idform) {
+async function getDir(typeInfo, type, idIndex, idform) {
   const ciudad = $("#ciudad" + idform);
   try {
-    const data = await getPidm(usr);
     const element = await $.ajax({
       type: "GET",
-      url: `${pdimEndpoint}` + data["pidm"] + "/" + typeInfo + "/tipo/" + type,
+      url: `${pdimEndpoint}${pidmUserUn}/${typeInfo}/tipo/${type}`,
     });
     if (element.length > 0) {
       let html = `${element[0]["line1"]}<br>${element[0]["line2"]}<br>${element[0]["line3"]}<br>`;
@@ -21,7 +20,6 @@ async function getDir(typeInfo, type, idIndex, usr, idform) {
               `${dptoEndpoint}${element[0]["state"]}/ciudades`
             );
             await $.each(data, function (key, value) {
-              console.log('holi');
               ciudad.append(
                 $("<option>", {
                   value: value.codigo,
@@ -35,7 +33,6 @@ async function getDir(typeInfo, type, idIndex, usr, idform) {
             const datosCiudad = await buscarCiudad(element2["codigo"]);
             datosCiudad.forEach((element3) => {
               if (element3["codigo"] == element[0]["city"]) {
-                console.log('holi222');
                 ciudad.val(element3["codigo"]);
                 $(idIndex).append(element3["descripcion"] + "<br>");
               }
@@ -71,5 +68,7 @@ async function getDir(typeInfo, type, idIndex, usr, idform) {
   }
 }
 
-getDir("direccion", "DP", "#dirPermanenteAjax", userUn, "P");
-getDir("direccion", "DT", "#dirTemporalAjax", userUn, "T");
+getMyPimdUser().then(function (myVar) {
+  getDir("direccion", "DP", "#dirPermanenteAjax", "P");
+  getDir("direccion", "DT", "#dirTemporalAjax", "T");
+});

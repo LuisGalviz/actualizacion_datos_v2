@@ -210,9 +210,7 @@
         </div>
     </div>
 </div>
-<script src="../../assets/api.js"></script>
 <script src="../../assets/const.js"></script>
-<script src="../../util/get/pidmAjax.js"></script>
 <script src="../../util/get/ciudadAjax.js"></script>
 <script src="../../util/get/dptoAjax.js"></script>
 <script src="../../util/get/paisAjax.js"></script>
