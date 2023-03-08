@@ -9,7 +9,7 @@
                 <div id='correoPartAjax'></div>
             </div>
             <button class="button_agregar" onclick="modal('.inputPostEmailP')">AGREGAR CORREO</button>
-            <button class="button_confirmar" id="postEmailP" onclick="greenInputConfirm('#button .gotham_p5','.bg-modal')">CONFIRMAR</button>
+            <button class="button_confirmar" id="postEmailP" onclick="greenInputConfirm('#button .gotham_p5','#button .fa-solid','.bg-modal')">CONFIRMAR</button>
 
         </div>
     </div>
@@ -38,7 +38,7 @@
                 <label for="correoContacto2">Correo de contacto</label>
                 <div id='correoFuncAjax'></div>
             </div>
-            <button class="button_confirmar" onclick="greenInputConfirm('#button2 .gotham_p5','.bg-modal-2')">CONFIRMAR</button>
+            <button class="button_confirmar" onclick="greenInputConfirm('#button2 .gotham_p5','#button2 .fa-solid','.bg-modal-2')">CONFIRMAR</button>
 
         </div>
     </div>
@@ -55,7 +55,7 @@
                     <div id='telPartAjax'></div>
                 </div>
                 <button class="button_agregar" id="postTelPart" onclick="modal('.inputPostTelPart')">AGREGAR TELEFONO</button>
-                <button class="button_confirmar" onclick="greenInputConfirm('#button3 .gotham_p5','.bg-modal-3')">CONFIRMAR</button>
+                <button class="button_confirmar" onclick="greenInputConfirm('#button3 .gotham_p5','#button3 .fa-solid', '.bg-modal-3')">CONFIRMAR</button>
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
                 <div id="telTepAjax"></div>
             </div>
             <button class="button_agregar" id="postTelTepe" onclick="modal('.inputPostTelTepe')">AGREGAR TELEFONO</button>
-            <button class="button_confirmar" onclick="greenInputConfirm('#button4 .gotham_p5','.bg-modal-4')">CONFIRMAR</button>
+            <button class="button_confirmar" onclick="greenInputConfirm('#button4 .gotham_p5', '#button4 .fa-solid', '.bg-modal-4')">CONFIRMAR</button>
 
         </div>
     </div>

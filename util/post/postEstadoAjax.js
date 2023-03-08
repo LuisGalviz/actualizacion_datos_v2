@@ -31,7 +31,7 @@ $(document).ready(function () {
       .then((result) => {
         console.log(result);
         getEstado("estadolaboral", "#estadoAjax");
-        greenInputConfirm("#button5 .gotham_p5", ".bg-modal-5");
+        greenInputConfirm("#button5 .gotham_p5", '#button5 .fa-solid', ".bg-modal-5");
       })
       .catch((error) => console.log("error", error));
   });

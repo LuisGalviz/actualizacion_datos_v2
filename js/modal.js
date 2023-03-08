@@ -11,8 +11,9 @@ function clickClose(modal) {
   $(modal).css("display", "none");
 }
 
-function greenInputConfirm(elementId, modal) {
+function greenInputConfirm(elementId,elementId2,modal) {
   $(elementId).css("color", "rgb(0, 160, 0)");
+  $(elementId2).css("display", "none");
   $(modal).css("display", "none");
 }
 
@@ -56,5 +57,5 @@ window.addEventListener("load", function(){
 	const loader = document.querySelector("#loader");
 	setTimeout(function(){
 		loader.className += " oculto"; // añade la clase "oculto" al div loader después de 1 segundo
-	}, 1000);
+	}, 3000);
 });

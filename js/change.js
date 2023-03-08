@@ -2,10 +2,10 @@ $(document).ready(function () {
   $("#conditions").change(function () {
     if ($(this).is(":checked")) {
       $(".gotham_p5").css("color", "rgb(0, 160, 0)");
-      $('.fa-warning:not(:first)').hide();
+      $('.fa-solid.fa-triangle-exclamation').hide();
     } else {
       $(".gotham_p5").css("color", "rgb(209, 10, 17)");
-      $('.fa-warning:not(:first)').show();
+      $('.fa-solid.fa-triangle-exclamation').show();
     }
   });
 });

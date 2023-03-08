@@ -62,9 +62,9 @@ function validateDir(errorMsg, type) {
       console.log(result);
       getDir("direccion", "D" + type, dir, type);
       if (type === "P") {
-        greenInputConfirm("#button6 .gotham_p5", ".bg-modal-6");
+        greenInputConfirm("#button6 .gotham_p5", '#button6 .fa-solid', ".bg-modal-6");
       } else if (type === "T") {
-        greenInputConfirm("#button7 .gotham_p5", ".bg-modal-7");
+        greenInputConfirm("#button7 .gotham_p5",'#button7 .fa-solid', ".bg-modal-7");
       }
     })
     .catch((error) => console.log("error", error));

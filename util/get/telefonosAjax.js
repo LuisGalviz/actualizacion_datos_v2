@@ -1,5 +1,4 @@
 function getTel(typeInfo, type, idIndex, idModal, dataArray) {
- 
   $.ajax({
     type: "GET",
     url: `${pdimEndpoint}${pidmUserUn}/${typeInfo}`,
@@ -32,7 +31,7 @@ function getTel(typeInfo, type, idIndex, idModal, dataArray) {
                   </select>
                   <input class='col-6' type='number' id='telIdUpdate${seqPhone}Value' placeholder='Número de contacto' name='numeroContacto' value='${phone}'>
                   <button class='col-1 icon-button button_eliminar' id='telIdDelete${seqPhone}'><i class="fa-solid fa-trash"></i></button>
-                <button class='col-1  icon-button' id='telIdUpdate${seqPhone}'><i class='fa-solid fa-circle-check'></i></button>
+                <button class='col-2  icon-button' id='telIdUpdate${seqPhone}'><i class='fa-solid fa-circle-check'></i></button>
               </div>
             `;
 
