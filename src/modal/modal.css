@@ -192,10 +192,12 @@ input.delete {
     from {
         border-color: #ccc;
         background: #ccc;
+        color: #1d1d1b;
       }
       to {
         border-color: #4CAF50;
         background: #4CAF50;
+        color: #ccc;
       }
 }
 
@@ -203,5 +205,4 @@ input.update, select.update {
     animation-name: update-input;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
 }
