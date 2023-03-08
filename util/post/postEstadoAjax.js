@@ -30,7 +30,7 @@ $(document).ready(function () {
       .then((response) => response.text())
       .then((result) => {
         console.log(result);
-        getEstado("estadolaboral", "#estadoAjax", pidmUserUn);
+        getEstado("estadolaboral", "#estadoAjax");
         greenInputConfirm("#button5 .gotham_p5", ".bg-modal-5");
       })
       .catch((error) => console.log("error", error));

@@ -62,7 +62,7 @@ function validateTel(idTel, codCELU, codTEPE, errorMsg, type, modal) {
     .then((response) => response.text())
     .then((result) => {
       console.log(result);
-      getTel("telefono", type, id1, pidmUserUn, id2, arrayTel);
+      getTel("telefono", type, id1, id2, arrayTel);
       $("#" + idTel).val("");
       $(modal).hide();
     })
