@@ -1,5 +1,5 @@
 <?php
-require('../../php/cas_login.php');
+//require('../../php/cas_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
