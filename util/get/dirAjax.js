@@ -67,11 +67,12 @@ async function getDir(typeInfo, type, idIndex, idform) {
     console.error(error);
   }
 }
-/*
+
 getMyPimdUser().then(function (myVar) {
   getDir("direccion", "DP", "#dirPermanenteAjax", "P");
   getDir("direccion", "DT", "#dirTemporalAjax", "T");
-});*/
-
+});
+/*
 getDir("direccion", "DP", "#dirPermanenteAjax", "P");
 getDir("direccion", "DT", "#dirTemporalAjax", "T");
+*/
