@@ -17,13 +17,13 @@ function getCorreo(typeInfo, type, idIndex, idModal, dataArray) {
             $(idIndex).html(element["emailAddress"]);
           }
 
-          html += `<div class='row'>
-                      <input class='col-8' id='emailIdUpdate${
+          html += `<div class='row center-checkbox'>
+                      <input class='col-10' id='emailIdUpdate${
                         element["internalRecordId"]
                       }Value' type='email' placeholder='Contact email' value='${
             element["emailAddress"]
           }' readonly>
-                      <button class='col-1 icon-button button_eliminar${
+                      <button class='col-2 icon-button button_eliminar${
                         type === "PART" ? "" : " disabled"
                       }' id='${
             element["internalRecordId"]
@@ -66,7 +66,7 @@ getMyPimdUser().then(function () {
     "correo",
     "PART",
     "#emailParticularAjax",
-    "#correoPartAjax",  
+    "#correoPartAjax",
     "arrayEmailPart"
   );
   getCorreo(

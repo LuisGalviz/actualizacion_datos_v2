@@ -63,5 +63,10 @@ function updateButton(infoId, typeInfo, typeRequest, tel, codeTel, PHoneExt) {
   console.log(fetchUrl);
   fetch(fetchUrl, requestOptions)
     .then((response) => response.text())
-    .then((result) => {});
+    .then((result) => {
+      console.log(result);
+      typeInfo === "CELU"
+        ? $("#telParticularAjax").html(tel)
+        : $("#telTepeAjax").html(tel);
+    });
 }

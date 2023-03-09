@@ -67,7 +67,7 @@
                 <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
                 <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Telefono Personal</p>
                 <div>
-                    <div class="row"><select id="inputCodPartAjax" class="col-2 form-select-tel">
+                    <div class="row center-checkbox"><select id="inputCodPartAjax" class="col-2 form-select-tel">
                             <option value="57" selected>57</option>
                         </select> <input class="col-8" type="number" placeholder="Nuevo telefono de contacto" id="inputTelPartAjax" onkeypress="return event.keyCode != 13;" required></div>
                     <div id="errorMessageTelPart" style="display:none;" class="alert alert-warning" role="alert">
@@ -100,7 +100,7 @@
             <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
             <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Telefono Fijo</p>
             <div>
-                <div class="row"> <select class="col-2 form-select-tel" id="inputCodTepeAjax"></select>
+                <div class="row center-checkbox"> <select class="col-2 form-select-tel" id="inputCodTepeAjax"></select>
                     <input class="col-8" type="number" placeholder="Nuevo telefono de contacto" id="inputTelTepeAjax" onkeypress="return event.keyCode != 13;" required>
                 </div>
                 <div id="errorMessageTelTepe" style="display:none;" class="alert alert-warning" role="alert">
@@ -118,25 +118,25 @@
             <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
             <p class="yellow_p center_text"><i class="fa fa-id-card-o"></i> Estado Laboral</p>
             <div class="container">
-                <div class="row"><input class="col-2" type="radio" name="choice" value="Desempleado" id="Desempleado">
+                <div class="row center-checkbox"><input class="col-2" type="radio" name="choice" value="Desempleado" id="Desempleado">
                     <label class="col-7" for="Desempleado">Desempleado</label>
                 </div>
-                <div class="row"><input class="col-2" type="radio" name="choice" value="Independiente" id="Independiente">
+                <div class="row center-checkbox"><input class="col-2" type="radio" name="choice" value="Independiente" id="Independiente">
                     <label class="col-7" for="Independiente">Independiente</label>
                 </div>
-                <div class="row"><input class="col-2" type="radio" name="choice" value="Empleado" id="Empleado">
+                <div class="row center-checkbox"><input class="col-2" type="radio" name="choice" value="Empleado" id="Empleado">
                     <label class="col-7" for="Empleado">Empleado</label>
                 </div>
-                <div class="row"><input class="col-2" type="radio" name="choice" value="Empresario" id="Empresario">
+                <div class="row center-checkbox"><input class="col-2" type="radio" name="choice" value="Empresario" id="Empresario">
                     <label class="col-7" for="Empresario">Empresario</label>
                 </div>
-                <div class="row"><input class="col-2" type="radio" name="choice" value="Estudiante" id="Estudiante">
+                <div class="row center-checkbox"><input class="col-2" type="radio" name="choice" value="Estudiante" id="Estudiante">
                     <label class="col-7" for="Estudiante">Estudiante</label>
                 </div>
-                <div class="row"><input class="col-2" type="radio" name="choice" value="Inactivo" id="Inactivo">
+                <div class="row center-checkbox"><input class="col-2" type="radio" name="choice" value="Inactivo" id="Inactivo">
                     <label class="col-7" for="Inactivo">Inactivo Laboralmente</label>
                 </div>
-                <div class="row"><input class="col-2" type="radio" name="choice" value="Jubilado" id="Jubilado">
+                <div class="row center-checkbox"><input class="col-2" type="radio" name="choice" value="Jubilado" id="Jubilado">
                     <label class="col-7" for="Jubilado">Jubilado</label>
                 </div>
             </div>

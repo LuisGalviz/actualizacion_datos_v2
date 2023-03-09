@@ -19,7 +19,10 @@ function greenInputConfirm(elementId,elementId2,modal) {
 
 //delete input
 function deleteInput(id) {
-  const input = document.getElementById(`emailIdUpdate${id}Value`);
+  let idSinBarra = id.replace(/\\/g, "");
+  const input = document.getElementById(`emailIdUpdate${idSinBarra}Value`);
+  console.log(`emailIdUpdate${idSinBarra}Value`);
+  console.log(input);
   input.classList.add("delete");
   input.addEventListener("animationend", () => {
     input.value = "";
