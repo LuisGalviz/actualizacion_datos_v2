@@ -86,7 +86,7 @@ function getCode(url, id) {
     });
   });
 }
-
+/*
 getMyPimdUser().then(function (myVar) {
   getTel(
     "telefono",
@@ -99,3 +99,14 @@ getMyPimdUser().then(function (myVar) {
   getCode("paisesTel.json", "#inputCodPartAjax");
   getCode("fijoTel.json", "#inputCodTepeAjax");
 });
+*/
+getTel(
+  "telefono",
+  "CELU",
+  "#telParticularAjax",
+  "#telPartAjax",
+  "arrayTelPart"
+);
+getTel("telefono", "TEPE", "#telTepeAjax", "#telTepAjax", "arrayTelTepe");
+getCode("paisesTel.json", "#inputCodPartAjax");
+getCode("fijoTel.json", "#inputCodTepeAjax");

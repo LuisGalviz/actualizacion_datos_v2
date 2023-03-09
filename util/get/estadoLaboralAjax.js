@@ -15,7 +15,9 @@ function getEstado(typeInfo, idIndex) {
     },
   });
 }
-
+/*
 getMyPimdUser().then(function (myVar) {
   getEstado("estadolaboral", "#estadoAjax");
 });
+*/
+getEstado("estadolaboral", "#estadoAjax");
