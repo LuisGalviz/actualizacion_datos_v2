@@ -26,7 +26,9 @@ window.addEventListener("storage", function (event) {
 });
 
 function delButton(infoId, typeInfo, typeRequest, inputId) {
-  typeRequest === "correo" ? deleteInput(inputId) : deleteInputTel(inputId);
+  typeRequest === "correo"
+    ? deleteInput(inputId)
+    : deleteInputTel(inputId, typeInfo);
   let myHeaders = new Headers({
     "Content-Type": "application/json",
     Cookie: "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000",
@@ -58,36 +60,55 @@ function delButton(infoId, typeInfo, typeRequest, inputId) {
 
   fetch(fetchUrl, requestOptions)
     .then((response) => response.text())
-    .then((result) => {
-      console.log(result);
-      if (typeRequest === "correo") {
-        getCorreo(
-          "correo",
-          typeInfo,
-          "#emailParticularAjax",
-          "#correoPartAjax",
-          "arrayEmailPart"
-        );
-      } else if (typeRequest === "telefono") {
-        if (typeInfo === "CELU") {
-          getTel(
-            "telefono",
-            "CELU",
-            "#telParticularAjax",
-            "#telPartAjax",
-            "arrayTelPart"
-          );
-        } else if (typeInfo === "TEPE") {
-          getTel(
-            "telefono",
-            "TEPE",
-            "#telTepeAjax",
-            "#telTepAjax",
-            "arrayTelTepe"
-          );
-        }
-      } else {
-        throw new Error("Error error", error);
-      }
-    });
+    .then((result) => {});
 }
+
+//delete input
+function deleteInput(id) {
+  let idSinBarra = id.replace(/\\/g, "");
+  const input = document.getElementById(`div${idSinBarra}`);
+  let correoStorage = JSON.parse(window.localStorage.getItem("arrayEmailPart"));
+  const result = removeById(correoStorage, idSinBarra);
+  console.log(result)
+  console.log(result[0])
+  console.log(result[0] == true)
+  result[0]
+    ? $("#emailParticularAjax").html(result[0].email)
+    : $("#emailParticularAjax").html("NA");
+  localStorage.setItem("arrayEmailPart", JSON.stringify(result));
+  input.classList.add("delete");
+  input.addEventListener("animationend", () => {
+    input.value = "";
+    input.classList.remove("delete");
+    input.remove();
+  });
+}
+function deleteInputTel(id, type) {
+  let storage, indexTelId;
+  if (type == "CELU") {
+    storage = "arrayTelPart";
+    indexTelId = "telParticularAjax";
+  } else {
+    storage = "arrayTelTepe";
+    indexTelId = "telTepeAjax";
+  }
+
+  const input = document.getElementById(`div${id}`);
+  let telStorage = JSON.parse(window.localStorage.getItem(storage));
+  const result = removeById(telStorage, id);
+  console.log(result)
+  console.log(result[0])
+  console.log(result[0] == true)
+  result[0]
+    ? $(`#${indexTelId}`).html(result[0].tel)
+    : $(`#${indexTelId}`).html("NA");
+  localStorage.setItem(storage, JSON.stringify(result));
+  input.classList.add("delete");
+  input.addEventListener("animationend", () => {
+    input.value = "";
+    input.classList.remove("delete");
+    input.remove();
+  });
+}
+
+const removeById = (array, id) => array.filter((item) => item.id !== id);

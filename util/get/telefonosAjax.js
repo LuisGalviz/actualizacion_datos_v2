@@ -25,7 +25,7 @@ function getTel(typeInfo, type, idIndex, idModal, dataArray) {
           }
 
           html += `
-              <div class='row'>
+              <div class='row' id='div${seqPhone}'>
                   <select class='col-2 form-select-tel' id='codePhone${seqPhone}'>
                     <option value='${codePhone}'>${codePhone}</option>
                   </select>

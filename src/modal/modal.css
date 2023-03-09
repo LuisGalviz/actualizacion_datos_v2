@@ -180,7 +180,7 @@
     }
 }
 
-input.delete {
+div.delete {
     animation-name: delete-input;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;

@@ -17,12 +17,12 @@ function getCorreo(typeInfo, type, idIndex, idModal, dataArray) {
             $(idIndex).html(element["emailAddress"]);
           }
 
-          html += `<div class='row center-checkbox'>
-                      <input class='col-10' id='emailIdUpdate${
-                        element["internalRecordId"]
-                      }Value' type='email' placeholder='Contact email' value='${
-            element["emailAddress"]
-          }' readonly>
+          html += `<div class='row center-checkbox' id='div${
+            element["internalRecordId"]
+          }'>
+                      <input class='col-10'  type='email' placeholder='Contact email' value='${
+                        element["emailAddress"]
+                      }' readonly>
                       <button class='col-2 icon-button button_eliminar${
                         type === "PART" ? "" : " disabled"
                       }' id='${
