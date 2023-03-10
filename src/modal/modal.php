@@ -4,7 +4,7 @@
             <button onclick="clickClose('.bg-modal')" class="close"><i class="fa-solid fa-chevron-left"></i></button>
             <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
             <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Correo Personal</p>
-            <div class="container">
+            <div class="container container-inputs">
                 <label for="correoContacto">Correo de contacto</label>
                 <div id='correoPartAjax'></div>
             </div>
@@ -34,7 +34,7 @@
             <button onclick="clickClose('.bg-modal-2')" class="close"><i class="fa-solid fa-chevron-left"></i></button>
             <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
             <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Correo Corporativo</p>
-            <div class="container">
+            <div class="container container-inputs">
                 <label for="correoContacto2">Correo de contacto</label>
                 <div id='correoFuncAjax'></div>
             </div>
@@ -50,7 +50,7 @@
             <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
             <p class="yellow_p center_text"><i class="fa fa-phone phone_custom"></i> Teléfono Celular</p>
             <div>
-                <div class="container">
+                <div class="container container-inputs">
                     <label for="numeroContacto">Número de contacto</label>
                     <div id='telPartAjax'></div>
                 </div>
@@ -85,7 +85,7 @@
             <button onclick="clickClose('.bg-modal-4')" class="close"><i class="fa-solid fa-chevron-left"></i></button>
             <h5 class="gotham_title_un">¡Ayúdanos a estar en contacto contigo!</h5>
             <p class="yellow_p center_text"><i class="fa fa-phone phone_custom"></i> Teléfono Fijo</p>
-            <div class="container">
+            <div class="container container-inputs">
                 <label for="numeroContacto2">Número de contacto</label>
                 <div id="telTepAjax"></div>
             </div>
