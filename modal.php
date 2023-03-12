@@ -210,20 +210,20 @@
         </div>
     </div>
 </div>
-<script src="../../assets/api.js"></script>
-<script src="../../js/modal.js"></script>
-<script src="../../js/change.js"></script>
-<script src="../../util/del/delAjax.js"></script>
-<script src="../../assets/const.js"></script>
-<script src="../../util/get/ciudadAjax.js"></script>
-<script src="../../util/get/dptoAjax.js"></script>
-<script src="../../util/get/paisAjax.js"></script>
-<script src="../../util/get/correosAjax.js"></script>
-<script src="../../util/get/telefonosAjax.js"></script>
-<script src="../../util/get/estadoLaboralAjax.js"></script>
-<script src="../../util/get/dirAjax.js"></script>
-<script src="../../util/post/postEmailAjax.js"></script>
-<script src="../../util/post/postTelAjax.js"></script>
-<script src="../../util/post/postEstadoAjax.js"></script>
-<script src="../../util/post/postDirAjax.js"></script>
-<script src="../../util/update/updateTelAjax.js"></script>
+<script src="assets/api.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/change.js"></script>
+<script src="js/util/del/delAjax.js"></script>
+<script src="assets/const.js"></script>
+<script src="js/util/get/ciudadAjax.js"></script>
+<script src="js/util/get/dptoAjax.js"></script>
+<script src="js/util/get/paisAjax.js"></script>
+<script src="js/util/get/correosAjax.js"></script>
+<script src="js/util/get/telefonosAjax.js"></script>
+<script src="js/util/get/estadoLaboralAjax.js"></script>
+<script src="js/util/get/dirAjax.js"></script>
+<script src="js/util/post/postEmailAjax.js"></script>
+<script src="js/util/post/postTelAjax.js"></script>
+<script src="js/util/post/postEstadoAjax.js"></script>
+<script src="js/util/post/postDirAjax.js"></script>
+<script src="js/util/update/updateTelAjax.js"></script>

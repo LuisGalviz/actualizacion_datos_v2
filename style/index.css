@@ -2,20 +2,6 @@ body {
     font-family: "Gotham", sans-serif;
 }
 
-.header_black {
-    background-color: #1d1d1b;
-    height: 50px;
-    width: 100%;
-    min-width: 340px;
-}
-
-.header_yellow {
-    background-color: #b78b1e;
-    height: 10px;
-    width: 100%;
-    min-width: 340px;
-}
-
 .container {
     margin: 10%;
 }
