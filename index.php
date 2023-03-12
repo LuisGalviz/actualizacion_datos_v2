@@ -70,7 +70,9 @@ require('php/cas_login.php');
                 <p class="container-button-title"><i class="fa-solid fa-triangle-exclamation"></i> Temporal <i class="fa fa-angle-right angle_up_custom yellow_p"></i></p>
                 <p class="gotham_p5"><span id='dirTemporalAjax'></span></p>
             </button>
-
+        </div>
+        <div id="errorMessageConfirmar" style="display:none;" class="alert alert-warning" role="alert">
+            Debes aceptar que tus datos estan correctos.
         </div>
         <div class="center_text">
             <div class="row center-checkbox">
@@ -82,8 +84,8 @@ require('php/cas_login.php');
             </div>
             <button class="button-confirmar" id="submit-button">CONFIRMAR</button>
         </div>
-        <!-- Mensaje de agradecimiento (oculto por defecto) -->
     </div>
+    <!-- Mensaje de agradecimiento (oculto por defecto) -->
     <div class="container oculto center_text center-vertically" id="mensaje-agradecimiento">
         <div class="msj-agradecimiento">
             <h1>¡GRACIAS!</h1><br>
@@ -92,7 +94,6 @@ require('php/cas_login.php');
         </div>
         <button class="button-confirmar" id="back-button-msj">REGRESAR</button>
     </div>
-
 </body>
 
 </html>
