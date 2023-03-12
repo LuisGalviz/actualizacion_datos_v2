@@ -2,11 +2,23 @@ function getEstado(typeInfo, idIndex) {
   $.ajax({
     type: "GET",
     url: `${pdimEndpoint}${pidmUserUn}/${typeInfo}`,
-    success: function (data2) {
-      if (data2 !== null && data2.length > 0) {
-        //    console.log(data2[0]["employmentStatus"]);
-        $(idIndex).html(data2[0]["employmentStatus"]);
-        $("#" + data2[0]["employmentStatus"]).prop("checked", true);
+    success: function (data) {
+      if (data !== null && data.length > 0) {
+        const element = data[0];
+        $(idIndex).html(element["employmentStatus"]);
+        $("#" + element["employmentStatus"]).prop("checked", true);
+
+        const mesesDiff = dateCalculate(element["activityDate"]);
+
+        if (mesesDiff < 6) {
+          $(".container_form:eq(2) .gotham_p5:first").css(
+            "color",
+            "rgb(0, 160, 0)"
+          );
+          $(
+            ".container_form:eq(2) .fa-solid.fa-triangle-exclamation:first"
+          ).hide();
+        }
       }
     },
     error: function (error) {
@@ -15,9 +27,10 @@ function getEstado(typeInfo, idIndex) {
     },
   });
 }
-/*
+/*$(function () {
 getMyPimdUser().then(function (myVar) {
   getEstado("estadolaboral", "#estadoAjax");
+});});
+*/ $(function () {
+  getEstado("estadolaboral", "#estadoAjax");
 });
-*/
-getEstado("estadolaboral", "#estadoAjax");

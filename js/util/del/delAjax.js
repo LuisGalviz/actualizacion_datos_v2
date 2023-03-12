@@ -5,7 +5,6 @@ window.addEventListener("storage", function (event) {
     data1.forEach((element) => {
       let escapedId = jQuery.escapeSelector(element["id"]);
       $(document).on("click", `#${escapedId}`, function (event) {
-        console.log(escapedId + " eliminar");
         //event.preventDefault();
         // if (confirm("¿Estás seguro que deseas modificar?"))
         delButton(element["email"], element["type"], "correo", escapedId);
@@ -16,7 +15,6 @@ window.addEventListener("storage", function (event) {
     data1 = JSON.parse(localStorage.getItem(event.key));
     data1.forEach((element) => {
       $(document).on("click", `#telIdDelete${element["id"]}`, function (event) {
-        console.log("telIdDelete" + element["id"] + " eliminar");
         //   event.preventDefault();
         // if (confirm("¿Estás seguro que deseas modificar?"))
         delButton(element["id"], element["type"], "telefono", element["id"]);
@@ -69,9 +67,6 @@ function deleteInput(id) {
   const input = document.getElementById(`div${idSinBarra}`);
   let correoStorage = JSON.parse(window.localStorage.getItem("arrayEmailPart"));
   const result = removeById(correoStorage, idSinBarra);
-  console.log(result)
-  console.log(result[0])
-  console.log(result[0] == true)
   result[0]
     ? $("#emailParticularAjax").html(result[0].email)
     : $("#emailParticularAjax").html("NA");
@@ -96,9 +91,6 @@ function deleteInputTel(id, type) {
   const input = document.getElementById(`div${id}`);
   let telStorage = JSON.parse(window.localStorage.getItem(storage));
   const result = removeById(telStorage, id);
-  console.log(result)
-  console.log(result[0])
-  console.log(result[0] == true)
   result[0]
     ? $(`#${indexTelId}`).html(result[0].tel)
     : $(`#${indexTelId}`).html("NA");

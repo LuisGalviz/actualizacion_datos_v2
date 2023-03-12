@@ -43,6 +43,28 @@ function getTel(typeInfo, type, idIndex, idModal, dataArray) {
             phoneExt: element["phoneExt"],
             intlAccess: element["intlAccess"],
           });
+
+          const mesesDiff = dateCalculate(element["activityDate"]);
+
+          if (mesesDiff < 6) {
+            if (type === "CELU") {
+              $(".container_form:eq(1) .gotham_p5:first").css(
+                "color",
+                "rgb(0, 160, 0)"
+              );
+              $(
+                ".container_form:eq(1) .fa-solid.fa-triangle-exclamation:first"
+              ).hide();
+            } else {
+              $(".container_form:eq(1) .gotham_p5:eq(1)").css(
+                "color",
+                "rgb(0, 160, 0)"
+              );
+              $(
+                ".container_form:eq(1) .fa-solid.fa-triangle-exclamation:eq(1)"
+              ).hide();
+            }
+          }
         }
       });
 
@@ -86,7 +108,7 @@ function getCode(url, id) {
     });
   });
 }
-/*
+/*$(function () {
 getMyPimdUser().then(function (myVar) {
   getTel(
     "telefono",
@@ -98,15 +120,16 @@ getMyPimdUser().then(function (myVar) {
   getTel("telefono", "TEPE", "#telTepeAjax", "#telTepAjax", "arrayTelTepe");
   getCode("paisesTel.json", "#inputCodPartAjax");
   getCode("fijoTel.json", "#inputCodTepeAjax");
+});});
+*/ $(function () {
+  getTel(
+    "telefono",
+    "CELU",
+    "#telParticularAjax",
+    "#telPartAjax",
+    "arrayTelPart"
+  );
+  getTel("telefono", "TEPE", "#telTepeAjax", "#telTepAjax", "arrayTelTepe");
+  getCode("paisesTel.json", "#inputCodPartAjax");
+  getCode("fijoTel.json", "#inputCodTepeAjax");
 });
-*/
-getTel(
-  "telefono",
-  "CELU",
-  "#telParticularAjax",
-  "#telPartAjax",
-  "arrayTelPart"
-);
-getTel("telefono", "TEPE", "#telTepeAjax", "#telTepAjax", "arrayTelTepe");
-getCode("paisesTel.json", "#inputCodPartAjax");
-getCode("fijoTel.json", "#inputCodTepeAjax");

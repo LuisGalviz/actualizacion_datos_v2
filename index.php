@@ -29,7 +29,7 @@
                 Eres parte de la comunidad más grande de Uninorte.
             </h1>
             <p class="gotham_p">Porque te queremos cerca siempre, ayúdanos a <strong>validar</strong> , <strong>completar</strong> y <strong>actualizar</strong> tus datos.</p>
-            <p class="gotham_p2">Última actualización: <?php echo "12/03/2016"; ?>. <br> Aquellos marcados con <i class="fa fa-warning fa_custom red_p"></i> podrían estar desactualizados.</p>
+            <p id="fecha-ultima-actualizacion" class="gotham_p2"></p>
         </div>
         <div class="container_form">
             <p class="yellow_p center_text"><i class="fa fa-envelope"></i> Correos electrónicos</p>
@@ -95,5 +95,4 @@
         <button class="button-confirmar" id="back-button-msj">REGRESAR</button>
     </div>
 </body>
-
 </html>
