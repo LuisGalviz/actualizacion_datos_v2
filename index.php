@@ -9,23 +9,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP</title>
-    <link rel="stylesheet" type="text/css" href="index.css" async>
-    <link rel="stylesheet" type="text/css" href="../modal/modal.css" async>
+    <link rel="stylesheet" type="text/css" href="style/index.css" async>
+    <link rel="stylesheet" type="text/css" href="style/modal.css" async>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" async>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/4dbf0b25da.js" crossorigin="anonymous" async></script>
     <?php
-    require_once '../modal/modal.php';
+    require_once 'modal.php';
     ?>
 </head>
 
 <body>
     <div id="loader">
         <div class="spinner"></div>
-    </div>
-    <div class="header">
-        <div class="header_black"></div>
-        <div class="header_yellow"></div>
     </div>
     <div class="container">
         <div class="container">

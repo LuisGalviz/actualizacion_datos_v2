@@ -75,7 +75,7 @@ function getTel(typeInfo, type, idIndex, idModal, dataArray) {
 }
 
 function getCode(url, id) {
-  $.getJSON(`../../assets/${url}`, function (data) {
+  $.getJSON(`assets/${url}`, function (data) {
     $.each(data, function (key, value) {
       $(id).append(
         $("<option>", {
