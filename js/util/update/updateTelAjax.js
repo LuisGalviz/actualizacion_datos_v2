@@ -3,7 +3,6 @@ window.addEventListener("storage", function (event) {
     let data1 = JSON.parse(localStorage.getItem(event.key));
     data1.forEach((element) => {
       $(document).on("click", `#telIdUpdate${element["id"]}`, function () {
-        console.log("telIdUpdate" + element["id"] + " update");
         const telNuevo = document.getElementById(
           `telIdUpdate${element["id"]}Value`
         ).value;
@@ -25,7 +24,6 @@ window.addEventListener("storage", function (event) {
 });
 function updateButton(infoId, typeInfo, typeRequest, tel, codeTel, PHoneExt) {
   updateInput(infoId);
-  console.log(tel);
   let myHeaders = new Headers({
     "Content-Type": "application/json",
     Cookie: "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000",
@@ -58,15 +56,27 @@ function updateButton(infoId, typeInfo, typeRequest, tel, codeTel, PHoneExt) {
     body: raw,
     redirect: "follow",
   };
-  console.log(raw);
   const fetchUrl = `${Endpoint}${typeRequest}`;
-  console.log(fetchUrl);
   fetch(fetchUrl, requestOptions)
     .then((response) => response.text())
     .then((result) => {
-      console.log(result);
       typeInfo === "CELU"
         ? $("#telParticularAjax").html(tel)
         : $("#telTepeAjax").html(tel);
     });
+}
+
+//Update Imput
+function updateInput(id) {
+  const input = document.getElementById(`telIdUpdate${id}Value`);
+  const input2 = document.getElementById(`codePhone${id}`);
+  input.classList.add("update");
+  input.addEventListener("animationend", () => {
+    input.classList.remove("update");
+  });
+
+  input2.classList.add("update");
+  input2.addEventListener("animationend", () => {
+    input2.classList.remove("update");
+  });
 }

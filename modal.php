@@ -211,8 +211,7 @@
     </div>
 </div>
 <script src="assets/api.js"></script>
-<script src="js/modal.js"></script>
-<script src="js/change.js"></script>
+<script src="js/functions.js"></script>
 <script src="js/util/del/delAjax.js"></script>
 <script src="assets/const.js"></script>
 <script src="js/util/get/ciudadAjax.js"></script>
