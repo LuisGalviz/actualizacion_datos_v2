@@ -23,7 +23,7 @@
     <div id="loader">
         <div class="spinner"></div>
     </div>
-    <div class="container">
+    <div id="formulario-actualizacion" class="container">
         <div class="container">
             <h1 class="gotham_title">
                 Eres parte de la comunidad más grande de Uninorte.
@@ -72,7 +72,7 @@
             </button>
 
         </div>
-        <div class="container-confirmar-form">
+        <div class="center_text">
             <div class="row center-checkbox">
                 <div class="col-1">
                     <input type="checkbox" id="conditions">
@@ -80,9 +80,19 @@
                 <div class="col-7"><label class="container-button-title" for="conditions">Mis datos están correctos</label></div>
                 <div class="col-1"></div>
             </div>
-            <button class="button-confirmar" id="button8">CONFIRMAR</button>
+            <button class="button-confirmar" id="submit-button">CONFIRMAR</button>
         </div>
+        <!-- Mensaje de agradecimiento (oculto por defecto) -->
     </div>
+    <div class="container oculto center_text center-vertically" id="mensaje-agradecimiento">
+        <div class="msj-agradecimiento">
+            <h1>¡GRACIAS!</h1><br>
+            <p>Actualizar tus datos es<br> otra manera de decir</p> <br>
+            <h2>#SoyEgresadoUninorte</h2>
+        </div>
+        <button class="button-confirmar" id="back-button-msj">REGRESAR</button>
+    </div>
+
 </body>
 
 </html>

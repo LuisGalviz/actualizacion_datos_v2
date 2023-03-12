@@ -16,6 +16,10 @@ body {
     text-align: center;
 }
 
+.center-vertically{
+    padding: 50% 0;
+}
+
 .container-button-title {
     color: #1d1d1b;
     font-weight: 500;
@@ -66,17 +70,13 @@ body {
     min-width: 1rem;
 }
 
-.container-confirmar-form {
-    text-align: center;
-}
-
 .row {
     justify-content: space-between;
     align-items: center;
     padding: 0.5em 0;
 }
 
-.center-checkbox{
+.center-checkbox {
     justify-content: center;
 }
 
@@ -136,4 +136,9 @@ input {
 
 .oculto {
     display: none;
+}
+
+/*mensaje de agradecimiento*/
+.msj-agradecimiento{
+    margin: 4em 0;
 }
