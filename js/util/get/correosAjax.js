@@ -85,6 +85,7 @@ function getCorreo(typeInfo, type, idIndex, idModal, dataArray) {
   });
 }
 /*
+$(function () {
 getCorreo(
   "correo",
   "PART",
@@ -98,20 +99,22 @@ getCorreo(
   "#emailFuncAjax",
   "#correoFuncAjax",
   "arrayEmailFunc"
-);*/
-getMyPimdUser().then(function () {
-  getCorreo(
-    "correo",
-    "PART",
-    "#emailParticularAjax",
-    "#correoPartAjax",
-    "arrayEmailPart"
-  );
-  getCorreo(
-    "correo",
-    "FUNC",
-    "#emailFuncAjax",
-    "#correoFuncAjax",
-    "arrayEmailFunc"
-  );
+);});*/
+$(function () {
+  getMyPimdUser().then(function () {
+    getCorreo(
+      "correo",
+      "PART",
+      "#emailParticularAjax",
+      "#correoPartAjax",
+      "arrayEmailPart"
+    );
+    getCorreo(
+      "correo",
+      "FUNC",
+      "#emailFuncAjax",
+      "#correoFuncAjax",
+      "arrayEmailFunc"
+    );
+  });
 });
