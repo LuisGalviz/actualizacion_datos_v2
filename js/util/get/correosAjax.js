@@ -84,6 +84,7 @@ function getCorreo(typeInfo, type, idIndex, idModal, dataArray) {
     },
   });
 }
+/*
 getCorreo(
   "correo",
   "PART",
@@ -97,8 +98,7 @@ getCorreo(
   "#emailFuncAjax",
   "#correoFuncAjax",
   "arrayEmailFunc"
-);
-/*
+);*/
 getMyPimdUser().then(function () {
   getCorreo(
     "correo",
@@ -114,4 +114,4 @@ getMyPimdUser().then(function () {
     "#correoFuncAjax",
     "arrayEmailFunc"
   );
-});*/
+});
