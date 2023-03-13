@@ -9,17 +9,17 @@ function validateDir(errorMsg, type) {
 
   if (city == 0 || state == 0) {
     if (pais == "COL") {
-      document.getElementById(errorMsg).style.display = "block";
+      $(errorMsg).show();
       return;
     }
   }
 
   if (!regex.test(line1) || !regex.test(line2) || !regex.test(line3)) {
-    document.getElementById(errorMsg).style.display = "block";
+    $(errorMsg).show();
     return;
   }
 
-  document.getElementById(errorMsg).style.display = "none";
+  $(errorMsg).hide();
   let myHeaders = new Headers({
     "Content-Type": "application/json",
     Cookie: "BIGipServerPool_Int_Personas_QA=1477316780.18467.0000",

@@ -74,10 +74,35 @@ function dateCalculate(element) {
     $("#fecha-ultima-actualizacion").html(
       `Última actualización: ${ultimaFecha}. <br> Aquellos marcados con <i class="fa fa-warning fa_custom red_p"></i> podrían estar desactualizados.`
     );
-  } 
+  }
 
   // Calcular la diferencia en meses
   const mesesDiferencia = (fechaObj1 - fechaObj2) / (1000 * 60 * 60 * 24 * 30);
   // Verificar si la diferencia es menor de 6 meses y mostrar mensaje
   return mesesDiferencia;
 }
+
+//validar confirmar telefonos
+$("#confirmarTelefonoParticular").click(function () {
+  let data = JSON.parse(localStorage.getItem("arrayTelPart"));
+  let valid = data.map((element) => {
+    const telNuevo = document.getElementById(
+      `telIdUpdate${element["id"]}Value`
+    ).value;
+    const codeTel = document.getElementById(`codePhone${element["id"]}`).value;
+    return element.tel == telNuevo && element.intlAccess == codeTel;
+  });
+
+  const allTrue = valid.every((element) => element === true);
+
+  if (allTrue) {
+    $("#errorMessageConfirmarTelPart").hide();
+    greenInputConfirm(
+      "#button3 .gotham_p5",
+      "#button3 .fa-solid",
+      ".bg-modal-3"
+    );
+  } else {
+    $("#errorMessageConfirmarTelPart").show();
+  }
+});

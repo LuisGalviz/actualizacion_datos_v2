@@ -18,11 +18,11 @@ function validateTel(idTel, codCELU, codTEPE, errorMsg, type, modal) {
     localStorageData && localStorageData.some((item) => item["tel"] === tel);
 
   if (!regex.test(tel) || exist) {
-    document.getElementById(errorMsg).style.display = "block";
+    $(errorMsg).show();
     return;
   }
 
-  document.getElementById(errorMsg).style.display = "none";
+  $(errorMsg).hide();
 
   const myHeaders = new Headers({
     "Content-Type": "application/json",

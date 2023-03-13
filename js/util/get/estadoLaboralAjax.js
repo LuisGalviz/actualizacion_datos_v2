@@ -34,5 +34,5 @@ $(function () {
 });
 /* $(function () {
   getEstado("estadolaboral", "#estadoAjax");
-});
-*/
+});});
+*/ 

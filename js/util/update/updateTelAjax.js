@@ -1,7 +1,7 @@
 window.addEventListener("storage", function (event) {
   if (event.key === "arrayTelPart" || event.key === "arrayTelTepe") {
-    let data1 = JSON.parse(localStorage.getItem(event.key));
-    data1.forEach((element) => {
+    let data = JSON.parse(localStorage.getItem(event.key));
+    data.forEach((element) => {
       $(document).on("click", `#telIdUpdate${element["id"]}`, function () {
         const telNuevo = document.getElementById(
           `telIdUpdate${element["id"]}Value`
@@ -9,7 +9,9 @@ window.addEventListener("storage", function (event) {
         const codeTel = document.getElementById(
           `codePhone${element["id"]}`
         ).value;
-
+        element.tel = telNuevo;
+        element.intlAccess=codeTel;
+        localStorage.setItem(event.key, JSON.stringify(data));
         updateButton(
           element["id"],
           element["type"],

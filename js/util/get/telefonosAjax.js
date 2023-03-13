@@ -120,8 +120,9 @@ getMyPimdUser().then(function (myVar) {
   getTel("telefono", "TEPE", "#telTepeAjax", "#telTepAjax", "arrayTelTepe");
   getCode("paisesTel.json", "#inputCodPartAjax");
   getCode("fijoTel.json", "#inputCodTepeAjax");
-});
-});/*
+});});
+
+/*
 getTel(
   "telefono",
   "CELU",
