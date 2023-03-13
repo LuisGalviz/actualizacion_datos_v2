@@ -9,11 +9,11 @@ function validateEmail(idEmail, errorMsg, type, modal) {
   exist = storedEmails.some((item) => item.email === email);
 
   if (!regex.test(email) || exist) {
-    document.getElementById(errorMsg).style.display = "block";
+    $(errorMsg).show();
     return;
   }
 
-  document.getElementById(errorMsg).style.display = "none";
+  $(errorMsg).hide();
   // Código para el botón
   let myHeaders = new Headers({
     "Content-Type": "application/json",

@@ -23,7 +23,7 @@
                 <div id="errorMessageEmailP" style="display:none;" class="alert alert-warning" role="alert">
                     Ingresa un correo válido
                 </div>
-                <button class="button_confirmar" id='postEmailAjax' onclick="validateEmail('emailPajax','errorMessageEmailP','PART','.inputPostEmailP')">GUARDAR</button>
+                <button class="button_confirmar" id='postEmailAjax' onclick="validateEmail('emailPajax','#errorMessageEmailP','PART','.inputPostEmailP')">GUARDAR</button>
             </div>
         </div>
     </div>
@@ -54,8 +54,11 @@
                     <label for="numeroContacto">Número de contacto</label>
                     <div id='telPartAjax'></div>
                 </div>
+                <div id="errorMessageConfirmarTelPart" style="display:none;" class="alert alert-warning" role="alert">
+                   <p style="font-size: 0.8em;"> Debes actualizar el telefono con el icono verde a la derecha de cada telefono que hayas modificado.</p>
+                </div>
                 <button class="button_agregar" id="postTelPart" onclick="modal('.inputPostTelPart')">AGREGAR TELEFONO</button>
-                <button class="button_confirmar" onclick="greenInputConfirm('#button3 .gotham_p5','#button3 .fa-solid', '.bg-modal-3')">CONFIRMAR</button>
+                <button class="button_confirmar" id="confirmarTelefonoParticular">CONFIRMAR</button>
             </div>
         </div>
     </div>
@@ -73,7 +76,7 @@
                     <div id="errorMessageTelPart" style="display:none;" class="alert alert-warning" role="alert">
                         Ingresa un número válido
                     </div>
-                    <button class="button_confirmar" id="postTelPartAjax" onclick="validateTel('inputTelPartAjax','inputCodPartAjax','0','errorMessageTelPart','CELU','.inputPostTelPart')">GUARDAR</button>
+                    <button class="button_confirmar" id="postTelPartAjax" onclick="validateTel('inputTelPartAjax','inputCodPartAjax','0','#errorMessageTelPart','CELU','.inputPostTelPart')">GUARDAR</button>
                 </div>
             </div>
         </div>
@@ -106,7 +109,7 @@
                 <div id="errorMessageTelTepe" style="display:none;" class="alert alert-warning" role="alert">
                     Ingresa un número válido
                 </div>
-                <button id="postTelTepeAjax" class="button_confirmar" onclick="validateTel('inputTelTepeAjax','0','inputCodTepeAjax','errorMessageTelTepe','TEPE','.inputPostTelTepe')">GUARDAR</button>
+                <button id="postTelTepeAjax" class="button_confirmar" onclick="validateTel('inputTelTepeAjax','0','inputCodTepeAjax','#errorMessageTelTepe','TEPE','.inputPostTelTepe')">GUARDAR</button>
             </div>
         </div>
     </div>
@@ -173,7 +176,7 @@
                     Completa todos los campos
                 </div>
 
-            </div> <button class="button_confirmar" type="button" id="buttonDP" onclick="validateDir('errorMessageDirP','P')">CONFIRMAR Y CONTINUAR</button>
+            </div> <button class="button_confirmar" type="button" id="buttonDP" onclick="validateDir('#errorMessageDirP','P')">CONFIRMAR Y CONTINUAR</button>
         </div>
     </div>
 </div>
@@ -206,7 +209,7 @@
                     Completa todos los campos
                 </div>
 
-            </div> <button class="button_confirmar" type="button" id="buttonDT" onclick="validateDir('errorMessageDirT','T')">CONFIRMAR Y CONTINUAR</button>
+            </div> <button class="button_confirmar" type="button" id="buttonDT" onclick="validateDir('#errorMessageDirT','T')">CONFIRMAR Y CONTINUAR</button>
         </div>
     </div>
 </div>
